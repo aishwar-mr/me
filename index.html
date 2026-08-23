@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aishwar</title>
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
@@ -38,6 +39,17 @@
       font-size: 1.05rem; font-weight: 500; white-space: nowrap;
     }
     .cta:hover { opacity: .9; }
+    
+          .hero img {
+      display: block;
+      width: 100%;
+      height: clamp(280px, 38vw, 520px);
+      object-fit: cover;
+      object-position: center top;
+    }
+
+
+    .hero-band { background: var(--ink); height: clamp(120px, 18vw, 260px); }
 
     @media (max-width: 820px) {
       .site-header { flex-wrap: wrap; gap: 1rem; padding: 1rem 1.25rem; }
@@ -66,6 +78,7 @@
     <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg>
     </a>
+
     <a class="icon-btn" href="https://linkedin.com/aishwar-mishra" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg>
     </a>
@@ -76,6 +89,11 @@
     </a>
   </div>
 </header>
+
+<section class="hero">
+  <img src="assets/assets-hero.jpeg" alt="">
+  <div class="hero-band"></div>
+</section>
 
 </body>
 </html>
