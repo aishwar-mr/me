@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Integrated Track Monitoring System &middot; Aishwar</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Aishwar Mishra</a>
+
+  <nav class="nav">
+    <a href="my-story.html">My Story</a>
+    <a href="impact-delivered.html">Impact Delivered</a>
+    <form class="search" id="search" action="/search" method="get">
+      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      </button>
+      <input class="search-input" type="search" name="q" placeholder="Search" required>
+    </form>
+  </nav>
+
+  <div class="actions">
+    <a class="cta" href="contact.html">Get in Touch</a>
+    <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg>
+    </a>
+
+    <a class="icon-btn" href="https://linkedin.com/aishwar-mishra" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg>
+    </a>
+
+    <details class="lang">
+      <summary aria-label="Language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+      </summary>
+      <div class="lang-menu">
+        <a href="track-monitoring.html" aria-current="true">English</a>
+        <a href="track-monitoring.es.html">Español</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="project-hero-inner">
+    <h1>Integrated Track Monitoring System</h1>
+    <p class="project-meta">
+      <span>Smart India Hackathon 2025 &middot; Top 3 of 80 teams &middot; Team of 7 &middot; Sep&ndash;Oct 2025</span>
+      <span class="stack">Python, OpenCV, ESP32, IMU, laser sensors</span>
+    </p>
+  </div>
+</section>
+
+<article class="project">
+  <h2>The problem</h2>
+  <p>Indian Railways runs roughly 68,000 km of track. Every kilometre has to be checked for defects &mdash; rails drifting out of alignment, broken fasteners, ballast that&rsquo;s shifted, surface cracks. Miss one and you get a derailment.</p>
+  <p>The checking is done by specialised Track Recording Cars. India&rsquo;s current system is imported, costs around &#8377;180 crore, runs on closed-source software, and can&rsquo;t be customised or repaired locally. If a zone wants only part of the system, it can&rsquo;t have it &mdash; it&rsquo;s all or nothing, from one vendor.</p>
+  <p>There&rsquo;s a second, quieter problem. When a defect is found, you need to know exactly where it is so a maintenance crew can go fix it. The current system locates defects by GPS, and GPS fails in tunnels, cuttings, and dense urban corridors &mdash; precisely the places where track problems tend to be worst.</p>
+
+  <figure>
+    <img src="assets/sih-prototype.png" alt="The prototype rig mounted on a railway track, with sensors, wiring and a control board on an aluminium frame">
+    <figcaption>The prototype mounted on live Central Railway track in Mumbai.</figcaption>
+  </figure>
+
+  <h2>What we built</h2>
+  <p>A contactless prototype that does the same job with off-the-shelf components &mdash; nothing touches the rail, so it can run at speed without wear.</p>
+  <p><b>Measuring the track.</b> Laser and ultrasonic sensors read the rail profile and geometry. An IMU picks up vibration and misalignment through vertical and horizontal acceleration. An optical encoder tracks distance travelled. Together these produce the standard track geometry parameters &mdash; gauge, alignment, unevenness, elevation &mdash; that inspectors already work with.</p>
+  <p><b>Seeing the defects.</b> Cameras feed an OpenCV pipeline that flags broken fasteners, ballast infringement, and rail surface damage from 1920&times;1080 video. When something is detected, the system sends an SMS alert with the location attached.</p>
+
+  <figure>
+    <img src="assets/sih-detection.png" alt="Dashboard showing a misalignment alert, live accelerometer and gyroscope readings, camera view with broken fasteners marked by bounding boxes, and an SMS fault alert">
+    <figcaption>Fastener detection with bounding boxes, live sensor readout, and the SMS alert the system sends on a fault.</figcaption>
+  </figure>
+
+  <p><b>Knowing where you are.</b> Rather than relying on GPS alone, we fused GPS with IMU data and encoder-derived distance. When the satellite signal drops, the system keeps counting position from the wheel and the motion sensors. This was the piece we were proudest of &mdash; it directly addresses why the existing system&rsquo;s localization is unreliable.</p>
+  <p><b>Processing on board.</b> First-pass fault detection happens on the device itself, so there&rsquo;s no dependency on connectivity in the field. Longer-term trend data syncs to the cloud for predictive maintenance. Outputs export as CSV, XML, and JPEG, so they drop into the workflows railways already run.</p>
+
+  <h2>The design decisions that mattered</h2>
+  <p><b>Modular by default.</b> A railway zone can deploy just the geometry module, or just the rail profile module, or the whole thing. The existing system doesn&rsquo;t allow this, and it&rsquo;s a large part of why it&rsquo;s expensive.</p>
+  <p><b>Standards first, not last.</b> We mapped every output to RDSO TM/IM/448 and EN 13848 Parts 1&ndash;2 &mdash; the Indian and European track geometry standards &mdash; so the numbers the system produces are directly comparable against the tolerance bands inspectors already use. A measurement nobody can act on isn&rsquo;t worth taking.</p>
+  <p><b>Open stack.</b> Python, OpenCV, SQL. No vendor lock-in, maintainable by Indian engineering teams.</p>
+
+  <h2>What happened</h2>
+  <p>We built it, mounted it, and tested it on live Central Railway track in Mumbai &mdash; not a lab rig. Track geometry extraction and real-time data acquisition both worked in the field.</p>
+  <p>Our costing put an indigenous version at roughly &#8377;30 crore against the &#8377;180 crore imported system, with the savings coming from commodity sensors and an open software stack rather than from cutting capability.</p>
+  <p>The submission placed us in top 3 of 80 teams.</p>
+
+  <h2>What I&rsquo;d do differently</h2>
+  <p>The &#8377;30 crore figure is a hackathon estimate, not a procurement quote &mdash; it needs a real BOM and vendor pricing to stand up.</p>
+  <p>We also identified but didn&rsquo;t implement RFID tags on track as a further localization improvement. GPS-plus-IMU drifts over long distances; fixed physical reference points would correct that drift. That&rsquo;s the obvious next iteration.</p>
+  <p>And we validated that the system works, not how accurately it works. A serious version needs measured error bounds against a calibrated reference &mdash; which is the difference between a prototype and something a railway would actually buy.</p>
+</article>
+
+<script src="app.js"></script>
+
+</body>
+</html>

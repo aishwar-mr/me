@@ -243,3 +243,60 @@ body { margin: 0; background: var(--bg); font-family: "Manrope", system-ui, sans
 @media (max-width: 820px) {
   .mission-inner { flex-direction: column; text-align: center; gap: 1.8rem; }
 }
+
+/* --- project page --- */
+.project-hero { background: var(--band); color: #fff; padding: 3.5rem 1.5rem 3rem; }
+.project-hero-inner { max-width: 48rem; margin: 0 auto; }
+.project-hero h1 {
+  margin: 0 0 1rem; font-size: clamp(1.9rem, 4.4vw, 3.1rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -.03em;
+}
+.project-meta { margin: 0; font-size: clamp(.95rem, 1.4vw, 1.05rem); line-height: 1.7; }
+.project-meta span { display: block; opacity: .82; }
+.project-meta .stack { color: var(--gold); opacity: 1; }
+
+.project { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.project h2 {
+  margin: 3rem 0 1.1rem; padding-bottom: .6rem;
+  border-bottom: 2px solid rgba(136,25,70,.18);
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem); font-weight: 700;
+  letter-spacing: -.02em; color: var(--ink);
+}
+.project h2:first-child { margin-top: 0; }
+.project p {
+  margin: 0 0 1.35rem;
+  font-size: clamp(1rem, 1.45vw, 1.13rem); line-height: 1.75; color: #2b2b2b;
+}
+.project p b { color: var(--ink); font-weight: 700; }
+.project figure { margin: 2.5rem 0; }
+.project figure img {
+  display: block; width: 100%; height: auto;
+  border-radius: .5rem; border: 1px solid rgba(0,0,0,.10);
+}
+.project figcaption {
+  margin-top: .7rem; font-size: .92rem; color: #6a6a6a; line-height: 1.5;
+}
+
+@media (max-width: 820px) {
+  .project-hero { padding: 2.5rem 1.25rem 2.2rem; }
+  .project { padding: 2rem 1.25rem 3.5rem; }
+  .project h2 { margin-top: 2.2rem; }
+}
+
+/* linked impact bullets */
+.impact-link { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(136,25,70,.3); }
+.impact-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* --- spec table (alpha record, etc.) --- */
+.spec { margin: 2rem 0; overflow-x: auto; }
+.spec table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.spec caption {
+  text-align: left; padding-bottom: .7rem;
+  font-size: .92rem; font-weight: 700; color: var(--ink); letter-spacing: .02em;
+}
+.spec th, .spec td { padding: .6rem .8rem; border-bottom: 1px solid rgba(0,0,0,.09); }
+.spec th {
+  width: 40%; text-align: left; font-weight: 500; color: #6a6a6a; white-space: nowrap;
+}
+.spec td { font-weight: 500; color: #2b2b2b; font-variant-numeric: tabular-nums; }
+.spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
