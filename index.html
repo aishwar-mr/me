@@ -3,12 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aishwar</title>
+  <title>Aishwar Mishra</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -16,78 +22,146 @@
   <a class="brand" href="index.html">Aishwar Mishra</a>
 
   <nav class="nav">
-    <a href="my-story.html">My Story</a>
-    <a href="impact-delivered.html">Impact Delivered</a>
-    <form class="search" id="search" action="/search" method="get">
-      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-             stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      </button>
-      <input class="search-input" type="search" name="q" placeholder="Search" required>
-    </form>
+      <a href="my-story.html">My Story</a>
+      <a href="impact-delivered.html">Impact Delivered</a>
   </nav>
 
   <div class="actions">
-    <a class="cta" href="contact.html">Get in Touch</a>
-    <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg>
-    </a>
+    <form class="search" id="search" role="search">
+      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
+        <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-4-4'/></svg>
+      </button>
+      <label class="visually-hidden" for="search-q">Search</label>
+      <input class="search-input" id="search-q" type="search" name="q" placeholder="Search" required>
+    </form>
 
-    <a class="icon-btn" href="https://linkedin.com/aishwar-mishra" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg>
-    </a>
+    <a class="cta" href="contact.html">Get in touch</a>
+
+      <a class="icon-btn" href="https://github.com/aishwar-mr" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+      <a class="icon-btn" href="https://linkedin.com/in/aishwar-mishra" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg></a>
+      <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg></a>
+
+    <button class="icon-btn theme-toggle" type="button" id="theme-toggle"
+            aria-label="Switch colour theme"><i aria-hidden="true"></i></button>
 
     <details class="lang">
-      <summary aria-label="Language">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
-      </summary>
+      <summary aria-label="Language"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18'/></svg></summary>
       <div class="lang-menu">
         <a href="index.html" aria-current="true">English</a>
-        <a href="index.es.html">Español</a>
+        <a href="index.es.html">Espa&ntilde;ol</a>
       </div>
     </details>
   </div>
 </header>
 
+<main>
+
 <section class="hero">
-  <img src="assets/assets-hero.jpg" alt="">
-  <div class="hero-band">
-    <div class="slider-wrap">
-      <button class="slide-nav prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-      <div class="slider" id="slider">
-      <article class="slide">
-        <h3><a class="slide-link" href="impact-delivered.html">Took Ninjacart&rsquo;s dark stores from 5 to 30 through pricing analysis</a></h3>
-        <a class="read-more" href="impact-delivered.html">Read More <span aria-hidden="true">&rarr;</span></a>
-      </article>
-      <article class="slide">
-        <h3><a class="slide-link" href="worldquant.html">Reached Gold on WorldQuant Brain and earned a research consultant offer</a></h3>
-        <a class="read-more" href="worldquant.html">Read More <span aria-hidden="true">&rarr;</span></a>
-      </article>
-      <article class="slide">
-        <h3><a class="slide-link" href="impact-delivered.html">Built a siting tool that turns weeks of analysis into seconds</a></h3>
-        <a class="read-more" href="impact-delivered.html">Read More <span aria-hidden="true">&rarr;</span></a>
-      </article>
-      <article class="slide">
-        <h3><a class="slide-link" href="impact-delivered.html">Helped raise $1M from Peak XV and onboard 15 pilot clients</a></h3>
-        <a class="read-more" href="impact-delivered.html">Read More <span aria-hidden="true">&rarr;</span></a>
-      </article>
-      <article class="slide">
-        <h3><a class="slide-link" href="track-monitoring.html">Field-tested railway inspection hardware on live track in Mumbai</a></h3>
-        <a class="read-more" href="track-monitoring.html">Read More <span aria-hidden="true">&rarr;</span></a>
-      </article>
+  <div class="shell hero-grid">
+    <div>
+      <h1 class="rise">Aishwar <em>Mishra</em></h1>
+      <p class="hero-lede rise rise-1">I am a generalist at heart. What I enjoy is the part where a problem is still shapeless.</p>
+      <div class="hero-actions rise rise-2">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <a class="btn btn-ghost" href="impact-delivered.html">Impact Delivered</a>
       </div>
-      <button class="slide-nav next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <figure class="hero-figure rise rise-1">
+      <img src="assets/assets-hero.jpg" alt="Aishwar Mishra" width="1024" height="420" fetchpriority="high">
+    </figure>
+  </div>
+</section>
+
+<section class="section section-sunken">
+  <div class="shell">
+    <div class="rail-head">
+      <h2 class="reveal">Selected work</h2>
+      <div class="rail-nav">
+        <button class="rail-btn" type="button" data-rail="prev" aria-label="Previous"><i class="chev chev-left" aria-hidden="true"></i></button>
+        <button class="rail-btn" type="button" data-rail="next" aria-label="Next"><i class="chev" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="rail" id="rail">
+      <a class="work-card reveal reveal-0" href="impact-delivered.html">
+        <h3>Took Ninjacart&rsquo;s dark stores from 5 to 30 through pricing analysis</h3>
+        <span class="work-more">Read more <i class="chev" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card reveal reveal-1" href="worldquant.html">
+        <h3>Reached Gold on WorldQuant Brain and earned a research consultant offer</h3>
+        <span class="work-more">Read more <i class="chev" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card reveal reveal-2" href="impact-delivered.html">
+        <h3>Built a siting tool that turns weeks of analysis into seconds</h3>
+        <span class="work-more">Read more <i class="chev" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card reveal reveal-3" href="impact-delivered.html">
+        <h3>Helped raise $1M from Peak XV and onboard 15 pilot clients</h3>
+        <span class="work-more">Read more <i class="chev" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card reveal reveal-3" href="track-monitoring.html">
+        <h3>Field-tested railway inspection hardware on live track in Mumbai</h3>
+        <span class="work-more">Read more <i class="chev" aria-hidden="true"></i></span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="mission">
-  <div class="mission-inner">
-    <div class="globe" role="img" aria-label="Rotating globe"></div>
-    <p class="mission-statement">I take ambiguous problems, build the evidence, and turn it into a decision someone can act on.</p>
+<section class="section">
+  <div class="shell">
+    <dl class="stats">
+      <div class="stat reveal reveal-0"><dt class="num">30</dt><dd>Ninjacart dark stores in Hyderabad, scaled from 5</dd></div>
+      <div class="stat reveal reveal-1"><dt class="num">10,000+</dt><dd>WorldQuant Brain points, Gold level</dd></div>
+      <div class="stat reveal reveal-2"><dt class="num">$1M</dt><dd>Pre-seed raised at Lawxy AI with Peak XV</dd></div>
+      <div class="stat reveal reveal-3"><dt class="num">Top 3</dt><dd>of 80 teams, Smart India Hackathon 2025</dd></div>
+    </dl>
   </div>
 </section>
+
+<section class="band">
+  <div class="shell band-grid">
+    <div class="globe" role="img" aria-label="Rotating globe"></div>
+    <div>
+      <h2 class="reveal">I take ambiguous problems, build the evidence, and turn it into a decision someone can act on.</h2>
+      <a class="btn btn-ghost reveal reveal-1" href="contact.html">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2>Aishwar Mishra</h2>
+        <ul>
+          <li><a href="mailto:aishwar.r.mishra@gmail.com">aishwar.r.mishra@gmail.com</a></li>
+          <li><a href="tel:+917558773043">+91 75587 73043</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Pages</h3>
+        <ul>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="impact-delivered.html">Impact Delivered</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Elsewhere</h3>
+        <ul>
+        <li><a href="https://github.com/aishwar-mr" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/aishwar-mishra" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/aishwar_mr" target="_blank" rel="noopener">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Aishwar Mishra. All rights reserved.</span>
+      <span>Mumbai, India</span>
+    </div>
+  </div>
+</footer>
 
 <script src="app.js"></script>
 

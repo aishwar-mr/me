@@ -7,8 +7,14 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -16,92 +22,125 @@
   <a class="brand" href="index.html">Aishwar Mishra</a>
 
   <nav class="nav">
-    <a href="my-story.html">My Story</a>
-    <a href="impact-delivered.html">Impact Delivered</a>
-    <form class="search" id="search" action="/search" method="get">
-      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-             stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      </button>
-      <input class="search-input" type="search" name="q" placeholder="Search" required>
-    </form>
+      <a href="my-story.html">My Story</a>
+      <a href="impact-delivered.html" aria-current="page">Impact Delivered</a>
   </nav>
 
   <div class="actions">
-    <a class="cta" href="contact.html">Get in Touch</a>
-    <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg>
-    </a>
+    <form class="search" id="search" role="search">
+      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
+        <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-4-4'/></svg>
+      </button>
+      <label class="visually-hidden" for="search-q">Search</label>
+      <input class="search-input" id="search-q" type="search" name="q" placeholder="Search" required>
+    </form>
 
-    <a class="icon-btn" href="https://linkedin.com/aishwar-mishra" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg>
-    </a>
+    <a class="cta" href="contact.html">Get in touch</a>
+
+      <a class="icon-btn" href="https://github.com/aishwar-mr" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+      <a class="icon-btn" href="https://linkedin.com/in/aishwar-mishra" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg></a>
+      <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg></a>
+
+    <button class="icon-btn theme-toggle" type="button" id="theme-toggle"
+            aria-label="Switch colour theme"><i aria-hidden="true"></i></button>
 
     <details class="lang">
-      <summary aria-label="Language">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
-      </summary>
+      <summary aria-label="Language"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18'/></svg></summary>
       <div class="lang-menu">
         <a href="worldquant.html" aria-current="true">English</a>
-        <a href="worldquant.es.html">Español</a>
+        <a href="worldquant.es.html">Espa&ntilde;ol</a>
       </div>
     </details>
   </div>
 </header>
 
-<section class="project-hero">
-  <div class="project-hero-inner">
-    <h1>WorldQuant Brain &mdash; Alpha Research</h1>
-    <p class="project-meta">
+<main>
+
+<section class="page-head">
+  <div class="shell">
+    <h1>WorldQuant Brain - Alpha Research</h1>
+    <p class="page-meta">
       <span>Gold level &middot; 10,000+ points &middot; Research Consultant offer</span>
       <span class="stack">Fast Expression, statistical signal research</span>
     </p>
   </div>
 </section>
 
-<article class="project">
+<article class="prose shell">
   <h2>What WorldQuant is</h2>
-  <p>WorldQuant is a quantitative investment firm &mdash; they trade financial markets using statistical models rather than human judgment. Brain is their open research platform: anyone can sign up, get access to institutional-grade market data, and try to build trading signals. Good contributors get scored, ranked, and occasionally recruited.</p>
+  <p>WorldQuant is a quantitative investment firm - they trade financial markets using statistical models rather than human judgment. Brain is their open research platform: anyone can sign up, get access to institutional-grade market data, and try to build trading signals. Good contributors get scored, ranked, and occasionally recruited.</p>
   <p>The platform is essentially a talent funnel disguised as a sandbox, which is what makes the scoring meaningful. You&rsquo;re not marking your own homework.</p>
 
   <h2>What an alpha is</h2>
   <p>An alpha is a formula that predicts, weakly and on average, which stocks will do better than others.</p>
-  <p>The word &ldquo;weakly&rdquo; is the whole discipline. Nobody finds a signal that&rsquo;s right most of the time &mdash; if such a thing existed it would be arbitraged away within days. What you&rsquo;re hunting for is something right slightly more often than chance, that holds up across thousands of stocks and years of history, and that isn&rsquo;t just a repackaging of a signal everyone already trades.</p>
+  <p>The word &ldquo;weakly&rdquo; is the whole discipline. Nobody finds a signal that&rsquo;s right most of the time - if such a thing existed it would be arbitraged away within days. What you&rsquo;re hunting for is something right slightly more often than chance, that holds up across thousands of stocks and years of history, and that isn&rsquo;t just a repackaging of a signal everyone already trades.</p>
   <p>A trivial example: stocks that fell hard last week tend to bounce slightly the next week. That&rsquo;s a real effect, it&rsquo;s tiny, it&rsquo;s well known, and on its own it makes no money after transaction costs. A useful alpha is that idea&rsquo;s more careful, less obvious cousin.</p>
 
   <h2>What made it hard</h2>
   <p>The failure mode isn&rsquo;t finding nothing. It&rsquo;s finding something that isn&rsquo;t real.</p>
-  <p>Test enough formulas against historical data and some will look brilliant purely by chance. The platform guards against this &mdash; it checks that a signal isn&rsquo;t too correlated with existing alphas, that its performance doesn&rsquo;t come from one lucky period, that turnover isn&rsquo;t so high the trading costs eat the return. Most of what I submitted didn&rsquo;t survive those checks.</p>
+  <p>Test enough formulas against historical data and some will look brilliant purely by chance. The platform guards against this - it checks that a signal isn&rsquo;t too correlated with existing alphas, that its performance doesn&rsquo;t come from one lucky period, that turnover isn&rsquo;t so high the trading costs eat the return. Most of what I submitted didn&rsquo;t survive those checks.</p>
 
-  <div class="spec">
-    <table>
-      <caption>A surviving alpha</caption>
-      <tbody>
-        <tr><th>ID</th><td>GKW0alx</td></tr>
-        <tr><th>Name</th><td>anonymous</td></tr>
-        <tr><th>Type</th><td>Regular</td></tr>
-        <tr><th>Language</th><td>Fast Expression</td></tr>
-        <tr><th>Date</th><td>06/16/2025 EDT</td></tr>
-        <tr><th>Region</th><td>USA</td></tr>
-        <tr><th>Universe</th><td>TOP3000</td></tr>
-        <tr><th>Sharpe</th><td>1.14</td></tr>
-        <tr><th>Returns</th><td>22.41%</td></tr>
-        <tr><th>Turnover</th><td>81.59%</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <dl class="featured-stats">
+    <div><dt>Sharpe</dt><dd class="num">1.14</dd></div>
+    <div><dt>Returns</dt><dd class="num">22.41%</dd></div>
+    <div><dt>Turnover</dt><dd class="num">81.59%</dd></div>
+  </dl>
+  <ul class="meta-list">
+    <li>ID <b>GKW0alx</b></li>
+    <li>Name <b>anonymous</b></li>
+    <li>Type <b>Regular</b></li>
+    <li>Language <b>Fast Expression</b></li>
+    <li>Date <b>06/16/2025 EDT</b></li>
+    <li>Region <b>USA</b></li>
+    <li>Universe <b>TOP3000</b></li>
+  </ul>
 
   <h2>What the score means</h2>
-  <p>Points accrue for alphas that pass out-of-sample validation and add something not already covered by the existing library. Gold is a cumulative threshold &mdash; 10,000+ points reflects sustained submissions over 2&ndash;3 months, not a single good idea.</p>
+  <p>Points accrue for alphas that pass out-of-sample validation and add something not already covered by the existing library. Gold is a cumulative threshold - 10,000+ points reflects sustained submissions over 2-3 months, not a single good idea.</p>
   <p>The Research Consultant offer came off the back of that record.</p>
 
   <h2>Certificate</h2>
   <figure>
     <img src="assets/WorldQuant-GC.png" alt="WorldQuant Brain certificate recognising Gold level achievement">
-    <figcaption>WorldQuant Brain &mdash; Gold level.</figcaption>
+    <figcaption>WorldQuant Brain - Gold level.</figcaption>
   </figure>
 </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2>Aishwar Mishra</h2>
+        <ul>
+          <li><a href="mailto:aishwar.r.mishra@gmail.com">aishwar.r.mishra@gmail.com</a></li>
+          <li><a href="tel:+917558773043">+91 75587 73043</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Pages</h3>
+        <ul>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="impact-delivered.html">Impact Delivered</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Elsewhere</h3>
+        <ul>
+        <li><a href="https://github.com/aishwar-mr" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/aishwar-mishra" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/aishwar_mr" target="_blank" rel="noopener">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Aishwar Mishra. All rights reserved.</span>
+      <span>Mumbai, India</span>
+    </div>
+  </div>
+</footer>
 
 <script src="app.js"></script>
 

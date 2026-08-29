@@ -3,12 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Impacto Logrado &middot; Aishwar</title>
+  <title>Impacto Logrado &middot; Aishwar Mishra</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -16,89 +22,125 @@
   <a class="brand" href="index.es.html">Aishwar Mishra</a>
 
   <nav class="nav">
-    <a href="my-story.es.html">Mi Historia</a>
-    <a href="impact-delivered.es.html">Impacto Logrado</a>
-    <form class="search" id="search" action="/search" method="get">
-      <button class="icon-btn" type="button" id="search-toggle" aria-label="Buscar" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-             stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      </button>
-      <input class="search-input" type="search" name="q" placeholder="Buscar" required>
-    </form>
+      <a href="my-story.es.html">Mi Historia</a>
+      <a href="impact-delivered.es.html" aria-current="page">Impacto Logrado</a>
   </nav>
 
   <div class="actions">
-    <a class="cta" href="contact.es.html">Contáctame</a>
-    <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg>
-    </a>
+    <form class="search" id="search" role="search">
+      <button class="icon-btn" type="button" id="search-toggle" aria-label="Buscar" aria-expanded="false">
+        <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-4-4'/></svg>
+      </button>
+      <label class="visually-hidden" for="search-q">Buscar</label>
+      <input class="search-input" id="search-q" type="search" name="q" placeholder="Buscar" required>
+    </form>
 
-    <a class="icon-btn" href="https://linkedin.com/aishwar-mishra" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg>
-    </a>
+    <a class="cta" href="contact.es.html">Contáctame</a>
+
+      <a class="icon-btn" href="https://github.com/aishwar-mr" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+      <a class="icon-btn" href="https://linkedin.com/in/aishwar-mishra" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg></a>
+      <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg></a>
+
+    <button class="icon-btn theme-toggle" type="button" id="theme-toggle"
+            aria-label="Switch colour theme"><i aria-hidden="true"></i></button>
 
     <details class="lang">
-      <summary aria-label="Language">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
-      </summary>
+      <summary aria-label="Language"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18'/></svg></summary>
       <div class="lang-menu">
         <a href="impact-delivered.html">English</a>
-        <a href="impact-delivered.es.html" aria-current="true">Español</a>
+        <a href="impact-delivered.es.html" aria-current="true">Espa&ntilde;ol</a>
       </div>
     </details>
   </div>
 </header>
 
-<section class="story-hero">
-  <h1>Impacto Logrado</h1>
+<main>
+
+<section class="page-head">
+  <div class="shell"><h1>Impacto Logrado</h1></div>
 </section>
 
-<div class="impact">
+<div class="shell">
 
   <section class="impact-group">
-    <h2>Impacto de negocio</h2>
-    <ul>
-      <li>Escalé la red de dark stores de Ninjacart de 5 a 30 ubicaciones en Hyderabad mediante benchmarking de precios y análisis de expansión</li>
-      <li>Construí un modelo de inteligencia de precios de 12 semanas que rastrea GRN, precio de compra y varianza, habilitando compras basadas en datos</li>
-      <li>Amplié la cobertura de SKU de 280 a 300 y reduje el precio de compra en 4 unidades mediante una reestructuración de precios comparados con la competencia</li>
-      <li>Apoyé una ronda pre-seed de $1M de Peak XV en Lawxy AI con materiales para inversores y seguimiento de diligencia</li>
-      <li>Conseguí 8 reuniones empresariales con multinacionales en una sola semana mediante prospección estructurada</li>
-      <li>Incorporé 15 clientes piloto en demos de pre y post venta</li>
-      <li>Identifiqué 2 fundadores que avanzaron a revisión posterior en LvlUp Ventures, de 6 reuniones en las primeras dos semanas</li>
-    </ul>
+    <h2 class="reveal">Impacto de negocio</h2>
+    <div class="impact-grid">
+      <div class="impact-item reveal">Escalé la red de dark stores de Ninjacart de 5 a 30 ubicaciones en Hyderabad mediante benchmarking de precios y análisis de expansión</div>
+      <div class="impact-item reveal">Construí un modelo de inteligencia de precios de 12 semanas que rastrea GRN, precio de compra y varianza, habilitando compras basadas en datos</div>
+      <div class="impact-item reveal">Amplié la cobertura de SKU de 280 a 300 y reduje el precio de compra en 4 unidades mediante una reestructuración de precios comparados con la competencia</div>
+      <div class="impact-item reveal">Apoyé una ronda pre-seed de $1M de Peak XV en Lawxy AI con materiales para inversores y seguimiento de diligencia</div>
+      <div class="impact-item reveal">Conseguí 8 reuniones empresariales con multinacionales en una sola semana mediante prospección estructurada</div>
+      <div class="impact-item reveal">Incorporé 15 clientes piloto en demos de pre y post venta</div>
+      <div class="impact-item reveal">Identifiqué 2 fundadores que avanzaron a revisión posterior en LvlUp Ventures, de 6 reuniones en las primeras dos semanas</div>
+    </div>
   </section>
 
   <section class="impact-group">
-    <h2>Desarrollos técnicos</h2>
-    <ul>
-      <li><a class="impact-link" href="worldquant.es.html">Alcancé el nivel Gold en WorldQuant Brain con más de 10,000 puntos desarrollando señales alfa, obteniendo una oferta de Research Consultant</a></li>
-      <li>Construí una herramienta de evaluación de sitios que comprime semanas de análisis manual en segundos a ~$0.045 por sitio, unificando más de 12 conjuntos de datos públicos</li>
-      <li>Diseñé una arquitectura de evaluación que separa 8 filtros determinísticos de 15 criterios ponderados, y sometí cada clasificación a pruebas con 12 reponderaciones</li>
-      <li>Publiqué la tasa de falsos negativos de la herramienta y una prueba de control fallida, no solo sus éxitos</li>
-      <li><a class="impact-link" href="track-monitoring.es.html">Construí un prototipo de inspección de vías férreas sin contacto, probado en campo sobre vía activa de Central Railway en Bombay</a></li>
-      <li><a class="impact-link" href="track-monitoring.es.html">Costeé una alternativa nacional a un sistema importado de &#8377;180 crore en &#8377;30 crore</a></li>
-      <li><a class="impact-link" href="track-monitoring.es.html">Top 3 de 80 equipos en el Smart India Hackathon 2025</a></li>
-    </ul>
+    <h2 class="reveal">Desarrollos técnicos</h2>
+    <div class="impact-grid">
+      <a class="impact-item is-link reveal" href="worldquant.es.html">Alcancé el nivel Gold en WorldQuant Brain con más de 10,000 puntos desarrollando señales alfa, obteniendo una oferta de Research Consultant</a>
+      <div class="impact-item reveal">Construí una herramienta de evaluación de sitios que comprime semanas de análisis manual en segundos a ~$0.045 por sitio, unificando más de 12 conjuntos de datos públicos</div>
+      <div class="impact-item reveal">Diseñé una arquitectura de evaluación que separa 8 filtros determinísticos de 15 criterios ponderados, y sometí cada clasificación a pruebas con 12 reponderaciones</div>
+      <div class="impact-item reveal">Publiqué la tasa de falsos negativos de la herramienta y una prueba de control fallida, no solo sus éxitos</div>
+      <a class="impact-item is-link reveal" href="track-monitoring.es.html">Construí un prototipo de inspección de vías férreas sin contacto, probado en campo sobre vía activa de Central Railway en Bombay</a>
+      <a class="impact-item is-link reveal" href="track-monitoring.es.html">Costeé una alternativa nacional a un sistema importado de &#8377;180 crore en &#8377;30 crore</a>
+      <a class="impact-item is-link reveal" href="track-monitoring.es.html">Top 3 de 80 equipos en el Smart India Hackathon 2025</a>
+    </div>
   </section>
 
   <section class="impact-group">
-    <h2>Liderazgo y recaudación</h2>
-    <ul>
-      <li>Recaudé más de $5,000 como Jefe de Patrocinio de VJTI Technovanza, liderando un equipo de 30, con más de $1,000 recaudados personalmente</li>
-      <li>Jefe de agencias de la ONU en UNAI VJTI, dirigiendo campañas sobre derechos humanos y los ODS</li>
-    </ul>
+    <h2 class="reveal">Liderazgo y recaudación</h2>
+    <div class="impact-grid">
+      <div class="impact-item reveal">Recaudé más de $5,000 como Jefe de Patrocinio de VJTI Technovanza, liderando un equipo de 30, con más de $1,000 recaudados personalmente</div>
+      <div class="impact-item reveal">Jefe de agencias de la ONU en UNAI VJTI, dirigiendo campañas sobre derechos humanos y los ODS</div>
+    </div>
   </section>
 
   <section class="impact-group">
-    <h2>Competencias</h2>
-    <ul>
-      <li>Puesto 54 de 627 participantes en la competencia de gestión de carteras Finvent del IIT Madras</li>
-      <li>Top 30 de 200 en una carrera de 10km (44.3 min) en un evento benéfico por la seguridad de las mujeres</li>
-    </ul>
+    <h2 class="reveal">Competencias</h2>
+    <div class="impact-grid">
+      <div class="impact-item reveal">Puesto 54 de 627 participantes en la competencia de gestión de carteras Finvent del IIT Madras</div>
+      <div class="impact-item reveal">Top 30 de 200 en una carrera de 10km (44.3 min) en un evento benéfico por la seguridad de las mujeres</div>
+    </div>
   </section>
 
 </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2>Aishwar Mishra</h2>
+        <ul>
+          <li><a href="mailto:aishwar.r.mishra@gmail.com">aishwar.r.mishra@gmail.com</a></li>
+          <li><a href="tel:+917558773043">+91 75587 73043</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Páginas</h3>
+        <ul>
+        <li><a href="my-story.es.html">Mi Historia</a></li>
+        <li><a href="impact-delivered.es.html">Impacto Logrado</a></li>
+        <li><a href="contact.es.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>En otros sitios</h3>
+        <ul>
+        <li><a href="https://github.com/aishwar-mr" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/aishwar-mishra" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/aishwar_mr" target="_blank" rel="noopener">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Aishwar Mishra. Todos los derechos reservados.</span>
+      <span>Mumbai, India</span>
+    </div>
+  </div>
+</footer>
 
 <script src="app.js"></script>
 
