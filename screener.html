@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How the screener works &middot; Aishwar Mishra</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Aishwar Mishra</a>
+
+  <nav class="nav">
+      <a href="my-story.html">My Story</a>
+      <a href="impact-delivered.html">Impact Delivered</a>
+  </nav>
+
+  <div class="actions">
+    <form class="search" id="search" role="search">
+      <button class="icon-btn" type="button" id="search-toggle" aria-label="Search" aria-expanded="false">
+        <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-4-4'/></svg>
+      </button>
+      <label class="visually-hidden" for="search-q">Search</label>
+      <input class="search-input" id="search-q" type="search" name="q" placeholder="Search" required>
+    </form>
+
+    <a class="cta" href="contact.html">Get in touch</a>
+
+      <a class="icon-btn" href="https://github.com/aishwar-mr" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+      <a class="icon-btn" href="https://linkedin.com/in/aishwar-mishra" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21h-4V9z"/></svg></a>
+      <a class="icon-btn" href="https://x.com/aishwar_mr" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.1 3h6.6l4.5 5.6L17.5 3zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19z"/></svg></a>
+
+    <details class="lang">
+      <summary aria-label="Language"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18'/></svg></summary>
+      <div class="lang-menu">
+        <a href="screener.html" aria-current="true">English</a>
+        <a href="screener.es.html">Espa&ntilde;ol</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main>
+
+<section class="page-head">
+  <div class="shell"><h1>How the screener works</h1></div>
+</section>
+
+<div class="shell rules">
+  <p class="screener-intro">MARS is the assistant in the corner of every page. It asks about your role, then says whether Aishwar is a fit, including when the answer is no.</p>
+  <p class="screener-intro">It does not decide anything. The verdict is computed by your own browser from the rules below, which were written before anyone used the tool and cannot be changed after the fact. The rubric is <a href="rubric.json">rubric.json</a>, the scoring is <a href="screener.js">screener.js</a>, and the tests are <a href="screener.test.js">screener.test.js</a>. Check the answer against them.</p>
+  <p><button class="btn btn-primary" type="button" data-mars-open>Talk to MARS</button></p>
+
+  <h2>The gates</h2>
+  <p>A gate is a single fact about a role that ends the screen. FAIL stops scoring entirely, because no amount of fit elsewhere is allowed to outweigh it. NEAR means it misses on paper but the conversation is still worth having.</p>
+  <div class="rules-table">
+    <table>
+      <thead><tr><th>Gate</th><th>Passes</th><th>Near</th><th>Fails</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="num">G1</span> Experience floor</th><td>≤ 1</td><td>≤ 3</td><td>> 3</td><td class="why">Zero full-time post-graduation experience. Roughly 7 months across three internships, all while enrolled. Below four years there is a real case to be made. Above it there is not.</td></tr>
+        <tr><th scope="row"><span class="num">G2</span> Work authorization</th><td>No</td><td>&mdash;</td><td>Yes</td><td class="why">Based in Mumbai. Geography is geography.</td></tr>
+        <tr><th scope="row"><span class="num">G3</span> Production ownership</th><td>Prototypes, research, analysis</td><td>Ships to real users, no formal on-call</td><td>Production at scale, on-call and SLAs</td><td class="why">Prototypes and research signals are a different discipline from keeping a system alive under load with an on-call rotation and SLAs.</td></tr>
+        <tr><th scope="row"><span class="num">G4</span> Scope shape</th><td>Broad. The problem is not yet defined</td><td>A defined remit with room to range</td><td>A narrow specialist lane, one stack</td><td class="why">Breadth across ambiguous problems is the whole argument. In a deep specialist lane that breadth is dead weight and you should hire a specialist.</td></tr>
+        <tr><th scope="row"><span class="num">G5</span> Over-qualification</th><td>No</td><td>&mdash;</td><td>Yes</td><td class="why">Inverse gate. If the problem is already defined and the job is to execute it, I would be bored in four months and leave, which is a worse outcome for you than a no today.</td></tr>
+        <tr><th scope="row"><span class="num">G6</span> Availability</th><td>Internship or part-time<br>Full-time, June 2027 or later</td><td>Full-time, first half of 2027</td><td>Full-time, before 2027</td><td class="why">I graduate in June 2027. Before that I am available for internships and part-time remote work, not a full-time role.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>The weighted criteria</h2>
+  <p>These run only when every gate clears. Each scores 0 to 10 and is multiplied by its weight. Strong is 70 percent or above, partial is 45 to 69.</p>
+  <div class="rules-table">
+    <table>
+      <thead><tr><th>Criterion</th><th>Weight</th><th>Scale</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="num">C1</span> Problem ambiguity</th><td class="num">3</td><td class="why">0 = fully specced before handover, 10 = nobody yet knows what the question is</td></tr>
+        <tr><th scope="row"><span class="num">C2</span> Analysis and build mix</th><td class="num">3</td><td class="why">0 = purely one or the other, 10 = the same person does the analysis and ships the thing</td></tr>
+        <tr><th scope="row"><span class="num">C3</span> Team size</th><td class="num">2</td><td class="why">0 = 200+ people, 10 = under 10 people</td></tr>
+        <tr><th scope="row"><span class="num">C4</span> Company stage</th><td class="num">2</td><td class="why">0 = late stage or public, 10 = pre-seed or pre-product</td></tr>
+        <tr><th scope="row"><span class="num">C5</span> Quantitative content</th><td class="num">2</td><td class="why">0 = no numbers involved, 10 = the core of the job is quantitative</td></tr>
+        <tr><th scope="row"><span class="num">C6</span> Direct customer contact</th><td class="num">1</td><td class="why">0 = never speaks to a customer, 10 = in front of customers weekly</td></tr>
+        <tr><th scope="row"><span class="num">C7</span> Capability overlap</th><td class="num">2</td><td class="why">Scored on cluster overlap, not keyword matching. 0 = no cluster applies, 10 = two or more clusters are central to the role.</td></tr>
+        <tr><th scope="row"><span class="num">C8</span> Autonomy expected</th><td class="num">2</td><td class="why">0 = work is assigned and reviewed daily, 10 = expected to find the work and decide what matters</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Where these rules are probably wrong</h2>
+  <p>Published for the same reason the WorldQuant page publishes a failed control test. A screening system that only reports its successes is not worth trusting.</p>
+  <ul class="false-negatives">
+    <li><b class="num">G6</b> <span class="mars-state mars-s-NEAR">low risk</span><p>Some founders will hire a strong part-timer and convert them on graduation. A NEAR here is often worth a conversation, and a FAIL is occasionally negotiable if the start date is soft.</p></li>
+    <li><b class="num">G1</b> <span class="mars-state mars-s-NEAR">high risk</span><p>Early-stage founders routinely write '3+ years' in a posting and hire someone with none of it because they liked how the person thought. A NEAR here is very often still worth a conversation. Recalibrated 2026-09-05 from PASS 0-2 / FAIL 5+ to PASS 0-1 / FAIL 4+, because zero full-time years should not read as a clean pass against a two-year requirement.</p></li>
+    <li><b class="num">G3</b> <span class="mars-state mars-s-NEAR">medium risk</span><p>'Who gets paged' separates pre-scale from post-scale companies well, but a founder who has never had an incident may answer as though they are post-scale when they are not.</p></li>
+    <li><b class="num">G4</b> <span class="mars-state mars-s-NEAR">medium risk</span><p>Job postings describe scope aspirationally. A role written as narrow is sometimes broad in practice at a small company, and this gate takes the posting at its word.</p></li>
+  </ul>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2>Aishwar Mishra</h2>
+        <ul>
+          <li><a href="mailto:aishwar.r.mishra@gmail.com">aishwar.r.mishra@gmail.com</a></li>
+          <li><a href="tel:+917558773043">+91 75587 73043</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Pages</h3>
+        <ul>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="impact-delivered.html">Impact Delivered</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Elsewhere</h3>
+        <ul>
+        <li><a href="https://github.com/aishwar-mr" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/aishwar-mishra" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/aishwar_mr" target="_blank" rel="noopener">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Aishwar Mishra. All rights reserved.</span>
+      <span>Mumbai, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="screener.js"></script>
+<script src="mars.js"></script>
+
+</body>
+</html>

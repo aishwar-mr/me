@@ -1,0 +1,9 @@
+# Secrets. The Anthropic key lives in Cloudflare, never in this repo.
+worker/.dev.vars
+worker/.env
+.env
+*.key
+
+# Local tooling
+node_modules/
+.wrangler/

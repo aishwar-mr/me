@@ -1,0 +1,737 @@
+{
+  "version": "1.3.0",
+  "updated": "2026-09-05",
+  "candidate": "Aishwar Mishra",
+  "purpose": "Screens a role against a fixed rubric to decide whether Aishwar is a fit. Published so anyone can check the output against the rules. The verdict is computed from this file by screener.js; no language model assigns it.",
+  "verdict_rules": {
+    "any_gate_fail": "no",
+    "any_gate_near": "conditional",
+    "all_gates_pass": "scored",
+    "bands": {
+      "strong": 70,
+      "partial": 45
+    },
+    "note": "Bands are percentages of the maximum weighted score. Below the partial threshold the band is weak."
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "label": "Experience floor",
+      "input": "years_required",
+      "type": "number",
+      "question": "How many years of full-time experience does the role require?",
+      "probe": null,
+      "rules": [
+        {
+          "when": {
+            "lte": 1
+          },
+          "state": "PASS"
+        },
+        {
+          "when": {
+            "lte": 3
+          },
+          "state": "NEAR"
+        },
+        {
+          "when": {
+            "gt": 3
+          },
+          "state": "FAIL"
+        }
+      ],
+      "reason": "Zero full-time post-graduation experience. Roughly 7 months across three internships, all while enrolled. Below four years there is a real case to be made. Above it there is not.",
+      "near_note": "The posting asks for more years than I have. On paper this is a miss, and my experience is internships rather than full-time. The case for talking anyway is in the criteria below.",
+      "fail_note": "This role wants four or more years of full-time experience. I have none, and no amount of fit on the other criteria changes that.",
+      "input_kind": "number",
+      "min": 0,
+      "max": 15,
+      "pass_note": "The experience bar is within reach. Internships rather than years, but the posting does not rule me out."
+    },
+    {
+      "id": "G2",
+      "label": "Work authorization",
+      "input": "onsite_outside_india_no_sponsorship",
+      "type": "boolean",
+      "question": "Is this role on-site outside India, without visa sponsorship?",
+      "probe": null,
+      "rules": [
+        {
+          "when": {
+            "eq": true
+          },
+          "state": "FAIL"
+        },
+        {
+          "when": {
+            "eq": false
+          },
+          "state": "PASS"
+        }
+      ],
+      "reason": "Based in Mumbai. Geography is geography.",
+      "near_note": null,
+      "fail_note": "This role requires being on-site outside India with no sponsorship. That is a hard stop, not a preference.",
+      "options": [
+        {
+          "value": false,
+          "label": "No"
+        },
+        {
+          "value": true,
+          "label": "Yes"
+        }
+      ],
+      "pass_note": "No work authorization problem. I can do this from where I am."
+    },
+    {
+      "id": "G3",
+      "label": "Production ownership",
+      "input": "ownership_level",
+      "type": "enum",
+      "values": [
+        "prototype",
+        "ships_to_users",
+        "production_scale"
+      ],
+      "question": "What level of system ownership does this role carry?",
+      "probe": "P5",
+      "rules": [
+        {
+          "when": {
+            "eq": "prototype"
+          },
+          "state": "PASS"
+        },
+        {
+          "when": {
+            "eq": "ships_to_users"
+          },
+          "state": "NEAR"
+        },
+        {
+          "when": {
+            "eq": "production_scale"
+          },
+          "state": "FAIL"
+        }
+      ],
+      "reason": "Prototypes and research signals are a different discipline from keeping a system alive under load with an on-call rotation and SLAs.",
+      "near_note": "This role ships to real users. I have built things that worked in the field, but not under a formal reliability bar. Worth discussing what the real expectation is.",
+      "fail_note": "This role owns production systems at scale, with a pager and SLAs. That is not my track record and pretending otherwise would waste your time.",
+      "options": [
+        {
+          "value": "prototype",
+          "label": "Prototypes, research, analysis"
+        },
+        {
+          "value": "ships_to_users",
+          "label": "Ships to real users, no formal on-call"
+        },
+        {
+          "value": "production_scale",
+          "label": "Production at scale, on-call and SLAs"
+        }
+      ],
+      "pass_note": "The ownership level matches what I have actually done: prototypes, research and analysis."
+    },
+    {
+      "id": "G4",
+      "label": "Scope shape",
+      "input": "scope_shape",
+      "type": "enum",
+      "values": [
+        "broad",
+        "defined",
+        "narrow"
+      ],
+      "question": "How is the scope of this role shaped?",
+      "probe": "P6",
+      "rules": [
+        {
+          "when": {
+            "eq": "broad"
+          },
+          "state": "PASS"
+        },
+        {
+          "when": {
+            "eq": "defined"
+          },
+          "state": "NEAR"
+        },
+        {
+          "when": {
+            "eq": "narrow"
+          },
+          "state": "FAIL"
+        }
+      ],
+      "reason": "Breadth across ambiguous problems is the whole argument. In a deep specialist lane that breadth is dead weight and you should hire a specialist.",
+      "near_note": "The remit is defined but has room to range. That can work. The question is how much of the job is inside the lines.",
+      "fail_note": "This is a narrow specialist role, one stack, multi-year depth. You want someone who has spent those years. That is not me.",
+      "options": [
+        {
+          "value": "broad",
+          "label": "Broad. The problem is not yet defined"
+        },
+        {
+          "value": "defined",
+          "label": "A defined remit with room to range"
+        },
+        {
+          "value": "narrow",
+          "label": "A narrow specialist lane, one stack"
+        }
+      ],
+      "pass_note": "The scope is broad enough for the way I work."
+    },
+    {
+      "id": "G5",
+      "label": "Over-qualification",
+      "input": "brief_fully_specced",
+      "type": "boolean",
+      "question": "Is the work pure execution against a brief that is already fully specified?",
+      "probe": "P3",
+      "rules": [
+        {
+          "when": {
+            "eq": true
+          },
+          "state": "FAIL"
+        },
+        {
+          "when": {
+            "eq": false
+          },
+          "state": "PASS"
+        }
+      ],
+      "reason": "Inverse gate. If the problem is already defined and the job is to execute it, I would be bored in four months and leave, which is a worse outcome for you than a no today.",
+      "near_note": null,
+      "fail_note": "The work is execution against a settled brief. I would take it, do it, and be restless by month four. You deserve someone who wants that job.",
+      "options": [
+        {
+          "value": false,
+          "label": "No"
+        },
+        {
+          "value": true,
+          "label": "Yes"
+        }
+      ],
+      "pass_note": "The problem is not fully specified yet, which is the part I am good at."
+    },
+    {
+      "id": "G6",
+      "label": "Availability",
+      "input": "availability_need",
+      "type": "enum",
+      "values": [
+        "internship_or_part_time",
+        "full_time_from_2027_06",
+        "full_time_2027_h1",
+        "full_time_before_2027"
+      ],
+      "question": "When does this role need someone to start, and is it full-time?",
+      "probe": null,
+      "rules": [
+        {
+          "when": {
+            "eq": "internship_or_part_time"
+          },
+          "state": "PASS"
+        },
+        {
+          "when": {
+            "eq": "full_time_from_2027_06"
+          },
+          "state": "PASS"
+        },
+        {
+          "when": {
+            "eq": "full_time_2027_h1"
+          },
+          "state": "NEAR"
+        },
+        {
+          "when": {
+            "eq": "full_time_before_2027"
+          },
+          "state": "FAIL"
+        }
+      ],
+      "reason": "I graduate in June 2027. Before that I am available for internships and part-time remote work, not a full-time role.",
+      "near_note": "The start date lands in my final term. Part-time until June 2027 and full-time after is possible, but it needs saying out loud rather than discovering it in week two.",
+      "fail_note": "This role needs someone full-time before 2027. I am an undergraduate until June 2027, so this is a hard conflict rather than a preference.",
+      "options": [
+        {
+          "value": "internship_or_part_time",
+          "label": "Internship or part-time"
+        },
+        {
+          "value": "full_time_from_2027_06",
+          "label": "Full-time, June 2027 or later"
+        },
+        {
+          "value": "full_time_2027_h1",
+          "label": "Full-time, first half of 2027"
+        },
+        {
+          "value": "full_time_before_2027",
+          "label": "Full-time, before 2027"
+        }
+      ],
+      "pass_note": "The timing works. Either it is part-time, or it starts after I graduate in June 2027."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "label": "Problem ambiguity",
+      "weight": 3,
+      "direction": "higher_better",
+      "scale": "0 = fully specced before handover, 10 = nobody yet knows what the question is",
+      "question": "How well defined is a problem when you hand it to someone?",
+      "probe": "P1",
+      "options": [
+        {
+          "value": 0,
+          "label": "Fully specced before handover"
+        },
+        {
+          "value": 3,
+          "label": "Mostly defined, some gaps"
+        },
+        {
+          "value": 7,
+          "label": "A direction, not a spec"
+        },
+        {
+          "value": 10,
+          "label": "Nobody knows the question yet"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "label": "Analysis and build mix",
+      "weight": 3,
+      "direction": "higher_better",
+      "scale": "0 = purely one or the other, 10 = the same person does the analysis and ships the thing",
+      "question": "Does this role both analyse and build?",
+      "probe": "P4",
+      "options": [
+        {
+          "value": 0,
+          "label": "Only one or the other"
+        },
+        {
+          "value": 3,
+          "label": "Mostly one, some of the other"
+        },
+        {
+          "value": 7,
+          "label": "Both, regularly"
+        },
+        {
+          "value": 10,
+          "label": "The same person analyses and ships"
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "label": "Team size",
+      "weight": 2,
+      "direction": "smaller_better",
+      "scale": "0 = 200+ people, 10 = under 10 people",
+      "question": "How many people are in the company?",
+      "probe": null,
+      "options": [
+        {
+          "value": 0,
+          "label": "200 or more people"
+        },
+        {
+          "value": 3,
+          "label": "50 to 200"
+        },
+        {
+          "value": 7,
+          "label": "10 to 50"
+        },
+        {
+          "value": 10,
+          "label": "Under 10"
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "label": "Company stage",
+      "weight": 2,
+      "direction": "earlier_better",
+      "scale": "0 = late stage or public, 10 = pre-seed or pre-product",
+      "question": "What stage is the company at?",
+      "probe": "P6",
+      "options": [
+        {
+          "value": 0,
+          "label": "Public or late stage"
+        },
+        {
+          "value": 3,
+          "label": "Series B or later"
+        },
+        {
+          "value": 7,
+          "label": "Series A"
+        },
+        {
+          "value": 10,
+          "label": "Pre-seed or seed"
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "label": "Quantitative content",
+      "weight": 2,
+      "direction": "higher_better",
+      "scale": "0 = no numbers involved, 10 = the core of the job is quantitative",
+      "question": "How much of this work is quantitative?",
+      "probe": null,
+      "options": [
+        {
+          "value": 0,
+          "label": "No numbers involved"
+        },
+        {
+          "value": 3,
+          "label": "Occasionally quantitative"
+        },
+        {
+          "value": 7,
+          "label": "Regularly quantitative"
+        },
+        {
+          "value": 10,
+          "label": "Quantitative work is the core"
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "label": "Direct customer contact",
+      "weight": 1,
+      "direction": "higher_better",
+      "scale": "0 = never speaks to a customer, 10 = in front of customers weekly",
+      "question": "Does this role talk to customers directly?",
+      "probe": null,
+      "options": [
+        {
+          "value": 0,
+          "label": "Never speaks to a customer"
+        },
+        {
+          "value": 3,
+          "label": "Rarely"
+        },
+        {
+          "value": 7,
+          "label": "Monthly"
+        },
+        {
+          "value": 10,
+          "label": "In front of customers weekly"
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "label": "Capability overlap",
+      "weight": 2,
+      "direction": "higher_better",
+      "scale": "Scored on cluster overlap, not keyword matching. 0 = no cluster applies, 10 = two or more clusters are central to the role.",
+      "clusters": [
+        "pricing and operations",
+        "quantitative research and signals",
+        "fundraising and diligence",
+        "hardware, sensing and computer vision"
+      ],
+      "question": "Which of these capability clusters does the role actually draw on?",
+      "probe": null,
+      "note": "Replaces keyword skill matching. A gate that passes on a single shared word passes always, and reproduces the ATS behaviour this system exists to avoid.",
+      "options": [
+        {
+          "value": 0,
+          "label": "None of the four clusters"
+        },
+        {
+          "value": 3,
+          "label": "One, peripherally"
+        },
+        {
+          "value": 7,
+          "label": "One, centrally"
+        },
+        {
+          "value": 10,
+          "label": "Two or more, centrally"
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "label": "Autonomy expected",
+      "weight": 2,
+      "direction": "higher_better",
+      "scale": "0 = work is assigned and reviewed daily, 10 = expected to find the work and decide what matters",
+      "question": "How much autonomy does this role carry?",
+      "probe": "P2",
+      "note": "Replaces cultural alignment, which is too vague to score and is a known bias vector. Autonomy is a question a founder can actually answer.",
+      "options": [
+        {
+          "value": 0,
+          "label": "Work is assigned and reviewed daily"
+        },
+        {
+          "value": 3,
+          "label": "Weekly check-ins"
+        },
+        {
+          "value": 7,
+          "label": "Owns outcomes, checks in as needed"
+        },
+        {
+          "value": 10,
+          "label": "Finds the work and decides what matters"
+        }
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "id": "P1",
+      "fills": [
+        "C1"
+      ],
+      "text": "Think about the last thing you handed to someone new. How specced was it when you handed it over?"
+    },
+    {
+      "id": "P2",
+      "fills": [
+        "C8",
+        "G5"
+      ],
+      "text": "Your most recent hire, three weeks in. What were they doing without checking with you first?"
+    },
+    {
+      "id": "P3",
+      "fills": [
+        "G5"
+      ],
+      "text": "Six months in, what has this person done that you would be disappointed if they hadn't?"
+    },
+    {
+      "id": "P4",
+      "fills": [
+        "C2"
+      ],
+      "text": "When this role produces something, who consumes it? A dashboard, a deploy, or a decision someone makes?"
+    },
+    {
+      "id": "P5",
+      "fills": [
+        "G3"
+      ],
+      "text": "If the thing this person owns breaks at 2am, who gets paged?"
+    },
+    {
+      "id": "P6",
+      "fills": [
+        "C4",
+        "G4"
+      ],
+      "text": "What is the part of this job you are hoping you never have to explain to them?"
+    }
+  ],
+  "known_false_negatives": [
+    {
+      "gate": "G6",
+      "risk": "low",
+      "note": "Some founders will hire a strong part-timer and convert them on graduation. A NEAR here is often worth a conversation, and a FAIL is occasionally negotiable if the start date is soft."
+    },
+    {
+      "gate": "G1",
+      "risk": "high",
+      "note": "Early-stage founders routinely write '3+ years' in a posting and hire someone with none of it because they liked how the person thought. A NEAR here is very often still worth a conversation. Recalibrated 2026-09-05 from PASS 0-2 / FAIL 5+ to PASS 0-1 / FAIL 4+, because zero full-time years should not read as a clean pass against a two-year requirement."
+    },
+    {
+      "gate": "G3",
+      "risk": "medium",
+      "note": "'Who gets paged' separates pre-scale from post-scale companies well, but a founder who has never had an incident may answer as though they are post-scale when they are not."
+    },
+    {
+      "gate": "G4",
+      "risk": "medium",
+      "note": "Job postings describe scope aspirationally. A role written as narrow is sometimes broad in practice at a small company, and this gate takes the posting at its word."
+    }
+  ],
+  "i18n": {
+    "es": {
+      "G1": {
+        "label": "Umbral de experiencia",
+        "question": "¿Cuántos años de experiencia a tiempo completo exige el puesto?",
+        "reason": "Cero experiencia a tiempo completo tras graduarme. Unos 7 meses en tres prácticas, todas mientras estudiaba. Por debajo de cuatro años hay un caso real. Por encima, no.",
+        "near_note": "La oferta pide más años de los que tengo. Sobre el papel es un fallo, y mi experiencia son prácticas, no tiempo completo. El argumento para hablar de todos modos está en los criterios de abajo.",
+        "fail_note": "Este puesto quiere cuatro o más años a tiempo completo. No los tengo, y ningún encaje en los demás criterios cambia eso.",
+        "pass_note": "El listón de experiencia está a mi alcance. Prácticas en lugar de años, pero la oferta no me descarta."
+      },
+      "G2": {
+        "label": "Autorización de trabajo",
+        "question": "¿Es un puesto presencial fuera de India, sin patrocinio de visado?",
+        "reason": "Vivo en Bombay. La geografía es la geografía.",
+        "fail_note": "Este puesto exige estar presencialmente fuera de India sin patrocinio. Es un no rotundo, no una preferencia.",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "pass_note": "Sin problema de autorización de trabajo. Puedo hacerlo desde donde estoy."
+      },
+      "G3": {
+        "label": "Propiedad de producción",
+        "question": "¿Qué nivel de propiedad de sistemas conlleva el puesto?",
+        "reason": "Los prototipos y las señales de investigación son una disciplina distinta de mantener un sistema vivo bajo carga, con guardias y SLAs.",
+        "near_note": "Este puesto llega a usuarios reales. He construido cosas que funcionaron en campo, pero no bajo un umbral formal de fiabilidad. Vale la pena hablar de cuál es la expectativa real.",
+        "fail_note": "Este puesto opera sistemas en producción a escala, con guardias y SLAs. No es mi trayectoria, y fingir lo contrario te haría perder el tiempo.",
+        "options": [
+          "Prototipos, investigación, análisis",
+          "Llega a usuarios reales, sin guardia formal",
+          "Producción a escala, guardias y SLAs"
+        ],
+        "pass_note": "El nivel de propiedad coincide con lo que he hecho: prototipos, investigación y análisis."
+      },
+      "G4": {
+        "label": "Forma del ámbito",
+        "question": "¿Cómo está definido el ámbito del puesto?",
+        "reason": "La amplitud ante problemas ambiguos es todo el argumento. En un carril especialista profundo esa amplitud es peso muerto, y deberías contratar a un especialista.",
+        "near_note": "El ámbito está definido pero tiene espacio para moverse. Puede funcionar. La pregunta es cuánto del trabajo queda dentro de las líneas.",
+        "fail_note": "Es un puesto especialista estrecho, un solo stack, profundidad de varios años. Quieres a alguien que haya pasado esos años. Ese no soy yo.",
+        "options": [
+          "Amplio. El problema aún no está definido",
+          "Un ámbito definido con espacio para moverse",
+          "Un carril especialista estrecho, un solo stack"
+        ],
+        "pass_note": "El ámbito es lo bastante amplio para mi forma de trabajar."
+      },
+      "G5": {
+        "label": "Sobrecualificación",
+        "question": "¿Es trabajo de pura ejecución sobre un encargo ya totalmente especificado?",
+        "reason": "Puerta inversa. Si el problema ya está definido y el trabajo es ejecutarlo, me aburriría en cuatro meses y me iría, lo cual es peor para ti que un no hoy.",
+        "fail_note": "El trabajo es ejecución sobre un encargo cerrado. Lo aceptaría, lo haría, y estaría inquieto para el cuarto mes. Mereces a alguien que quiera ese trabajo.",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "pass_note": "El problema todavía no está del todo definido, que es la parte que se me da bien."
+      },
+      "G6": {
+        "label": "Disponibilidad",
+        "question": "¿Cuándo necesita empezar esta persona, y es a tiempo completo?",
+        "reason": "Me gradúo en junio de 2027. Antes de eso estoy disponible para prácticas y trabajo remoto a medio tiempo, no a tiempo completo.",
+        "near_note": "La fecha de inicio cae en mi último semestre. Medio tiempo hasta junio de 2027 y tiempo completo después es posible, pero hay que decirlo en voz alta y no descubrirlo en la segunda semana.",
+        "fail_note": "Este puesto necesita a alguien a tiempo completo antes de 2027. Soy estudiante hasta junio de 2027, así que es un conflicto real, no una preferencia.",
+        "options": [
+          "Prácticas o medio tiempo",
+          "Tiempo completo, junio 2027 o después",
+          "Tiempo completo, primer semestre de 2027",
+          "Tiempo completo, antes de 2027"
+        ],
+        "pass_note": "Los tiempos funcionan. O es a medio tiempo, o empieza después de graduarme en junio de 2027."
+      },
+      "C1": {
+        "label": "Ambigüedad del problema",
+        "question": "¿Qué tan definido está un problema cuando se lo pasas a alguien?",
+        "options": [
+          "Totalmente especificado antes de entregarlo",
+          "Casi definido, con algunos huecos",
+          "Una dirección, no una especificación",
+          "Nadie sabe todavía cuál es la pregunta"
+        ]
+      },
+      "C2": {
+        "label": "Mezcla de análisis y construcción",
+        "question": "¿Este puesto analiza y construye a la vez?",
+        "options": [
+          "Solo lo uno o lo otro",
+          "Sobre todo uno, algo del otro",
+          "Ambos, con regularidad",
+          "La misma persona analiza y entrega"
+        ]
+      },
+      "C3": {
+        "label": "Tamaño del equipo",
+        "question": "¿Cuánta gente hay en la empresa?",
+        "options": [
+          "200 personas o más",
+          "De 50 a 200",
+          "De 10 a 50",
+          "Menos de 10"
+        ]
+      },
+      "C4": {
+        "label": "Etapa de la empresa",
+        "question": "¿En qué etapa está la empresa?",
+        "options": [
+          "Pública o etapa tardía",
+          "Serie B o posterior",
+          "Serie A",
+          "Pre-seed o seed"
+        ]
+      },
+      "C5": {
+        "label": "Contenido cuantitativo",
+        "question": "¿Cuánto de este trabajo es cuantitativo?",
+        "options": [
+          "Sin números",
+          "Cuantitativo ocasionalmente",
+          "Cuantitativo con regularidad",
+          "El trabajo cuantitativo es el núcleo"
+        ]
+      },
+      "C6": {
+        "label": "Contacto directo con clientes",
+        "question": "¿Este puesto habla directamente con clientes?",
+        "options": [
+          "Nunca habla con un cliente",
+          "Rara vez",
+          "Mensualmente",
+          "Frente a clientes cada semana"
+        ]
+      },
+      "C7": {
+        "label": "Solapamiento de capacidades",
+        "question": "¿De cuáles de estos grupos de capacidades tira realmente el puesto?",
+        "options": [
+          "Ninguno de los cuatro grupos",
+          "Uno, de forma periférica",
+          "Uno, de forma central",
+          "Dos o más, de forma central"
+        ]
+      },
+      "C8": {
+        "label": "Autonomía esperada",
+        "question": "¿Cuánta autonomía conlleva el puesto?",
+        "options": [
+          "El trabajo se asigna y se revisa a diario",
+          "Revisiones semanales",
+          "Es dueño de los resultados, consulta cuando hace falta",
+          "Encuentra el trabajo y decide qué importa"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-05",
+  "purpose": "The only permitted source of claims about Aishwar. The memo may cite from this file and nothing else. If a fact is not here, the correct answer is 'I do not know', never an inference.",
+
+  "rules_for_consumers": [
+    "Never state a fact that is not in this file.",
+    "Never round, inflate, or re-express a number. Use the value as written.",
+    "Never convert an internship into a full-time role, or a volunteer team into direct reports.",
+    "When asked something not covered here, say so plainly.",
+    "The limits and not_claims sections carry the same weight as the achievements."
+  ],
+
+  "identity": {
+    "name": "Aishwar Mishra",
+    "email": "aishwar.r.mishra@gmail.com",
+    "phone": "+91-75587-73043",
+    "location": "Mumbai, Maharashtra, India",
+    "site": "https://aishwar-mr.github.io/me/",
+    "linkedin": "https://linkedin.com/in/aishwar-mishra",
+    "github": "https://github.com/aishwar-mr",
+    "source": "resume"
+  },
+
+  "availability": {
+    "status": "undergraduate, final years",
+    "graduation": "2027-06",
+    "currently_engaged": "LvlUp Ventures, Venture Scout, remote, since 2026-08",
+    "full_time_available_from": "2027-06",
+    "note": "Not available for a full-time role that starts before June 2027. Internships and part-time remote work are possible before then.",
+    "source": "resume"
+  },
+
+  "experience": [
+    {
+      "id": "E1",
+      "org": "LvlUp Ventures",
+      "role": "Venture Scout",
+      "location": "Remote, USA",
+      "start": "2026-08",
+      "end": null,
+      "current": true,
+      "type": "internship",
+      "claims": [
+        {
+          "text": "6 meetings with student founders in the first 2 weeks, 2 advanced to further review",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "First-pass diligence on founders and products across market size, traction signals, and competitive landscape",
+          "source": "resume"
+        },
+        {
+          "text": "Building relationships with student founders and early builders across universities to surface off-market deal flow",
+          "source": "resume"
+        }
+      ],
+      "clusters": ["fundraising and diligence"]
+    },
+    {
+      "id": "E2",
+      "org": "Lawxy AI",
+      "role": "Founder's Office Intern",
+      "location": "Mumbai, MH",
+      "start": "2026-05",
+      "end": "2026-07",
+      "current": false,
+      "type": "internship",
+      "claims": [
+        {
+          "text": "Supported a $1M pre-seed raise from Peak XV by preparing investor materials and diligence follow-ups",
+          "source": "resume; site:impact-delivered.html",
+          "caution": "Supported the raise. Did not lead or close it."
+        },
+        {
+          "text": "Secured 8 enterprise meetings with MNCs in a single week through structured outbound",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Onboarded 15 pilot clients across pre- and post-sales demos",
+          "source": "resume; site:impact-delivered.html"
+        }
+      ],
+      "clusters": ["fundraising and diligence"]
+    },
+    {
+      "id": "E3",
+      "org": "Ninjacart",
+      "role": "Business Operations Intern",
+      "location": "Bangalore, KA",
+      "start": "2026-01",
+      "end": "2026-03",
+      "current": false,
+      "type": "internship",
+      "claims": [
+        {
+          "text": "Scaled dark store footprint from 5 to 30 locations in Hyderabad through price benchmarking and expansion analysis",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Built a 12-week price intelligence model tracking GRN, purchase price and variance, enabling data-driven procurement",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Grew SKU coverage from 280 to 300 and cut purchase price by 4 units via restructured competitor-benchmarked pricing",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Built a daily price tracker and reporting tool using Google Apps Script and the Twilio WhatsApp Business API",
+          "source": "resume"
+        }
+      ],
+      "clusters": ["pricing and operations"]
+    }
+  ],
+
+  "experience_summary": {
+    "total_months_industry": 7,
+    "all_internships": true,
+    "full_time_months": 0,
+    "people_managed_employees": 0,
+    "note": "Approximately 7 months across three internships, all while enrolled as an undergraduate. No full-time post-graduation experience.",
+    "source": "computed from experience entries"
+  },
+
+  "projects": [
+    {
+      "id": "PR1",
+      "name": "Integrated Track Monitoring System",
+      "context": "Smart India Hackathon 2025, top 3 of 80 teams, team of 7",
+      "stack": ["Python", "OpenCV", "ESP32", "IMU", "laser triangulation", "optical encoder"],
+      "claims": [
+        {
+          "text": "Contactless prototype validated against RDSO TM/IM/448 and EN 13848 Parts 1-2",
+          "source": "resume; site:track-monitoring.html"
+        },
+        {
+          "text": "Field-tested on live Central Railway track in Mumbai, not a lab rig",
+          "source": "resume; site:track-monitoring.html"
+        },
+        {
+          "text": "Costed an indigenous alternative to a Rs 180 crore imported system at Rs 30 crore",
+          "source": "site:track-monitoring.html",
+          "caution": "A hackathon estimate, not a procurement quote. Aishwar says so himself on the project page."
+        }
+      ],
+      "limits": [
+        "Validated that the system works, not how accurately it works. No measured error bounds against a calibrated reference.",
+        "RFID localization was identified but never implemented.",
+        "Project assets are no longer accessible."
+      ],
+      "clusters": ["hardware, sensing and computer vision"],
+      "url": "track-monitoring.html"
+    },
+    {
+      "id": "PR2",
+      "name": "Nearshore Siting Agent",
+      "context": "Independent project",
+      "stack": ["Python", "async APIs", "geospatial data"],
+      "claims": [
+        {
+          "text": "Siting screener for water- and effluent-bound wet processing, unifying 12+ public datasets into ranked, fully-sourced recommendations",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Compressed multi-week manual screening into seconds at approximately $0.045 per site",
+          "source": "resume; site:impact-delivered.html"
+        },
+        {
+          "text": "Architecture separated 8 deterministic gates from 15 weighted criteria, with every ranking stress-tested across 12 reweightings",
+          "source": "site:impact-delivered.html"
+        },
+        {
+          "text": "Published the tool's own false-negative rate and a failed control test rather than only its successes",
+          "source": "site:impact-delivered.html"
+        }
+      ],
+      "limits": [
+        "Project assets are no longer accessible."
+      ],
+      "clusters": ["pricing and operations", "quantitative research and signals"]
+    },
+    {
+      "id": "PR3",
+      "name": "RAG-based study chatbot",
+      "context": "Independent project",
+      "stack": ["Streamlit", "Cohere", "ChromaDB"],
+      "claims": [
+        {
+          "text": "Memory-persistent AI tutor using semantic retrieval over stored conversation embeddings for consistent context across sessions",
+          "source": "resume"
+        }
+      ],
+      "limits": [
+        "Personal project scale. Not deployed to real users under load."
+      ],
+      "clusters": ["quantitative research and signals"]
+    },
+    {
+      "id": "PR4",
+      "name": "WorldQuant Brain alpha research",
+      "context": "WorldQuant Brain platform",
+      "stack": ["Fast Expression"],
+      "claims": [
+        {
+          "text": "Reached Gold level with 10,000+ points developing alpha signals",
+          "source": "resume; site:worldquant.html"
+        },
+        {
+          "text": "Earned a Research Consultant offer on the strength of that record",
+          "source": "site:worldquant.html"
+        },
+        {
+          "text": "One surviving alpha: Sharpe 1.14, returns 22.41%, turnover 81.59%, TOP3000 USA universe, dated 06/16/2025",
+          "source": "site:worldquant.html"
+        }
+      ],
+      "limits": [
+        "Most submissions did not survive the platform's out-of-sample and correlation checks."
+      ],
+      "clusters": ["quantitative research and signals"],
+      "url": "worldquant.html"
+    }
+  ],
+
+  "education": {
+    "degree": "B.Tech Textile Engineering, minor in Data Science",
+    "institution": "Veermata Jijabai Technological Institute (VJTI), Mumbai",
+    "graduation": "2027-06",
+    "coursework": [
+      "ML Fundamentals",
+      "Regression Analysis",
+      "Statistical Quality Control",
+      "Research Methodology",
+      "Retail Supply Chain Management"
+    ],
+    "note": "Not a computer science degree. The Data Science minor is outside the core discipline and was taken by choice.",
+    "source": "resume"
+  },
+
+  "extracurriculars": [
+    {
+      "text": "Technovanza VJTI Sponsorship Head 2025-26. Managed a team of 30 and raised over $5,000, with over $1,000 raised personally.",
+      "source": "resume; site:impact-delivered.html",
+      "caution": "A volunteer festival team, not full-time direct reports."
+    },
+    {
+      "text": "Head of UN agencies at UNAI VJTI, running campaigns on human rights and the SDGs.",
+      "source": "site:impact-delivered.html"
+    },
+    {
+      "text": "Finvent, IIT Madras 2024 portfolio management competition. Scored 23/30, ranked 54 of 627.",
+      "source": "resume; site:impact-delivered.html"
+    },
+    {
+      "text": "Enthusia '25, 10km in 44.3 minutes, top 30 of 200, a fundraiser for women's safety.",
+      "source": "resume; site:impact-delivered.html"
+    }
+  ],
+
+  "certifications": [
+    { "text": "Google Agile Project Management, 92%", "source": "resume" },
+    { "text": "London Business School Financial Analysis, 87%", "source": "resume" }
+  ],
+
+  "skills": {
+    "technical": ["Python", "SQL", "Tableau", "OpenCV", "RAG and LLM tooling"],
+    "functional": ["market research", "competitive benchmarking", "pricing analysis"],
+    "languages": [
+      { "language": "English", "level": "fluent" },
+      { "language": "Marathi", "level": "conversational" },
+      { "language": "Spanish", "level": "elementary" }
+    ],
+    "source": "resume"
+  },
+
+  "cluster_evidence": {
+    "pricing and operations": ["E3", "PR2"],
+    "quantitative research and signals": ["PR4", "PR2", "PR3"],
+    "fundraising and diligence": ["E1", "E2"],
+    "hardware, sensing and computer vision": ["PR1"]
+  },
+
+  "limits": [
+    "No full-time post-graduation experience. Approximately 7 months across three internships.",
+    "Not available full-time before June 2027.",
+    "Has never owned a production system with an on-call rotation or an SLA.",
+    "Has never managed full-time employees. The team of 30 was a volunteer festival team.",
+    "Not a computer science degree. Not competing with someone who has been writing production code for years.",
+    "The SIH and siting project assets are gone. The methodology survives; the code does not.",
+    "Spanish is elementary, not working proficiency.",
+    "No formal finance credential. The Finvent result and the LBS certificate are not a CFA."
+  ],
+
+  "not_claims": [
+    "Do not describe any internship as a full-time role.",
+    "Do not describe the Technovanza team of 30 as direct reports or employees.",
+    "Do not claim Aishwar raised $1M. He supported a raise led by others.",
+    "Do not present the Rs 30 crore costing as a quote or a validated procurement figure.",
+    "Do not claim production ML, MLOps, or systems-at-scale experience.",
+    "Do not claim working proficiency in Spanish.",
+    "Do not claim a completed degree before June 2027.",
+    "Do not infer seniority, salary expectations, or notice period. None are recorded here."
+  ]
+}
