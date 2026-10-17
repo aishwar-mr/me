@@ -22,35 +22,32 @@
     Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
   }
 
-  /* ---- work rail ------------------------------------------------------ */
-  var rail = document.getElementById('rail');
-  if (rail) {
-    var step = function () {
-      var card = rail.querySelector('.work-card');
-      if (!card) return rail.clientWidth;
-      var gap = parseFloat(getComputedStyle(rail).columnGap || '0');
-      return card.offsetWidth + gap;
+  /* ---- stat count-up ------------------------------------------------
+     Counts from zero once, on first view. The markup holds the final
+     value, so no-JS and reduced motion just show the number. */
+  var counters = document.querySelectorAll('[data-count]');
+  if (counters.length && !reduce && 'IntersectionObserver' in window) {
+    var countUp = function (el) {
+      var to = +el.dataset.count, t0 = null;
+      var tick = function (t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min((t - t0) / 1200, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     };
-    document.querySelectorAll('[data-rail]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var dir = btn.dataset.rail === 'prev' ? -1 : 1;
-        rail.scrollBy({ left: dir * step(), behavior: reduce ? 'auto' : 'smooth' });
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        countUp(e.target);
+        cio.unobserve(e.target);
       });
+    }, { threshold: 0.6 });
+    Array.prototype.forEach.call(counters, function (el) {
+      el.textContent = '0';
+      cio.observe(el);
     });
-
-    /* Disable arrows at the ends so they never look broken. */
-    var sync = function () {
-      var max = rail.scrollWidth - rail.clientWidth - 2;
-      document.querySelectorAll('[data-rail]').forEach(function (btn) {
-        var atEnd = btn.dataset.rail === 'prev'
-          ? rail.scrollLeft <= 2
-          : rail.scrollLeft >= max;
-        btn.disabled = atEnd;
-        btn.style.opacity = atEnd ? '.4' : '';
-      });
-    };
-    rail.addEventListener('scroll', sync, { passive: true });
-    sync();
   }
 
   /* ---- header search --------------------------------------------------
@@ -86,16 +83,11 @@
   }
 
   /* ---- theme toggle --------------------------------------------------
-     Three states: no stored value follows the OS; an explicit choice wins. */
+     Dark by default; an explicit choice is stored and wins on every page. */
   var themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) {
     var root = document.documentElement;
-    var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-    var current = function () {
-      return root.getAttribute('data-theme') ||
-             (systemDark.matches ? 'dark' : 'light');
-    };
+    var current = function () { return root.getAttribute('data-theme') || 'dark'; };
     var label = function () {
       themeBtn.setAttribute('aria-label',
         current() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
@@ -107,11 +99,6 @@
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (e) {}
       label();
-    });
-
-    /* With no explicit choice stored, keep following the OS. */
-    systemDark.addEventListener('change', function () {
-      try { if (!localStorage.getItem('theme')) label(); } catch (e) { label(); }
     });
   }
 

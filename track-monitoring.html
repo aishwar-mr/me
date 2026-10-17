@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     try {
@@ -91,6 +91,9 @@
   <p><b>Knowing where you are.</b> Rather than relying on GPS alone, we fused GPS with IMU data and encoder-derived distance. When the satellite signal drops, the system keeps counting position from the wheel and the motion sensors. This was the piece we were proudest of - it directly addresses why the existing system&rsquo;s localization is unreliable.</p>
   <p><b>Processing on board.</b> First-pass fault detection happens on the device itself, so there&rsquo;s no dependency on connectivity in the field. Longer-term trend data syncs to the cloud for predictive maintenance. Outputs export as CSV, XML, and JPEG, so they drop into the workflows railways already run.</p>
 
+  <h2>My part</h2>
+  <p>I owned the computer-vision defect detection pipeline. There was no public dataset of Indian track defects to train on, so I built one: capturing images on track and augmenting them to cover the lighting and angles the camera would see in the field. When we moved to live testing, I debugged inference running on the ESP32 camera on the rig itself.</p>
+
   <h2>The design decisions that mattered</h2>
   <p><b>Modular by default.</b> A railway zone can deploy just the geometry module, or just the rail profile module, or the whole thing. The existing system doesn&rsquo;t allow this, and it&rsquo;s a large part of why it&rsquo;s expensive.</p>
   <p><b>Standards first, not last.</b> We mapped every output to RDSO TM/IM/448 and EN 13848 Parts 1-2 - the Indian and European track geometry standards - so the numbers the system produces are directly comparable against the tolerance bands inspectors already use. A measurement nobody can act on isn&rsquo;t worth taking.</p>
@@ -125,7 +128,6 @@
         <li><a href="my-story.html">My Story</a></li>
         <li><a href="impact-delivered.html">Impact Delivered</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="screener.html">How MARS works</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -146,8 +148,6 @@
 </footer>
 
 <script src="app.js"></script>
-<script src="screener.js"></script>
-<script src="mars.js"></script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     try {
@@ -91,6 +91,9 @@
   <p><b>Saber d&oacute;nde est&aacute;s.</b> En lugar de depender solo del GPS, fusionamos GPS con datos de la IMU y la distancia derivada del codificador. Cuando cae la se&ntilde;al satelital, el sistema sigue contando la posici&oacute;n desde la rueda y los sensores de movimiento. Esta fue la parte de la que est&aacute;bamos m&aacute;s orgullosos - ataca directamente por qu&eacute; la localizaci&oacute;n del sistema existente no es confiable.</p>
   <p><b>Procesamiento a bordo.</b> La primera pasada de detecci&oacute;n ocurre en el propio dispositivo, sin dependencia de conectividad en campo. Los datos de tendencia a largo plazo se sincronizan a la nube para mantenimiento predictivo. Las salidas se exportan en CSV, XML y JPEG, para integrarse en los flujos que los ferrocarriles ya usan.</p>
 
+  <h2>Mi parte</h2>
+  <p>Me encargué del pipeline de visión por computador para detectar defectos. No existía ningún conjunto de datos público de defectos en vías indias con el que entrenar, así que construí uno: capturé imágenes en la vía y las aumenté para cubrir la iluminación y los ángulos que vería la cámara en campo. Cuando pasamos a las pruebas en vivo, depuré la inferencia en la cámara ESP32 montada en el propio equipo.</p>
+
   <h2>Las decisiones de dise&ntilde;o que importaron</h2>
   <p><b>Modular por defecto.</b> Una zona ferroviaria puede desplegar solo el m&oacute;dulo de geometr&iacute;a, solo el de perfil de riel, o el conjunto completo. El sistema existente no lo permite, y esa es buena parte de por qu&eacute; es caro.</p>
   <p><b>Est&aacute;ndares primero, no al final.</b> Mapeamos cada salida a RDSO TM/IM/448 y EN 13848 Partes 1-2 - los est&aacute;ndares indio y europeo de geometr&iacute;a de v&iacute;a - para que los n&uacute;meros sean directamente comparables con las bandas de tolerancia que los inspectores ya usan. Una medici&oacute;n sobre la que nadie puede actuar no vale la pena tomarla.</p>
@@ -125,7 +128,6 @@
         <li><a href="my-story.es.html">Mi Historia</a></li>
         <li><a href="impact-delivered.es.html">Impacto Logrado</a></li>
         <li><a href="contact.es.html">Contacto</a></li>
-        <li><a href="screener.es.html">Cómo funciona MARS</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -146,8 +148,6 @@
 </footer>
 
 <script src="app.js"></script>
-<script src="screener.js"></script>
-<script src="mars.js"></script>
 
 </body>
 </html>
