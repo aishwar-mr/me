@@ -1,7 +1,4 @@
-import { FullScreenNav } from "@/components/FullScreenNav";
 import { Hero } from "@/components/Hero";
-import { IntroStatement } from "@/components/IntroStatement";
-import { SelectedWork } from "@/components/SelectedWork";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site, siteUrl } from "@/lib/content";
@@ -26,9 +23,6 @@ export default function Home() {
       <SiteHeader />
       <main id="main">
         <Hero />
-        <FullScreenNav />
-        <IntroStatement />
-        <SelectedWork />
       </main>
       <SiteFooter />
     </>

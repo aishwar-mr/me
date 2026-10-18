@@ -46,11 +46,11 @@ Must not resemble a résumé template, SaaS landing page, or generic card grid.
 
 Every route is a real Next.js page producing its own static HTML file (`output: "export"` in `next.config.ts`). Direct navigation, hard refresh, and browser back/forward all work against the static build — verified (§9) by requesting each route cold against the exported `out/` directory and reloading it, not just via client-side router navigation.
 
-Global navigation (`lib/content.ts` → `navLinks`, consumed by `SiteHeader` and `FullScreenNav`) uses `next/link` throughout — not `<a>` — so the `/me` basePath resolves correctly in production. This was a real bug caught during build: plain anchor tags would have 404'd on GitHub Pages.
+Global navigation is a **Menu overlay**, matching the reference. The header (`SiteHeader`, rendered on every page) shows only "Aishwar" (left) and a "Menu"/"Close" button (right) — no inline links. Clicking "Menu" opens a full-screen dark overlay with INFO / WORK / CONTACT stacked large (plus email, socials, and phone at the bottom), with a pointer-follow circle on fine-pointer devices. Selecting an item navigates (`next/link`) and closes the overlay. `next/link` is used throughout — not `<a>` — so the `/me` basePath resolves correctly in production (a real bug caught during build: plain anchor tags would have 404'd on GitHub Pages). The closed overlay uses the `inert` attribute so its links are removed from the tab order and accessibility tree.
 
 ### Page responsibilities
 
-- **Homepage (`/`)**: cinematic hero with scroll-driven artifact animation, full-screen nav block, one concise intro statement, 2 real + 1 "coming soon" featured-work preview, footer. No full capabilities grid, no contact form — those live on their own pages.
+- **Homepage (`/`)**: hero only — the AISHWAR composition with its scroll-driven artifact animation, then the footer. No stacked content sections (no intro statement, no capabilities, no featured-work grid, no contact form) — matching the reference's hero-only home. Everything else is reached via the Menu overlay.
 - **Info (`/info`)**: the same intro statement, the full capabilities grid, and an "Education & experience" section (placeholder — see §12).
 - **Work (`/work`)**: heading, intro line, full project grid (same cards as the homepage preview, no filtering — too few projects to justify it yet).
 - **Project pages**: one case study per route, via the shared template in §8.
@@ -108,9 +108,11 @@ A small scroll-cue dot at the bottom of the hero fades out over the first 8% of 
 
 ---
 
-## 6. FULL-SCREEN NAV, INTRO, SELECTED WORK (homepage)
+## 6. MENU OVERLAY (site-wide navigation)
 
-Unchanged in spirit from v1.0: a near-black full-screen section with large INFO/WORK/CONTACT links (now real `next/link`s to `/info`, `/work`, `/contact`) and a pointer-follow circle (`position: absolute; top-0 left-0` + `translate()`, fixed in this revision after an earlier bug where the circle's own flex-centered static position was compounding with the translate offset); one concise intro statement; a 3-card Selected Work preview (2 real placeholder projects + 1 honest "more work coming soon" tile, no fabricated third project) linking to `/work`.
+Navigation lives in `SiteHeader` (on every page), not as a homepage scroll section. The "Menu" button opens a full-screen dark overlay: large INFO/WORK/CONTACT `next/link`s stacked center, a pointer-follow circle (fine pointer + non-reduced-motion only), and a bottom row of email / socials (LinkedIn, GitHub, X) / phone — mirroring the reference. "Menu" toggles to "Close"; Escape also closes it; body scroll is locked while open; links animate in with a per-item stagger. When closed the overlay carries `inert`, so it is fully removed from tab order and the a11y tree.
+
+> This replaces the earlier `FullScreenNav` scroll-section and the inline desktop header links. The intro statement now lives only on `/info`, and the Selected Work preview was removed from the homepage (the full grid is on `/work`). `FullScreenNav` and `SelectedWork` components were deleted.
 
 ---
 
