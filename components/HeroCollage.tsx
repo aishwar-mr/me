@@ -1,23 +1,114 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { MotionValue } from "motion/react";
 import { FloatingImage, type FloatingImageSpec } from "./FloatingImage";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
+// Each tile gets its own travel path so the shrink/fade reads as composed
+// rather than mechanically uniform, per the cinematic-transformation spec.
 const TILES: FloatingImageSpec[] = [
-  { id: "a", top: "6%", left: "4%", width: "9vw", height: "12vw", rotate: -4, parallaxStrength: 0.6, delayMs: 0, driftSeconds: 7, driftDistance: -6 },
-  { id: "b", top: "3%", left: "70%", width: "12vw", height: "8vw", rotate: 3, parallaxStrength: 0.8, delayMs: 120, driftSeconds: 8.5, driftDistance: 7, hideOnMobile: true },
-  { id: "c", top: "38%", left: "84%", width: "7vw", height: "10vw", rotate: -2, parallaxStrength: 1, delayMs: 240, driftSeconds: 6.5, driftDistance: -5 },
-  { id: "d", top: "64%", left: "3%", width: "10vw", height: "7vw", rotate: 5, parallaxStrength: 0.7, delayMs: 360, driftSeconds: 9, driftDistance: 6 },
-  { id: "e", top: "70%", left: "66%", width: "9vw", height: "11vw", rotate: -3, parallaxStrength: 0.9, delayMs: 480, driftSeconds: 7.5, driftDistance: -7 },
-  { id: "f", top: "8%", left: "42%", width: "6vw", height: "6vw", rotate: 2, parallaxStrength: 0.5, delayMs: 600, driftSeconds: 6, driftDistance: 5, hideOnMobile: true },
+  {
+    id: "a",
+    top: "6%",
+    left: "4%",
+    width: "9vw",
+    height: "12vw",
+    rotate: -4,
+    parallaxStrength: 0.6,
+    delayMs: 0,
+    scrollScaleRange: [1, 0.45],
+    scrollOpacityRange: [1, 0.25],
+    scrollXRange: [0, -120],
+    scrollYRange: [0, -90],
+    scrollRotateRange: [0, -10],
+  },
+  {
+    id: "b",
+    top: "3%",
+    left: "70%",
+    width: "12vw",
+    height: "8vw",
+    rotate: 3,
+    parallaxStrength: 0.8,
+    delayMs: 120,
+    scrollScaleRange: [1, 0.5],
+    scrollOpacityRange: [1, 0.3],
+    scrollXRange: [0, 140],
+    scrollYRange: [0, -70],
+    scrollRotateRange: [0, 8],
+    hideOnMobile: true,
+  },
+  {
+    id: "c",
+    top: "38%",
+    left: "84%",
+    width: "7vw",
+    height: "10vw",
+    rotate: -2,
+    parallaxStrength: 1,
+    delayMs: 240,
+    scrollScaleRange: [1, 0.35],
+    scrollOpacityRange: [1, 0.2],
+    scrollXRange: [0, 160],
+    scrollYRange: [0, 40],
+    scrollRotateRange: [0, -6],
+  },
+  {
+    id: "d",
+    top: "64%",
+    left: "3%",
+    width: "10vw",
+    height: "7vw",
+    rotate: 5,
+    parallaxStrength: 0.7,
+    delayMs: 360,
+    scrollScaleRange: [1, 0.5],
+    scrollOpacityRange: [1, 0.3],
+    scrollXRange: [0, -100],
+    scrollYRange: [0, 110],
+    scrollRotateRange: [0, 9],
+  },
+  {
+    id: "e",
+    top: "70%",
+    left: "66%",
+    width: "9vw",
+    height: "11vw",
+    rotate: -3,
+    parallaxStrength: 0.9,
+    delayMs: 480,
+    scrollScaleRange: [1, 0.4],
+    scrollOpacityRange: [1, 0.25],
+    scrollXRange: [0, 110],
+    scrollYRange: [0, 130],
+    scrollRotateRange: [0, -8],
+  },
+  {
+    id: "f",
+    top: "8%",
+    left: "42%",
+    width: "6vw",
+    height: "6vw",
+    rotate: 2,
+    parallaxStrength: 0.5,
+    delayMs: 600,
+    scrollScaleRange: [1, 0.55],
+    scrollOpacityRange: [1, 0.35],
+    scrollXRange: [0, -60],
+    scrollYRange: [0, -120],
+    scrollRotateRange: [0, 7],
+    hideOnMobile: true,
+  },
 ];
 
-export function HeroCollage() {
+export function HeroCollage({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const reducedMotion = useReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
@@ -59,7 +150,9 @@ export function HeroCollage() {
           index={index}
           visible={visible}
           reducedMotion={reducedMotion}
+          isMobile={isMobile}
           parallax={reducedMotion ? { x: 0, y: 0 } : parallax}
+          scrollYProgress={scrollYProgress}
         />
       ))}
     </div>

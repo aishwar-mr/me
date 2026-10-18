@@ -3,12 +3,15 @@
 Portfolio site. Next.js (App Router) + TypeScript + Tailwind CSS, built as
 a static export and deployed to GitHub Pages under `/me/`.
 
-**Status:** Phase 4 — production hardening. Homepage, `/work` index, and
-two case-study routes (Digital Product Passport, Analytics) are live
-with full SEO metadata, zero automated accessibility violations, and
-Lighthouse scores of 97–100 across performance/accessibility/best
-practices/SEO. Real photography, résumé, and case-study content are
-still pending — see "What's still a placeholder" below.
+**Status:** Separate-page architecture with a cinematic, scroll-driven
+hero animation. `/`, `/info`, `/work`, `/contact`, and two case-study
+routes are all genuinely distinct pages (not anchors) with full SEO
+metadata, zero automated accessibility violations, and Lighthouse
+scores of 98–100 across performance/accessibility/best practices/SEO.
+See `docs/PRD.md` for the full, current specification — it supersedes
+the original `writing-block.md` draft. Real photography, résumé, and
+case-study content are still pending — see "What's still a
+placeholder" below.
 
 ## Local development
 

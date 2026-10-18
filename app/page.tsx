@@ -1,5 +1,3 @@
-import { CapabilitiesSection } from "@/components/CapabilitiesSection";
-import { ContactSection } from "@/components/ContactSection";
 import { FullScreenNav } from "@/components/FullScreenNav";
 import { Hero } from "@/components/Hero";
 import { IntroStatement } from "@/components/IntroStatement";
@@ -31,8 +29,6 @@ export default function Home() {
         <FullScreenNav />
         <IntroStatement />
         <SelectedWork />
-        <CapabilitiesSection />
-        <ContactSection />
       </main>
       <SiteFooter />
     </>

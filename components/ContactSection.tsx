@@ -13,7 +13,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="border-t border-border px-[4vw] py-24 md:py-32">
+    <section className="px-[4vw] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
         <Reveal>
           <h2 className="mb-6 text-[clamp(2.5rem,6vw,5rem)] font-semibold uppercase leading-none tracking-tight">

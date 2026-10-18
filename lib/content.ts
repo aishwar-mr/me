@@ -16,9 +16,9 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "INFO", href: "/#info" },
+  { label: "INFO", href: "/info" },
   { label: "WORK", href: "/work" },
-  { label: "CONTACT", href: "/#contact" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export const introStatement =
