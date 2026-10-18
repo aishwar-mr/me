@@ -1,0 +1,132 @@
+{
+  "site": {
+    "name": "Aishwar",
+    "tagline": "PRODUCT & STRATEGY EXPERT",
+    "email": "aishwar.r.mishra@gmail.com",
+    "phone": "+91 75587 73043",
+    "socials": {
+      "linkedin": "https://linkedin.com/in/aishwar-mishra",
+      "github": "https://github.com/aishwar-mr",
+      "x": "https://x.com/aishwar_mr"
+    },
+    "footerTagline": "TAKING AMBIGUOUS PROBLEMS AND TURNING THEM INTO DECISIONS PEOPLE CAN ACT ON."
+  },
+  "heroImages": [
+    "assets/aishwar.jpg",
+    "assets/placeholders/hero-01.svg",
+    "assets/sih-prototype.png",
+    "assets/placeholders/hero-02.svg",
+    "assets/WorldQuant-GC.png",
+    "assets/placeholders/hero-03.svg",
+    "assets/sih-detection.png",
+    "assets/placeholders/hero-04.svg"
+  ],
+  "info": {
+    "statement": "I turn ambiguity into decisions.",
+    "sequenceImages": [
+      "assets/aishwar.jpg",
+      "assets/sih-prototype.png",
+      "assets/WorldQuant-GC.png",
+      "assets/sih-detection.png",
+      "assets/placeholders/sequence-01.svg"
+    ],
+    "services": ["Strategy", "Program management", "GTM & fundraising", "Data & pricing models", "AI evaluation", "Computer vision"],
+    "companies": ["Ninjacart", "Lawxy AI", "Newton School", "VJTI Technovanza", "LvlUp Ventures", "WorldQuant"]
+  },
+  "projects": [
+    {
+      "slug": "ninjacart",
+      "title": "Ninjacart",
+      "subtitle": "Pricing intelligence for dark-store growth",
+      "colour": "#1F6E43",
+      "cover": "",
+      "description": "Buying decisions across a fast-growing dark-store network had no reliable view of competitor prices. I built a 12-week price intelligence model across 300 SKUs and automated daily competitor tracking with WhatsApp reporting, cutting purchase price by INR 4 a unit and supporting expansion in Hyderabad from 5 to 30 stores.",
+      "services": "Pricing, automation, ops",
+      "industry": "Quick commerce",
+      "year": "2025",
+      "liveUrl": "",
+      "media": [
+        { "type": "placeholder", "src": "assets/placeholders/ninjacart-01.svg", "caption": "Daily competitor price tracker, built on Google Apps Script and Twilio" },
+        { "type": "placeholder", "src": "assets/placeholders/ninjacart-02.svg", "caption": "12-week price intelligence model across 300 SKUs" }
+      ]
+    },
+    {
+      "slug": "lawxy-ai",
+      "title": "Lawxy AI",
+      "subtitle": "Fundraise and go-to-market",
+      "colour": "#2B2E83",
+      "cover": "",
+      "description": "A pre-seed legal-AI startup needed to raise and find its first customers at the same time. I built the investor materials and ran diligence follow-ups with Peak XV, and ran structured outbound to enterprises, taking the round to term-sheet stage and onboarding 15 pilot clients.",
+      "services": "Fundraising, GTM, founder's office",
+      "industry": "Legal AI",
+      "year": "2025",
+      "liveUrl": "",
+      "media": [
+        { "type": "placeholder", "src": "assets/placeholders/lawxy-01.svg", "caption": "Investor materials built for the pre-seed round" },
+        { "type": "placeholder", "src": "assets/placeholders/lawxy-02.svg", "caption": "Structured outbound that led to 8 enterprise meetings in a week" }
+      ]
+    },
+    {
+      "slug": "newton-school",
+      "title": "Newton School",
+      "subtitle": "Building a placement pilot from zero",
+      "colour": "#C1521E",
+      "cover": "",
+      "description": "A new alumni placement vertical had no process, tracking or candidate pipeline. I wrote the operating SOP, built the funnel tracker across 15+ companies, and onboarded candidates through one-on-one calls, reaching 55% assessment completion and the pilot's first placement.",
+      "services": "Program management, process design",
+      "industry": "Edtech",
+      "year": "2026",
+      "liveUrl": "",
+      "media": [
+        { "type": "placeholder", "src": "assets/placeholders/newton-01.svg", "caption": "Funnel tracker spanning 15+ hiring companies" }
+      ]
+    },
+    {
+      "slug": "track-monitoring",
+      "title": "Track Monitoring",
+      "subtitle": "Railway defect detection, Smart India Hackathon 2025",
+      "colour": "#1E4B6B",
+      "cover": "assets/sih-prototype.png",
+      "description": "Indian Railways relies on costly imported track-monitoring systems, and no public dataset of Indian track defects existed. I owned the computer-vision defect detection pipeline, built the dataset by capturing and augmenting on-track images, and debugged live inference on an ESP32 camera, placing top 3 of 80 teams and field-testing on live Central Railway track in Mumbai.",
+      "services": "Computer vision, hardware, field testing",
+      "industry": "Rail infrastructure",
+      "year": "2025",
+      "liveUrl": "",
+      "media": [
+        { "type": "image", "src": "assets/sih-prototype.png", "caption": "The prototype mounted on live Central Railway track in Mumbai" },
+        { "type": "image", "src": "assets/sih-detection.png", "caption": "Fastener detection with bounding boxes and a live sensor readout" }
+      ]
+    },
+    {
+      "slug": "worldquant",
+      "title": "WorldQuant BRAIN",
+      "subtitle": "Alpha research, Gold level",
+      "colour": "#0E4D4A",
+      "cover": "",
+      "description": "WorldQuant's open research platform scores contributors on trading signals that have to survive out-of-sample validation, not just look good on paper. Sustained submissions over two to three months took me past 10,000 points to Gold level, with a Research Consultant offer following the record.",
+      "services": "Quantitative research, signal design",
+      "industry": "Quantitative finance",
+      "year": "2025",
+      "liveUrl": "",
+      "media": [
+        { "type": "image", "src": "assets/WorldQuant-GC.png", "caption": "WorldQuant BRAIN, Gold level" }
+      ]
+    },
+    {
+      "slug": "ai-agent-teardowns",
+      "title": "Agent Teardowns",
+      "subtitle": "Arrowhead and Juicebox",
+      "colour": "#6E1B3D",
+      "cover": "",
+      "description": "AI agents look good in demos. Where do they actually fail? I mapped a voice bot's collections call turn by turn against a funnel, and traced how a recruiting agent turned my feedback into search filters, finding the voice bot's real leak was comprehension, not interest, and catching the recruiting agent testing a 9-month filter but shipping 6.",
+      "services": "AI evaluation, product teardown",
+      "industry": "AI agents",
+      "year": "2026",
+      "liveUrl": "",
+      "media": [
+        { "type": "placeholder", "src": "assets/placeholders/teardown-01.svg", "caption": "Call-by-call map of the collections voice bot against its funnel" },
+        { "type": "placeholder", "src": "assets/placeholders/teardown-02.svg", "caption": "The recruiting agent's filters, traced back to my own feedback" }
+      ]
+    }
+  ]
+}
