@@ -1,3 +1,7 @@
+import type { StaticImageData } from "next/image";
+import prototypeOnTrack from "@/assets/work/track-monitoring/prototype-on-track.jpg";
+import fastenerDetection from "@/assets/work/track-monitoring/fastener-detection.jpg";
+
 // GH Pages serves this repo at /me under the account's github.io domain,
 // derived from the GitHub handle below. Update if a custom domain is added.
 export const siteUrl = "https://aishwar-mr.github.io/me";
@@ -61,6 +65,7 @@ export type ProjectSection = {
   id: string;
   heading: string;
   body: string;
+  image?: { src: StaticImageData; alt: string; caption?: string };
 };
 
 export type Project = {
@@ -70,14 +75,15 @@ export type Project = {
   summary: string;
   year?: string;
   role?: string;
+  cover?: { src: StaticImageData; alt: string };
   sections: ProjectSection[];
   /** true until the owner supplies real, approved case-study content. */
   placeholder: boolean;
 };
 
-// Routes named in the brief (DPP, Analytics) are scaffolded below with
-// explicit "pending" placeholders — no case-study specifics are invented.
-// Each `sections` entry states exactly what's needed to replace it.
+// Case-study sections are per-project: published ones use Problem / Approach /
+// Solution / Result; placeholders carry explicit "Pending:" text naming what's
+// needed, so no case-study specifics are ever invented.
 export const projects: Project[] = [
   {
     slug: "digital-product-passport",
@@ -120,42 +126,43 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "analytics",
-    title: "Analytics",
-    category: "Data & analytics",
+    slug: "track-monitoring",
+    title: "Track Monitoring",
+    category: "Rail infrastructure",
     summary:
-      "Case study pending — the specific project this page covers hasn't been confirmed yet.",
-    placeholder: true,
+      "A low-cost, contactless track-monitoring prototype for Indian Railways, built for Smart India Hackathon 2025.",
+    year: "2025",
+    role: "Computer vision & field testing",
+    placeholder: false,
+    cover: {
+      src: prototypeOnTrack,
+      alt: "The track-monitoring prototype rig mounted on live railway track, with sensors, a camera and wiring visible.",
+    },
     sections: [
       {
-        id: "context",
-        heading: "Context",
-        body: "Pending: which project this covers, and the business or analytical question it answers.",
-      },
-      {
         id: "problem",
-        heading: "Problem & objective",
-        body: "Pending: the dataset, its limitations, and what the analysis needed to resolve.",
+        heading: "Problem",
+        body: "Indian Railways depends on imported track-monitoring systems — about ₹180 crore for a full system — that are closed-source, hard to customise and lock the buyer to one vendor. GPS-only defect localisation is also imprecise.",
       },
       {
         id: "approach",
         heading: "Approach",
-        body: "Pending: data cleaning, preparation, and analytical methodology — tools only named if actually used.",
+        body: "A compact, contactless rig built on ITMS principles: laser, ultrasonic and IMU sensors plus an ESP32 camera, with Python, OpenCV and a neural network on a Raspberry Pi. Edge computing flags faults in real time; the cloud handles long-term trends. GPS and IMU are fused so defects keep a chainage position when GPS drops.",
       },
       {
-        id: "execution",
-        heading: "Execution",
-        body: "Pending: the analysis itself — visualisations, dashboards, or models produced.",
+        id: "solution",
+        heading: "Solution",
+        body: "A modular, open software stack where the geometry, rail-profile and acceleration subsystems can be deployed in full or in part. Computer vision flags broken fasteners from camera frames, and IMU and ultrasonic readings flag misalignment — either triggers a dashboard alert and an SMS.",
+        image: {
+          src: fastenerDetection,
+          alt: "Camera frame of a railway sleeper with three bounding boxes labelled as broken fasteners at 95 to 96 percent confidence.",
+          caption: "Broken-fastener detection on a live track frame.",
+        },
       },
       {
-        id: "results",
-        heading: "Results & findings",
-        body: "Pending: key findings and their business implications, using only verified figures.",
-      },
-      {
-        id: "reflection",
-        heading: "Reflection",
-        body: "Pending: limitations encountered and what would be done differently next time.",
+        id: "result",
+        heading: "Result",
+        body: "Field-tested on live Central Railway track in Mumbai: real-time data acquisition and defect detection worked end to end. Projected full-system cost is about ₹30 crore against ₹180 crore for the current system — roughly one-sixth (team cost analysis).",
       },
     ],
   },

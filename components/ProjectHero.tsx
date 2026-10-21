@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/content";
 import { PlaceholderTile } from "./PlaceholderTile";
@@ -35,11 +36,24 @@ export function ProjectHero({ project, seed }: { project: Project; seed: number 
       </Reveal>
 
       <Reveal delayMs={150}>
-        <PlaceholderTile
-          seed={seed}
-          label={`${project.title} — cover pending`}
-          className="mt-12 h-[60vw] w-full md:h-[40vw]"
-        />
+        {project.cover ? (
+          <div className="relative mt-12 h-[60vw] w-full overflow-hidden md:h-[40vw]">
+            <Image
+              src={project.cover.src}
+              alt={project.cover.alt}
+              fill
+              preload
+              sizes="100vw"
+              className="object-cover object-[50%_72%]"
+            />
+          </div>
+        ) : (
+          <PlaceholderTile
+            seed={seed}
+            label={`${project.title} — cover pending`}
+            className="mt-12 h-[60vw] w-full md:h-[40vw]"
+          />
+        )}
       </Reveal>
     </section>
   );

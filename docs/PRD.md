@@ -38,7 +38,7 @@ Must not resemble a résumé template, SaaS landing page, or generic card grid.
 | `/info` | `app/info/page.tsx` | Live |
 | `/work` | `app/work/page.tsx` | Live |
 | `/work/digital-product-passport` | `app/work/[slug]/page.tsx` | Live, placeholder content |
-| `/work/analytics` | `app/work/[slug]/page.tsx` | Live, placeholder content |
+| `/work/track-monitoring` | `app/work/[slug]/page.tsx` | Live, published (Smart India Hackathon 2025) |
 | `/work/[project-slug]` | `app/work/[slug]/page.tsx` | Reusable; add an entry to `lib/content.ts`'s `projects` array to publish a new one |
 | `/contact` | `app/contact/page.tsx` | Live |
 | 404 | `app/not-found.tsx` | Custom-styled, links to `/` and `/work` |
@@ -128,7 +128,7 @@ Navigation lives in `SiteHeader` (on every page), not as a homepage scroll secti
 
 `ProjectHero` (title, category, summary, year/role/status, cover placeholder) → six `CaseStudySection`s (Context, Problem & objective, Approach, Execution, Results & findings, Reflection) → `ProjectNavigation` (back to all work, prev/next, hidden at list boundaries).
 
-Both live case studies (DPP, Analytics) have every section populated with an explicit, specific "Pending: …" statement naming exactly what's needed — not generic placeholder text — per the no-fabrication rule in §12.
+Case-study sections are defined per project in `lib/content.ts`. Published projects use a short **Problem → Approach → Solution → Result** structure (plus a *Feedback* section once real feedback is supplied — omitted rather than faked until then), with optional images via `cover` and per-section `image`. **Track Monitoring** is published this way, sourced entirely from the owner's Smart India Hackathon 2025 submission deck. Placeholder projects (DPP) keep the longer template with explicit, specific "Pending: …" statements naming exactly what's needed, per the no-fabrication rule in §12.
 
 ---
 
@@ -174,7 +174,7 @@ No fabricated metrics, clients, findings, or images exist anywhere in the codeba
 
 - **Hero collage / all project covers**: flat-colour tiles. Need real photography/screenshots.
 - **DPP case study**: each section (`lib/content.ts` → `projects[0].sections`) states precisely what's pending — industry context, problem statement, methodology, the actual work product, verified results, personal contribution.
-- **Analytics case study**: same structure — which project this actually is, dataset, methodology, findings, business implications.
+- **Track Monitoring** (replaced the Analytics placeholder): published from the SIH 2025 deck. Still needed: a *Feedback* section (judges/mentors/railway-trial feedback), and confirmation of the role line and any recognition (e.g. placement) to state.
 - **A third project**: intentionally not invented. Per the original brief, "the owner may later add a textile engineering project, sustainability study, retail analysis, automation project, or another piece of relevant work" — add it to `lib/content.ts`'s `projects` array and it will automatically get a route, a card, and prev/next navigation.
 - **Résumé**: no file in the repo yet; `/info` has a labelled placeholder for the eventual link.
 - **Contact form endpoint**: form is fully built but submission shows an explicit "not connected yet" message rather than a fake success state. Needs a Formspree (or equivalent) account.

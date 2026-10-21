@@ -74,10 +74,11 @@ the layout components in `components/`.
 - Hero collage images and all project covers are flat-colour tiles
   marked "Placeholder" / "— case study pending" — no real photography
   is wired in yet.
-- DPP and Analytics case studies have the full template (context,
-  problem, approach, execution, results, reflection) but every
-  section explicitly states what real content is needed — see each
-  page, or `lib/content.ts`.
+- The Digital Product Passport case study has the full template but
+  every section explicitly states what real content is needed — see
+  the page, or `lib/content.ts`. Track Monitoring is published
+  (Problem / Approach / Solution / Result); its Feedback section is
+  waiting on real feedback.
 - No résumé link yet (no résumé file has been supplied to the repo).
 - The contact form renders but isn't connected to a submission
   endpoint; submitting shows an explicit "not connected yet" message

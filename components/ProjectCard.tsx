@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/content";
 import { PlaceholderTile } from "./PlaceholderTile";
@@ -14,15 +15,29 @@ export function ProjectCard({
   heightClass: string;
   delayMs?: number;
 }) {
+  const tileClass = `${heightClass} w-full transition-transform duration-300 ease-out ${
+    project ? "group-hover:scale-[1.02]" : ""
+  }`;
+
   const body = (
     <div className="group relative">
-      <PlaceholderTile
-        seed={seed}
-        label={project ? `${project.title} — case study pending` : "More work coming soon"}
-        className={`${heightClass} w-full transition-transform duration-300 ease-out ${
-          project ? "group-hover:scale-[1.02]" : ""
-        }`}
-      />
+      {project?.cover ? (
+        <div className={`relative overflow-hidden ${tileClass}`}>
+          <Image
+            src={project.cover.src}
+            alt={project.cover.alt}
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <PlaceholderTile
+          seed={seed}
+          label={project ? `${project.title} — case study pending` : "More work coming soon"}
+          className={tileClass}
+        />
+      )}
       <div className="mt-3 flex items-baseline justify-between">
         <span className="flex items-center gap-2 text-sm font-medium uppercase tracking-tight transition-transform duration-300 ease-out group-hover:translate-x-1">
           {project ? project.title : "More work"}
