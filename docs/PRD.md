@@ -53,7 +53,7 @@ Global navigation is a **Menu overlay**, matching the reference. The header (`Si
 ### Page responsibilities
 
 - **Homepage (`/`)**: hero only — the AISHWAR composition with its scroll-driven artifact animation, then the footer. No stacked content sections (no intro statement, no capabilities, no featured-work grid, no contact form) — matching the reference's hero-only home. Everything else is reached via the Menu overlay.
-- **Info (`/info`)**: the same intro statement, the full capabilities grid, and an "Education & experience" section (placeholder — see §12).
+- **Info (`/info`)**: the same intro statement, the full capabilities grid, and an "Education & experience" section built from the owner's résumé (experience, leadership, education, additional info; each entry has an organisation logo tile, with an initials fallback), and a "My story" section (portrait + pending text until the owner supplies the story).
 - **Work (`/work`)**: heading, intro line, full project grid (same cards as the homepage preview, no filtering — too few projects to justify it yet).
 - **Project pages**: one case study per route, via the shared template in §8.
 - **Contact (`/contact`)**: headline, email/phone/socials, contact form (visually complete, not wired to a submission endpoint — see §12).
@@ -120,7 +120,7 @@ Navigation lives in `SiteHeader` (on every page), not as a homepage scroll secti
 
 ## 7. INFO, WORK, CONTACT PAGES
 
-- **`/info`**: `IntroStatement` + `CapabilitiesSection` (real, previously-approved services list) + an explicitly-labelled "Education & experience" pending section.
+- **`/info`**: `IntroStatement` + `CapabilitiesSection` (real, previously-approved services list) + `EducationExperience` (data in `lib/content.ts`: `experience`, `leadership`, `education`, `additionalInfo`; logos in `assets/logos/`) + `MyStory` (`story` array in `lib/content.ts`, empty → pending state). Section labels are `h2`; the intro statement is the page `h1`.
 - **`/work`**: heading, one-line intro, full project grid (`ProjectCard` × projects + the "coming soon" tile).
 - **`/contact`**: `ContactSection` — headline, email/phone/socials, a visually complete form that explicitly tells the visitor it isn't wired to a submission endpoint yet rather than faking a success state.
 
@@ -179,7 +179,9 @@ No fabricated metrics, clients, findings, or images exist anywhere in the codeba
 - **Product Teardowns**: Arrowhead and Juicebox written from the owner's docs. Cover is a third-party Venn diagram — replace with an owned graphic. Year/role lines are assumptions to confirm. To add a teardown, append an `items` entry (slug, title, summary, sections).
 - **Track Monitoring** (replaced the Analytics placeholder): published from the SIH 2025 deck. Still needed: a *Feedback* section (judges/mentors/railway-trial feedback), and confirmation of the role line and any recognition (e.g. placement) to state.
 - **A third project**: intentionally not invented. Per the original brief, "the owner may later add a textile engineering project, sustainability study, retail analysis, automation project, or another piece of relevant work" — add it to `lib/content.ts`'s `projects` array and it will automatically get a route, a card, and prev/next navigation.
-- **Résumé**: no file in the repo yet; `/info` has a labelled placeholder for the eventual link.
+- **Résumé**: content is on `/info`; no downloadable résumé file/link is published yet.
+- **My story**: text not yet supplied; `/info` shows a labelled pending state next to the portrait.
+- **Logos**: Newton School, Ninjacart and VJTI marks were taken from the organisations' own sites (low-resolution; replace if better files exist); Lawxy AI and Technovanza were supplied by the owner.
 - **Contact form endpoint**: form is fully built but submission shows an explicit "not connected yet" message rather than a fake success state. Needs a Formspree (or equivalent) account.
 - **Favicon**: still the default Next.js icon.
 

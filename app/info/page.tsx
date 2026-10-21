@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CapabilitiesSection } from "@/components/CapabilitiesSection";
+import { EducationExperience } from "@/components/EducationExperience";
 import { IntroStatement } from "@/components/IntroStatement";
+import { MyStory } from "@/components/MyStory";
 import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/SectionLabel";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -30,16 +32,20 @@ export default function InfoPage() {
         <IntroStatement />
         <CapabilitiesSection />
 
-        <section className="border-t border-border px-[4vw] py-24 md:py-32">
-          <Reveal>
-            <SectionLabel className="mb-10">Education & experience</SectionLabel>
-            <p className="max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
-              Pending — education history, employers, and dates haven&apos;t
-              been supplied yet. A résumé link will go here once a résumé
-              file is added to the project.
-            </p>
-          </Reveal>
-        </section>
+        <nav
+          aria-label="Info sections"
+          className="flex gap-6 border-t border-border px-[4vw] py-5 text-xs uppercase tracking-widest text-text-muted"
+        >
+          <a href="#education-experience" className="transition-colors hover:text-text">
+            Education & experience
+          </a>
+          <a href="#my-story" className="transition-colors hover:text-text">
+            My story
+          </a>
+        </nav>
+
+        <EducationExperience />
+        <MyStory />
       </main>
       <SiteFooter />
     </>

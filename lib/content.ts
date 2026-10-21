@@ -2,6 +2,17 @@ import type { StaticImageData } from "next/image";
 import prototypeOnTrack from "@/assets/work/track-monitoring/prototype-on-track.jpg";
 import fastenerDetection from "@/assets/work/track-monitoring/fastener-detection.jpg";
 import teardownsCover from "@/assets/work/product-teardowns/cover.png";
+import portrait from "@/assets/info/portrait.jpg";
+import lawxyLogo from "@/assets/logos/lawxy.png";
+import newtonLogo from "@/assets/logos/newton-school.png";
+import ninjacartLogo from "@/assets/logos/ninjacart.png";
+import technovanzaLogo from "@/assets/logos/technovanza.png";
+import vjtiLogo from "@/assets/logos/vjti.jpg";
+
+export const portraitImage = {
+  src: portrait,
+  alt: "Portrait of Aishwar Mishra in a burgundy velvet blazer and pale blue striped shirt",
+};
 
 // GH Pages serves this repo at /me under the account's github.io domain,
 // derived from the GitHub handle below. Update if a custom domain is added.
@@ -61,6 +72,100 @@ export const capabilities = [
       "Dataset build, model pipeline, and field-testing for real-world detection systems.",
   },
 ];
+
+export type TimelineEntry = {
+  period: string;
+  /** Qualifier shown under the period, e.g. "part-time". */
+  note?: string;
+  title: string;
+  organisation: string;
+  location: string;
+  /** Organisation mark, taken from its own website. Entries without one show an initials tile. */
+  logo?: StaticImageData;
+  points: string[];
+};
+
+// Source: Aishwar_Mishra_Résumé.pdf. Wording is kept close to the résumé; numbers are as stated there.
+export const education: TimelineEntry[] = [
+  {
+    period: "2023 — 2027",
+    title: "B.Tech. Textile Engineering, Data Science minor",
+    organisation: "Veermata Jijabai Technological Institute (VJTI)",
+    logo: vjtiLogo,
+    location: "Mumbai, MH",
+    points: [
+      "Coursework: Product Design and Development, Research Methodology, Linear Programming, Entrepreneurship for Engineers",
+      "National Semi-finalist, Finvent ’24 (Portfolio Management), IIT Madras — 54 of 627",
+      "Gold Level, WorldQuant BRAIN — 10K+ points, 14 alphas",
+    ],
+  },
+];
+
+export const experience: TimelineEntry[] = [
+  {
+    period: "Oct 2026 — Present",
+    note: "Part-time",
+    title: "Program Intern",
+    organisation: "Newton School",
+    logo: newtonLogo,
+    location: "Mumbai, India",
+    points: [
+      "Built the SOP and funnel tracker for a new alumni placement pilot (15+ companies, 140+ candidates), increasing outreach by 30+ emails a day",
+      "Onboarded 80+ candidates to the screening assessment through one-on-one call strategy with Key Account Managers, with 44 completing it (55%)",
+      "Screened and referred 60 candidates to partner companies, securing 8 interviews and the pilot’s first placement",
+    ],
+  },
+  {
+    period: "May — Jul 2026",
+    note: "Summer",
+    title: "Founder’s Office Intern",
+    organisation: "Lawxy AI",
+    logo: lawxyLogo,
+    location: "Mumbai, India",
+    points: [
+      "Built investor materials and led diligence follow-ups for a $1M Peak XV (Sequoia India) pre-seed round, taking it through to term-sheet stage",
+      "Led a team of 8 SDRs, generated 8 enterprise meetings in one week through structured outbound, and onboarded 15 pilot clients",
+      "Secured startup grants and programs including Nvidia Inception and $10K in AWS credits",
+    ],
+  },
+  {
+    period: "Jan — Mar 2026",
+    title: "Business Operations Intern",
+    organisation: "Ninjacart",
+    logo: ninjacartLogo,
+    location: "Bengaluru, India",
+    points: [
+      "Built a 12-week price intelligence model tracking GRN, purchase price and variance across 300 SKUs, and reduced purchase price by Rs.4/unit through competitor benchmarking — resulting in dark store expansion from 5 to 30 locations",
+      "Automated daily competitor price tracking and WhatsApp reporting using Google Apps Script and the Twilio API, giving the team same-day pricing visibility",
+    ],
+  },
+];
+
+export const leadership: TimelineEntry[] = [
+  {
+    period: "Dec 2025 — May 2026",
+    title: "Sponsorship Head",
+    organisation: "Technovanza",
+    logo: technovanzaLogo,
+    location: "Mumbai, India",
+    points: [
+      "Led a 30-member team to secure INR 4L+ in corporate sponsorships; personally closed INR 1L+ (20% of total) through structured outreach and negotiation",
+    ],
+  },
+];
+
+export const additionalInfo = [
+  { label: "Languages", value: "Fluent in English and Marathi; native speaker of Hindi; basic Spanish" },
+  { label: "Tools", value: "MS Office, SQL, Python, Tableau" },
+  { label: "Certifications", value: "Stanford Code In Place; London Business School — Financial Analysis" },
+  { label: "Interests", value: "Basketball, Athletics, Trekking" },
+];
+
+/**
+ * "My story" — paragraphs in the owner's own words. Left empty on purpose:
+ * the page shows a pending state until real text is supplied.
+ */
+export const story: string[] = [];
 
 export type ProjectSection = {
   id: string;

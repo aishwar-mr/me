@@ -79,7 +79,7 @@ the layout components in `components/`.
   (Problem / Approach / Solution / Result); Feedback sections are
   waiting on real feedback.
 - The Product Teardowns cover is a third-party diagram — swap for your own.
-- No résumé link yet (no résumé file has been supplied to the repo).
+- `/info` carries the résumé content, but there is no downloadable résumé link yet; "My story" text is pending.
 - The contact form renders but isn't connected to a submission
   endpoint; submitting shows an explicit "not connected yet" message
   rather than faking success.

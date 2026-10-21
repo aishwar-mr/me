@@ -6,7 +6,7 @@ export function CapabilitiesSection() {
   return (
     <section className="border-t border-border px-[4vw] py-24 md:py-32">
       <Reveal>
-        <SectionLabel className="mb-10">Capabilities</SectionLabel>
+        <SectionLabel as="h2" className="mb-10">Capabilities</SectionLabel>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
