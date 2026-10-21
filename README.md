@@ -74,11 +74,11 @@ the layout components in `components/`.
 - Hero collage images and all project covers are flat-colour tiles
   marked "Placeholder" / "— case study pending" — no real photography
   is wired in yet.
-- The Digital Product Passport case study has the full template but
-  every section explicitly states what real content is needed — see
-  the page, or `lib/content.ts`. Track Monitoring is published
-  (Problem / Approach / Solution / Result); its Feedback section is
+- Digital Product Passport is shown as work in progress (Result pending).
+  Track Monitoring and the two Product Teardowns are published
+  (Problem / Approach / Solution / Result); Feedback sections are
   waiting on real feedback.
+- The Product Teardowns cover is a third-party diagram — swap for your own.
 - No résumé link yet (no résumé file has been supplied to the repo).
 - The contact form renders but isn't connected to a submission
   endpoint; submitting shows an explicit "not connected yet" message

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/content";
+import { InProgressTile } from "./InProgressTile";
 import { PlaceholderTile } from "./PlaceholderTile";
 import { Reveal } from "./Reveal";
 
@@ -22,15 +23,21 @@ export function ProjectCard({
   const body = (
     <div className="group relative">
       {project?.cover ? (
-        <div className={`relative overflow-hidden ${tileClass}`}>
+        <div
+          className={`relative overflow-hidden ${
+            project.cover.fit === "contain" ? "bg-border/50" : ""
+          } ${tileClass}`}
+        >
           <Image
             src={project.cover.src}
             alt={project.cover.alt}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
+            className={project.cover.fit === "contain" ? "object-contain" : "object-cover"}
           />
         </div>
+      ) : project?.inProgress ? (
+        <InProgressTile className={tileClass} />
       ) : (
         <PlaceholderTile
           seed={seed}

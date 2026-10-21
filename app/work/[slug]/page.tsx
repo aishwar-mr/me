@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAdjacentProjects, getProject, projects } from "@/lib/content";
 import { CaseStudySection } from "@/components/CaseStudySection";
 import { ProjectHero } from "@/components/ProjectHero";
+import { ProjectItemList } from "@/components/ProjectItemList";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -55,7 +56,11 @@ export default async function ProjectPage({
         {project.sections.map((section, index) => (
           <CaseStudySection key={section.id} section={section} index={index} />
         ))}
-        <ProjectNavigation previous={previous} next={next} />
+        {project.items && <ProjectItemList heading="Teardowns" items={project.items} projectSlug={project.slug} />}
+        <ProjectNavigation
+          previous={previous && { title: previous.title, href: `/work/${previous.slug}` }}
+          next={next && { title: next.title, href: `/work/${next.slug}` }}
+        />
       </main>
       <SiteFooter />
     </>

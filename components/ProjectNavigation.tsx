@@ -1,12 +1,17 @@
 import Link from "next/link";
-import type { Project } from "@/lib/content";
+
+type NavTarget = { title: string; href: string };
 
 export function ProjectNavigation({
   previous,
   next,
+  backHref = "/work",
+  backLabel = "All work",
 }: {
-  previous?: Project;
-  next?: Project;
+  previous?: NavTarget;
+  next?: NavTarget;
+  backHref?: string;
+  backLabel?: string;
 }) {
   return (
     <section className="border-t border-border px-[4vw] py-16">
@@ -14,7 +19,7 @@ export function ProjectNavigation({
         <div className="order-2 md:order-1">
           {previous ? (
             <Link
-              href={`/work/${previous.slug}`}
+              href={previous.href}
               className="group flex items-center gap-2 text-sm uppercase tracking-widest text-text-muted transition-colors hover:text-text"
             >
               <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
@@ -26,16 +31,16 @@ export function ProjectNavigation({
         </div>
 
         <Link
-          href="/work"
+          href={backHref}
           className="order-1 text-xs uppercase tracking-widest text-text-muted transition-colors hover:text-text md:order-2"
         >
-          All work
+          {backLabel}
         </Link>
 
         <div className="order-3">
           {next ? (
             <Link
-              href={`/work/${next.slug}`}
+              href={next.href}
               className="group flex items-center gap-2 text-sm uppercase tracking-widest text-text-muted transition-colors hover:text-text"
             >
               {next.title}

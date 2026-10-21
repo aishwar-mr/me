@@ -14,5 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...projectRoutes];
+  const itemRoutes = projects.flatMap((project) =>
+    (project.items ?? [])
+      .filter((item) => item.slug && item.sections)
+      .map((item) => ({
+        url: `${siteUrl}/work/${project.slug}/${item.slug}`,
+        lastModified: new Date(),
+      }))
+  );
+
+  return [...staticRoutes, ...projectRoutes, ...itemRoutes];
 }

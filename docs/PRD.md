@@ -37,7 +37,9 @@ Must not resemble a résumé template, SaaS landing page, or generic card grid.
 | `/` | `app/page.tsx` | Live |
 | `/info` | `app/info/page.tsx` | Live |
 | `/work` | `app/work/page.tsx` | Live |
-| `/work/digital-product-passport` | `app/work/[slug]/page.tsx` | Live, placeholder content |
+| `/work/digital-product-passport` | `app/work/[slug]/page.tsx` | Live, work in progress (looping "check back" state; Scope/Problem/Approach/Solution written, Result pending) |
+| `/work/product-teardowns` | `app/work/[slug]/page.tsx` | Live; a list page whose entries (`items` in `lib/content.ts`) each get their own page |
+| `/work/product-teardowns/[teardown]` | `app/work/[slug]/[item]/page.tsx` | Live: `arrowhead-collections-bot`, `juicebox-recruiting-agent` (Problem / Approach / Solution / Result) |
 | `/work/track-monitoring` | `app/work/[slug]/page.tsx` | Live, published (Smart India Hackathon 2025) |
 | `/work/[project-slug]` | `app/work/[slug]/page.tsx` | Reusable; add an entry to `lib/content.ts`'s `projects` array to publish a new one |
 | `/contact` | `app/contact/page.tsx` | Live |
@@ -173,7 +175,8 @@ CLS = 0 on every page measured (the tall pinned hero does not cause layout shift
 No fabricated metrics, clients, findings, or images exist anywhere in the codebase. Current placeholders, and exactly what's needed to replace them:
 
 - **Hero collage / all project covers**: flat-colour tiles. Need real photography/screenshots.
-- **DPP case study**: each section (`lib/content.ts` → `projects[0].sections`) states precisely what's pending — industry context, problem statement, methodology, the actual work product, verified results, personal contribution.
+- **DPP case study**: written from the owner's VJTI report and shown as *work in progress* (`inProgress: true` → looping spinner tile + "check back in some time"). Still needed: real results once the tag trial / pilot run, and confirmation of the role line.
+- **Product Teardowns**: Arrowhead and Juicebox written from the owner's docs. Cover is a third-party Venn diagram — replace with an owned graphic. Year/role lines are assumptions to confirm. To add a teardown, append an `items` entry (slug, title, summary, sections).
 - **Track Monitoring** (replaced the Analytics placeholder): published from the SIH 2025 deck. Still needed: a *Feedback* section (judges/mentors/railway-trial feedback), and confirmation of the role line and any recognition (e.g. placement) to state.
 - **A third project**: intentionally not invented. Per the original brief, "the owner may later add a textile engineering project, sustainability study, retail analysis, automation project, or another piece of relevant work" — add it to `lib/content.ts`'s `projects` array and it will automatically get a route, a card, and prev/next navigation.
 - **Résumé**: no file in the repo yet; `/info` has a labelled placeholder for the eventual link.

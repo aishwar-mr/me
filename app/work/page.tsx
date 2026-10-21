@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const HEIGHTS = ["h-[70vw] md:h-[32vw]", "h-[70vw] md:h-[32vw]", "h-[70vw] md:h-[26vw]"];
 
 export default function WorkIndex() {
-  const items = [...projects, null];
+  const items = projects;
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function WorkIndex() {
         <section className="px-[4vw] pb-24 md:pb-32">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
             {items.map((project, index) => (
-              <div key={project?.slug ?? "coming-soon"} className="md:col-span-6">
+              <div key={project.slug} className="md:col-span-6">
                 <ProjectCard
                   project={project}
                   seed={index + 2}

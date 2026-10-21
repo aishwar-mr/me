@@ -11,6 +11,13 @@ export function CaseStudySection({ section, index }: { section: ProjectSection; 
           <p className="max-w-2xl text-base leading-relaxed text-text-muted md:text-lg">
             {section.body}
           </p>
+          {section.points && (
+            <ul className="mt-5 max-w-2xl list-disc space-y-2 pl-5 text-base leading-relaxed text-text-muted md:text-lg">
+              {section.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          )}
           {section.image && (
             <figure className="mt-8 max-w-xl">
               <Image
