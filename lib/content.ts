@@ -25,7 +25,7 @@ export const site = {
   email: "aishwar.r.mishra@gmail.com",
   phone: "+91 75587 73043",
   socials: {
-    linkedin: "https://linkedin.com/in/aishwar-mishra",
+    linkedin: "https://www.linkedin.com/in/aishwar-mishra",
     github: "https://github.com/aishwar-mr",
     x: "https://x.com/aishwar_mr",
   },

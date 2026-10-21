@@ -15,6 +15,12 @@ export function SiteFooter() {
         <a href={site.socials.linkedin} className="hover:text-text">
           LinkedIn
         </a>
+        <a href={site.socials.github} className="hover:text-text">
+          GitHub
+        </a>
+        <a href={site.socials.x} className="hover:text-text">
+          X
+        </a>
         <a href={`mailto:${site.email}`} className="hover:text-text">
           Email
         </a>
