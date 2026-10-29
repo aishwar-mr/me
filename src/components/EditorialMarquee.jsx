@@ -31,7 +31,7 @@ export function EditorialMarquee() {
       className="overflow-hidden border-y border-ink/10 py-5"
     >
       {reduced ? (
-        <div className="flex justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-y-3 px-6 text-center">
           <Row />
         </div>
       ) : (

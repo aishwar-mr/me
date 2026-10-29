@@ -6,7 +6,7 @@ const LINKS = [
   {
     to: "/experience",
     label: "Experience",
-    text: "Every role, every org — Newton School, Lawxy AI, Ninjacart and more, with the full scope of each one.",
+    text: "Every role, every org — TCI, Lawxy AI, Ninjacart and more, with the full scope of each one.",
     testId: "home-explore-experience",
   },
   {

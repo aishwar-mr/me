@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { CONTACT, EMAIL, NAME } from "@/content";
 import { EASE } from "@/motion";
+import { BearMascot } from "@/components/BearMascot";
 
 export function ContactFooter() {
   return (
@@ -12,16 +13,19 @@ export function ContactFooter() {
     >
       <div>
         <p className="label">Contact</p>
-        <motion.h2
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="mt-4 font-display text-[clamp(3rem,10vw,9rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-ink"
-        >
-          {CONTACT.headingLines[0]} {CONTACT.headingLines[1].replace(".", "")}
-          <span className="text-vermilion">.</span>
-        </motion.h2>
+        <div className="mt-4 flex items-end justify-between gap-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="font-display text-[clamp(3rem,10vw,9rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-ink"
+          >
+            {CONTACT.headingLines[0]} {CONTACT.headingLines[1].replace(".", "")}
+            <span className="text-vermilion">.</span>
+          </motion.h2>
+          <BearMascot className="mb-[0.15em]" />
+        </div>
         <p
           data-testid="contact-note"
           className="mt-6 max-w-md text-base leading-relaxed text-ink/70"
@@ -47,7 +51,7 @@ export function ContactFooter() {
       </div>
 
       <div className="mt-24 flex flex-col gap-2 border-t border-ink/15 pt-5 text-xs text-ink/70 sm:flex-row sm:items-center sm:justify-between">
-        <p data-testid="footer-credit">&copy; {NAME} — One-Page Brief</p>
+        <p data-testid="footer-credit">&copy; {NAME}</p>
         <p data-testid="footer-note">{CONTACT.footerNote}</p>
       </div>
     </footer>

@@ -5,8 +5,8 @@
 import portrait from "@/assets/info/portrait.jpg";
 import lawxyLogo from "@/assets/logos/lawxy.png";
 import lvlupLogo from "@/assets/logos/lvlup-venture.png";
-import newtonLogo from "@/assets/logos/newton-school.png";
 import ninjacartLogo from "@/assets/logos/ninjacart.png";
+import tciLogo from "@/assets/logos/tci.png";
 import technovanzaLogo from "@/assets/logos/technovanza.png";
 import vjtiLogo from "@/assets/logos/vjti.jpg";
 import worldquantLogo from "@/assets/logos/worldquant-brain.png";
@@ -23,27 +23,23 @@ export const STORY = {
     "Business generalist across startups, technology, and consumer businesses.",
     "I’m an Engineering senior undergrad at Veermata Jijabai Technological Institute (VJTI), Mumbai with a minor in Data Science, interested in solving business problems at the intersection of strategy, technology, and operations.",
     "I’ve worked in fundraising, business analytics, sales, and program management at startups, turning ambiguous problems into structured processes and measurable outcomes. I learn quickly, collaborate across functions, and take ownership from research through execution.",
-    "I’ve worked on commercial pricing analysis at Ninjacart, fundraising and enterprise outreach at Lawxy AI, and program development at Newton School. I’m currently focused on opportunities in strategy, founder’s office, business operations, and commercial growth where I can combine analytical thinking with hands-on execution.",
+    "I’ve worked on commercial pricing analysis at Ninjacart, fundraising and enterprise outreach at Lawxy AI, and supply chain work at Transport Corporation of India (TCI). I’m currently focused on opportunities in strategy, founder’s office, business operations, and commercial growth where I can combine analytical thinking with hands-on execution.",
   ],
 };
 
 // Each entry with a `slug` gets its own page at /experience/:slug.
 export const EXPERIENCE = [
   {
-    slug: "newton-school",
+    slug: "tci",
     group: "Corporate",
     period: "Oct 2026 — Present",
     note: "Part-time",
-    title: "Program Intern",
-    organisation: "Newton School",
-    href: "https://www.newtonschool.co",
-    logo: newtonLogo,
-    location: "Mumbai, India",
-    points: [
-      "Built the SOP and funnel tracker for a new alumni placement pilot (15+ companies, 140+ candidates), increasing outreach by 30+ emails a day",
-      "Onboarded 80+ candidates to the screening assessment through one-on-one call strategy with Key Account Managers, with 44 completing it (55%)",
-      "Screened and referred 60 candidates to partner companies, securing 8 interviews and the pilot’s first placement",
-    ],
+    title: "Supply Chain Intern",
+    organisation: "Transport Corporation of India (TCI)",
+    href: "https://tcil.com",
+    logo: tciLogo,
+    // Scope not supplied yet — left blank rather than invented.
+    points: ["Scope and highlights — pending."],
   },
   {
     slug: "lawxy-ai",

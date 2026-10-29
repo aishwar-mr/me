@@ -1,24 +1,25 @@
 export const NAME = "Aishwar Mishra";
-export const ROLE = "Journalist";
+export const ROLE = "Generalist";
 export const EMAIL = "aishwar.r.mishra@gmail.com";
 
 export const HERO = {
   eyebrowName: NAME,
   eyebrowRole: ROLE,
   lines: ["One person,", "every room."],
-  sub: "A journalist who can sit on a complex technical call with a customer, move straight into a normal stakeholder meeting, then do the ops work — or sit with marketing to unblock what's stuck.",
+  sub: "A generalist who can sit on a complex technical call with a customer, move straight into a normal stakeholder meeting, then do the ops work — or sit with marketing to unblock what's stuck.",
   meta: [
     { k: "Based in", v: "Mumbai" },
-    { k: "Currently", v: "Program Intern, Newton School" },
+    { k: "Currently", v: "Supply Chain Intern, TCI" },
     { k: "Status", v: "Open to work" },
   ],
 };
 
 export const MARQUEE_ITEMS = [
   "Technical calls",
-  "Stakeholder meetings",
-  "Ops",
+  "Stakeholder management",
+  "Operations",
   "Marketing",
+  "Product life cycle management (PLM)",
 ];
 
 // Stories are drawn from the résumé and the Notion portfolio; nothing beyond them.
