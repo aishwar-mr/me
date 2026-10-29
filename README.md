@@ -1,86 +1,71 @@
-# aishwar-mishra
+# One-Page Brief
 
-Portfolio site. Next.js (App Router) + TypeScript + Tailwind CSS, built as
-a static export and deployed to GitHub Pages under `/me/`.
+A standalone personal site for Aishwar Mishra. The home page is a tight,
+one-screen-at-a-time brief; two inner sections — **Experience** and **Work**
+— go deeper, each with its own detail pages. This project is self-contained:
+nothing on it links to or depends on any other project or localhost.
 
-**Status:** Separate-page architecture with a cinematic, scroll-driven
-hero animation. `/`, `/info`, `/work`, `/contact`, and two case-study
-routes are all genuinely distinct pages (not anchors) with full SEO
-metadata, zero automated accessibility violations, and Lighthouse
-scores of 98–100 across performance/accessibility/best practices/SEO.
-See `docs/PRD.md` for the full, current specification — it supersedes
-the original `writing-block.md` draft. Real photography, résumé, and
-case-study content are still pending — see "What's still a
-placeholder" below.
+Originally recovered from an Emergent-built preview (see `reference/` and the
+"Original extraction" section below), then extended with routing and the
+owner's full background.
 
-## Local development
+## Run it
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:5174 (configured in package.json/vite.config.js)
+npm run build    # static output in dist/
 ```
 
-Open [http://localhost:3000/me/](http://localhost:3000/me/) — the
-`/me` prefix matches the production basePath configured in
-`next.config.ts`.
+## Site map
 
-## Build
+| Route | What it is |
+|---|---|
+| `/` | The one-page brief: hero, proof strip, "How I work" timeline, a "Go deeper" bridge |
+| `/story` | Short bio + portrait |
+| `/experience` | Every role — Corporate, Community-led/Collegiate, Education — plus Honors, Certifications, Additional info |
+| `/experience/:slug` | One role in full (logo, scope, dates, bullets), with prev/next |
+| `/work` | Project index: Track Monitoring, Product Teardowns, Frappe Builder Blog, Digital Product Passport |
+| `/work/:slug` | One project's case study (Problem/Approach/Solution/Result-style sections) |
+| `/work/:slug/:item` | A nested write-up under a project (e.g. a teardown, the full blog post) |
 
-```bash
-npm run build
-```
+## What's here
 
-Outputs a static export to `out/` — `index.html`/`[slug]/index.html`
-per route, plus `sitemap.xml` and `robots.txt`. `public/.nojekyll` is
-required so GitHub Pages doesn't drop the underscore-prefixed
-`_next/` asset folder during Jekyll processing.
+| Path | What it is |
+|---|---|
+| `src/App.js` | Route table + shared chrome (nav, noise overlay, contact footer) |
+| `src/pages/*.jsx` | One file per route above |
+| `src/components/*.jsx` | Shared UI: `Reveal`, `PageHero`, `PageNav`, `CaseStudySection`, `ProjectCard`, `OrgLogo`, `InProgressTile`, etc. |
+| `src/data/background.js` | Experience, education, honors, certifications, additional info, "My story" |
+| `src/data/work.js` | Projects and their case-study sections |
+| `src/content.js` | Home-page-specific copy: hero, proof items, "How I work" timeline |
+| `src/assets/` | Portrait, organisation logos, project images |
 
-## Deploy
+Background and work content was ported from the owner's main portfolio
+project so this site carries the same information independently — the data
+files above are plain JS copies, not a live dependency on that project.
 
-`.github/workflows/deploy.yml` builds and publishes `out/` to GitHub
-Pages automatically on every push to `main`, via the official
-`actions/deploy-pages` flow (no `gh-pages` branch, no manual step).
+## Notes
 
-One-time setup: repo **Settings → Pages → Source → GitHub Actions**
-(not "Deploy from a branch" — that's the old static-HTML-era setting
-and will conflict with this workflow).
+- **Routing:** client-side via `react-router-dom`, `BrowserRouter`. The dev
+  and preview servers both fall back to `index.html` for unknown paths, so
+  deep links work locally; a production static host needs the same SPA
+  fallback configured.
+- **Tailwind:** real Tailwind (not just the original's compiled-CSS snapshot)
+  is configured in `tailwind.config.js`, with `paper` / `ink` / `vermilion`
+  (plus a darker `vermilion-text` for small red text, which needed it to
+  clear 4.5:1 contrast) as the custom colours.
+- **Logos without a source file** (none currently) would fall back to an
+  initials tile — see `OrgLogo.jsx`.
 
-`lib/content.ts` assumes the site is served at
-`https://aishwar-mr.github.io/me` (derived from the GitHub handle in
-`site.socials.github`) — update `siteUrl` there if a custom domain is
-added later, since it feeds `metadataBase`, the sitemap, and
-`robots.txt`.
+## Original extraction
 
-## Content
-
-Site copy, nav links, capabilities, and project data (including
-case-study section text) live in `lib/content.ts`, kept separate from
-the layout components in `components/`.
-
-## SEO & accessibility
-
-- Per-page metadata (title, description, Open Graph, Twitter card) via
-  each route's `metadata`/`generateMetadata` export.
-- `app/sitemap.ts` and `app/robots.ts` generate `sitemap.xml` and
-  `robots.txt` at build time.
-- Person JSON-LD on the homepage.
-- Skip-to-content link, semantic landmarks, and focus-visible states
-  throughout.
-- Zero violations against axe-core's WCAG 2.0/2.1 A+AA rule set,
-  verified across all routes, mobile, and the mobile-menu-open state.
-
-## What's still a placeholder
-
-- Hero collage images and all project covers are flat-colour tiles
-  marked "Placeholder" / "— case study pending" — no real photography
-  is wired in yet.
-- Digital Product Passport is shown as work in progress (Result pending).
-  Track Monitoring and the two Product Teardowns are published
-  (Problem / Approach / Solution / Result); Feedback sections are
-  waiting on real feedback.
-- The Product Teardowns cover is a third-party diagram — swap for your own.
-- `/info` carries the résumé content, but there is no downloadable résumé link yet; "My story" text is pending.
-- The contact form renders but isn't connected to a submission
-  endpoint; submitting shows an explicit "not connected yet" message
-  rather than faking success.
-- `public/favicon.ico` is still the default Next.js icon.
+The home page's code was originally recovered from a live Emergent preview
+(`https://one-page-brief-3--4qcqvs6z.preview.emergentagent.com/`, a Create
+React App). That preview served a development bundle with a full source map,
+so the original `src/App.js`, `src/motion.js`, `src/content.js` and the
+components under `src/components/` were recovered as written, not decompiled.
+`reference/rendered-snapshot.html` and `reference/original-full-page.png` are
+kept from that extraction for reference. The original used Create React App
++ craco; this project uses Vite with the same `@` → `src` alias and JSX-in-
+`.js` support, so those recovered files needed no changes.
