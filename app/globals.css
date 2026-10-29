@@ -40,6 +40,18 @@ body {
   }
 }
 
+/* Continuous Ken Burns zoom for the hero collage tiles. Each tile overrides
+   --zoom-dur so the set reads organic rather than synchronised. The outer
+   tile motion (scroll shrink/fade, parallax) lives on separate elements. */
+@keyframes heroZoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

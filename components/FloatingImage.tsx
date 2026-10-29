@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { motion, type MotionValue, useTransform } from "motion/react";
 import { PlaceholderTile } from "./PlaceholderTile";
 
@@ -18,11 +19,17 @@ export type FloatingImageSpec = {
   scrollYRange: [number, number];
   scrollRotateRange: [number, number];
   hideOnMobile?: boolean;
+  /** Bundled photo for the tile. Falls back to a PlaceholderTile when absent. */
+  image?: StaticImageData;
+  /** Seconds for one in/out zoom cycle; staggered so tiles don't move in lockstep. */
+  zoomDurationSec?: number;
 };
 
 export function FloatingImage({
   spec,
   index,
+  image,
+  zoomDurationSec,
   visible,
   reducedMotion,
   isMobile,
@@ -31,12 +38,17 @@ export function FloatingImage({
 }: {
   spec: FloatingImageSpec;
   index: number;
+  /** Current photo for this tile (parent rotates it so each shows once). */
+  image?: StaticImageData;
+  /** Seconds for one in/out zoom cycle. */
+  zoomDurationSec?: number;
   visible: boolean;
   reducedMotion: boolean;
   isMobile: boolean;
   parallax: { x: number; y: number };
   scrollYProgress: MotionValue<number>;
 }) {
+  const photo = image ?? spec.image;
   const travelScale = isMobile ? 0.4 : 1;
 
   // Always compute the full animated values — useTransform's output range
@@ -81,12 +93,29 @@ export function FloatingImage({
         }
       >
         <div
-          className={`h-full w-full shadow-[0_18px_40px_-20px_rgba(0,0,0,0.35)] ${
+          className={`relative h-full w-full overflow-hidden shadow-[0_18px_40px_-20px_rgba(0,0,0,0.35)] ${
             visible ? "opacity-100" : "opacity-0"
           }`}
           style={innerStyle}
         >
-          <PlaceholderTile seed={index} className="h-full w-full" />
+          {photo ? (
+            <Image
+              src={photo}
+              alt=""
+              fill
+              sizes="15vw"
+              aria-hidden
+              className="object-cover will-change-transform"
+              style={{
+                transformOrigin: "50% 50%",
+                animation: reducedMotion
+                  ? undefined
+                  : `heroZoom ${zoomDurationSec ?? spec.zoomDurationSec ?? 8}s ease-in-out infinite alternate`,
+              }}
+            />
+          ) : (
+            <PlaceholderTile seed={index} className="h-full w-full" />
+          )}
         </div>
       </motion.div>
     </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { portraitImage, story } from "@/lib/content";
+import { portraitImage, story, storyHeading, storyKicker } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
 
@@ -22,10 +22,20 @@ export function MyStory() {
 
         <Reveal delayMs={80}>
           {story.length > 0 ? (
-            <div className="max-w-2xl space-y-5 text-base leading-relaxed text-text-muted md:text-lg">
-              {story.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+            <div className="max-w-2xl">
+              <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-text-muted">
+                ~ {storyKicker}
+              </p>
+              <h3 className="mb-6 text-2xl font-semibold uppercase tracking-tight md:text-3xl">
+                {storyHeading}
+              </h3>
+              <div className="space-y-5 text-base leading-relaxed text-text-muted md:text-lg">
+                {story.map((paragraph, index) => (
+                  <p key={paragraph} className={index === 0 ? "font-medium text-text" : undefined}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
           ) : (
             <p className="max-w-xl text-base leading-relaxed text-text-muted md:text-lg">

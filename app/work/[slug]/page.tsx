@@ -56,7 +56,7 @@ export default async function ProjectPage({
         {project.sections.map((section, index) => (
           <CaseStudySection key={section.id} section={section} index={index} />
         ))}
-        {project.items && <ProjectItemList heading="Teardowns" items={project.items} projectSlug={project.slug} />}
+        {project.items && <ProjectItemList heading={project.itemsHeading ?? "Teardowns"} items={project.items} projectSlug={project.slug} />}
         <ProjectNavigation
           previous={previous && { title: previous.title, href: `/work/${previous.slug}` }}
           next={next && { title: next.title, href: `/work/${next.slug}` }}

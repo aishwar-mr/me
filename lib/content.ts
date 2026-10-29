@@ -1,13 +1,18 @@
 import type { StaticImageData } from "next/image";
 import prototypeOnTrack from "@/assets/work/track-monitoring/prototype-on-track.jpg";
 import fastenerDetection from "@/assets/work/track-monitoring/fastener-detection.jpg";
+import frappeBanner from "@/assets/work/frappe-builder/blog-banner.png";
+import frappeTokens from "@/assets/work/frappe-builder/design-tokens.png";
+import frappeCanvas from "@/assets/work/frappe-builder/builder-canvas.png";
 import teardownsCover from "@/assets/work/product-teardowns/cover.png";
 import portrait from "@/assets/info/portrait.jpg";
 import lawxyLogo from "@/assets/logos/lawxy.png";
+import lvlupLogo from "@/assets/logos/lvlup-venture.png";
 import newtonLogo from "@/assets/logos/newton-school.png";
 import ninjacartLogo from "@/assets/logos/ninjacart.png";
 import technovanzaLogo from "@/assets/logos/technovanza.png";
 import vjtiLogo from "@/assets/logos/vjti.jpg";
+import worldquantLogo from "@/assets/logos/worldquant-brain.png";
 
 export const portraitImage = {
   src: portrait,
@@ -79,13 +84,18 @@ export type TimelineEntry = {
   note?: string;
   title: string;
   organisation: string;
-  location: string;
+  /** Team or function within the organisation, shown after its name. */
+  team?: string;
+  location?: string;
+  /** Organisation website; the name links to it when set. */
+  href?: string;
   /** Organisation mark, taken from its own website. Entries without one show an initials tile. */
   logo?: StaticImageData;
   points: string[];
 };
 
-// Source: Aishwar_Mishra_Résumé.pdf. Wording is kept close to the résumé; numbers are as stated there.
+// Sources: Aishwar_Mishra_Résumé.pdf and the owner's Notion portfolio (INFO page).
+// Where the two differ (titles, dates), the résumé wording is used.
 export const education: TimelineEntry[] = [
   {
     period: "2023 — 2027",
@@ -95,8 +105,6 @@ export const education: TimelineEntry[] = [
     location: "Mumbai, MH",
     points: [
       "Coursework: Product Design and Development, Research Methodology, Linear Programming, Entrepreneurship for Engineers",
-      "National Semi-finalist, Finvent ’24 (Portfolio Management), IIT Madras — 54 of 627",
-      "Gold Level, WorldQuant BRAIN — 10K+ points, 14 alphas",
     ],
   },
 ];
@@ -107,6 +115,7 @@ export const experience: TimelineEntry[] = [
     note: "Part-time",
     title: "Program Intern",
     organisation: "Newton School",
+    href: "https://www.newtonschool.co",
     logo: newtonLogo,
     location: "Mumbai, India",
     points: [
@@ -120,6 +129,8 @@ export const experience: TimelineEntry[] = [
     note: "Summer",
     title: "Founder’s Office Intern",
     organisation: "Lawxy AI",
+    team: "Strategy & Investments",
+    href: "https://www.lawxyai.com",
     logo: lawxyLogo,
     location: "Mumbai, India",
     points: [
@@ -132,6 +143,8 @@ export const experience: TimelineEntry[] = [
     period: "Jan — Mar 2026",
     title: "Business Operations Intern",
     organisation: "Ninjacart",
+    team: "Central Analytics",
+    href: "https://ninjacart.com",
     logo: ninjacartLogo,
     location: "Bengaluru, India",
     points: [
@@ -141,31 +154,107 @@ export const experience: TimelineEntry[] = [
   },
 ];
 
-export const leadership: TimelineEntry[] = [
+export const community: TimelineEntry[] = [
+  {
+    period: "Dec 2026 — Present",
+    title: "Venture Scout",
+    organisation: "LvlUp Venture",
+    href: "https://www.lvlup.vc",
+    logo: lvlupLogo,
+    points: [
+      "Venture Scout (conducted 8 interviews with folks from Retail, Edtech, SaaS domains; submitted 2 for review & further processing)",
+    ],
+  },
   {
     period: "Dec 2025 — May 2026",
     title: "Sponsorship Head",
-    organisation: "Technovanza",
+    organisation: "Technovanza VJTI",
+    href: "https://www.linkedin.com/company/technovanza-vjti/",
     logo: technovanzaLogo,
     location: "Mumbai, India",
     points: [
-      "Led a 30-member team to secure INR 4L+ in corporate sponsorships; personally closed INR 1L+ (20% of total) through structured outreach and negotiation",
+      "Led a 30-member team to secure INR 4L+ in corporate sponsorship; personally closed INR 1L+ (20% of total) through structured outreach & negotiation",
     ],
+  },
+  {
+    period: "May — Nov 2025",
+    title: "Gold Researcher",
+    organisation: "WorldQuant BRAIN",
+    href: "https://worldquantbrain.com/consultant",
+    logo: worldquantLogo,
+    points: [
+      "Gold Level Researcher (10k+ points); submitted 14 alphas & got an offer to work as Research Consultant",
+    ],
+  },
+];
+
+export type Honor = { title: string; detail: string; href?: string };
+
+export const honors: Honor[] = [
+  {
+    title: "National Semi-finalist — Finvent (Portfolio Management Competition)",
+    detail: "Shaastra 2025, IIT Madras · rank 54 of 627 participants · Team “Finzard”",
+    href: "https://unstop.com/competitions/finvent-finance-reimagined-shaastra-2025-iit-madras-1204197",
+  },
+  {
+    title: "Enthusia ’25 — 10 km",
+    detail: "44 min 18 s; placed among the top 20 of 300+ participants",
+  },
+];
+
+export type Certification = { title: string; issuer: string; date: string; href: string };
+
+export const certifications: Certification[] = [
+  {
+    title: "Agile Project Management",
+    issuer: "Google",
+    date: "Sep 2024",
+    href: "https://www.coursera.org/account/accomplishments/verify/W01ZGR4EP87W",
+  },
+  {
+    title: "Financial Analysis",
+    issuer: "London Business School",
+    date: "Dec 2025",
+    href: "https://www.coursera.org/account/accomplishments/verify/5CZ9CSS9WOFQ",
+  },
+  {
+    title: "Intro to Programming with Python (CS106A)",
+    issuer: "Stanford Code In Place",
+    date: "Nov 2026 (ongoing)",
+    href: "https://codeinplace.stanford.edu",
+  },
+  {
+    title: "Gold Level",
+    issuer: "WorldQuant BRAIN",
+    date: "Jun 2025",
+    href: "https://drive.google.com/file/d/1Hj-Lv8foID-jK6VPGM9v3rvnwRehrgP3/view?usp=sharing",
   },
 ];
 
 export const additionalInfo = [
   { label: "Languages", value: "Fluent in English and Marathi; native speaker of Hindi; basic Spanish" },
-  { label: "Tools", value: "MS Office, SQL, Python, Tableau" },
-  { label: "Certifications", value: "Stanford Code In Place; London Business School — Financial Analysis" },
-  { label: "Interests", value: "Basketball, Athletics, Trekking" },
+  {
+    label: "Core skills",
+    value:
+      "Business Operations & Analytics, Competitive Intelligence, Pricing & Procurement Analysis, Sales & Business Development, Fundraising Support, Process Improvement, Project & Program Management, Stakeholder Management, and Cross-Functional Execution",
+  },
+  {
+    label: "Tools & technologies",
+    value:
+      "Excel, Google Sheets, SQL, Python, Tableau, Google Apps Script, API Integration, and AI tools for research and workflow automation",
+  },
+  { label: "Interests", value: "Athletics, Basketball, Trekking & Trail" },
 ];
 
-/**
- * "My story" — paragraphs in the owner's own words. Left empty on purpose:
- * the page shows a pending state until real text is supplied.
- */
-export const story: string[] = [];
+/** "My story", from the owner's Notion portfolio (home page). The first paragraph is the lead line. */
+export const storyKicker = "Your neighborhood builder";
+export const storyHeading = "Hi, I’m Aishwar";
+export const story: string[] = [
+  "Business generalist across startups, technology, and consumer businesses.",
+  "I’m an Engineering senior undergrad at Veermata Jijabai Technological Institute (VJTI), Mumbai with a minor in Data Science, interested in solving business problems at the intersection of strategy, technology, and operations.",
+  "I’ve worked in fundraising, business analytics, sales, and program management at startups, turning ambiguous problems into structured processes and measurable outcomes. I learn quickly, collaborate across functions, and take ownership from research through execution.",
+  "I’ve worked on commercial pricing analysis at Ninjacart, fundraising and enterprise outreach at Lawxy AI, and program development at Newton School. I’m currently focused on opportunities in strategy, founder’s office, business operations, and commercial growth where I can combine analytical thinking with hands-on execution.",
+];
 
 export type ProjectSection = {
   id: string;
@@ -198,6 +287,8 @@ export type Project = {
   cover?: { src: StaticImageData; alt: string; fit?: "cover" | "contain" };
   /** A list of entries (e.g. individual teardowns) shown under the sections. */
   items?: ProjectItem[];
+  /** Heading above `items`; defaults to "Teardowns". */
+  itemsHeading?: string;
   sections: ProjectSection[];
   /** true until the owner supplies real, approved case-study content. */
   placeholder: boolean;
@@ -264,9 +355,9 @@ export const projects: Project[] = [
     title: "Track Monitoring",
     category: "Rail infrastructure",
     summary:
-      "A low-cost, contactless track-monitoring prototype for Indian Railways, built for Smart India Hackathon 2025.",
+      "A low-cost, contactless track-monitoring prototype for Indian Railways. Smart India Hackathon ’25 — 1st out of 80 teams (inter-college).",
     year: "2025",
-    role: "Computer vision & field testing",
+    role: "Team member — architecture & hybrid localisation",
     placeholder: false,
     cover: {
       src: prototypeOnTrack,
@@ -276,12 +367,26 @@ export const projects: Project[] = [
       {
         id: "problem",
         heading: "Problem",
-        body: "Indian Railways depends on imported track-monitoring systems — about ₹180 crore for a full system — that are closed-source, hard to customise and lock the buyer to one vendor. GPS-only defect localisation is also imprecise.",
+        body: "Current ITMS technology deployed by Indian Railways relies on closed-source Russian systems costing upwards of ₹180 crore. This reliance creates high procurement and maintenance costs, limited customisation, vendor lock-in, and inefficient defect localisation (due to poor GPS accuracy).",
+      },
+      {
+        id: "contribution",
+        heading: "My contribution",
+        body: "As part of the team:",
+        points: [
+          "Helped develop a scalable, compact, and plug-and-play architecture that analyses track geometry parameters",
+          "Assisted in implementing a hybrid localisation system fusing GPS and IMU sensors for uninterrupted chainage mapping",
+        ],
       },
       {
         id: "approach",
-        heading: "Approach",
-        body: "A compact, contactless rig built on ITMS principles: laser, ultrasonic and IMU sensors plus an ESP32 camera, with Python, OpenCV and a neural network on a Raspberry Pi. Edge computing flags faults in real time; the cloud handles long-term trends. GPS and IMU are fused so defects keep a chainage position when GPS drops.",
+        heading: "Approach & key decisions",
+        body: "A compact, contactless rig built on ITMS principles: laser, ultrasonic and IMU sensors plus an ESP32 camera, with Python, OpenCV and a neural network on a Raspberry Pi. Edge computing flags faults in real time; the cloud handles long-term trends.",
+        points: [
+          "Understanding the problem: evaluated EN 13848 standards and RDSO (Research Designs and Standards Organization) accuracy requirements, so the indigenous solution would meet or exceed current proprietary benchmarks",
+          "Building the solution: an open, standards-compliant software stack (Python, OpenCV) on edge computing (Raspberry Pi), with AI/ML-driven analytics to identify defect patterns and a modular hardware setup using laser sensors, ultrasonic sensors, and an IMU",
+          "Testing & iteration: prototyped and tested the hardware live on the Central Railways tracks in Mumbai, validating real-time data acquisition and processing",
+        ],
       },
       {
         id: "solution",
@@ -295,8 +400,23 @@ export const projects: Project[] = [
       },
       {
         id: "result",
-        heading: "Result",
-        body: "Field-tested on live Central Railway track in Mumbai: real-time data acquisition and defect detection worked end to end. Projected full-system cost is about ₹30 crore against ₹180 crore for the current system — roughly one-sixth (team cost analysis).",
+        heading: "Results & impact",
+        body: "Smart India Hackathon ’25: 1st out of 80 teams (inter-college). Field-tested on live Central Railway track in Mumbai — real-time data acquisition and defect detection worked end to end.",
+        points: [
+          "Cost reduction: projected system cost falls from ₹180 crore (imported) to ₹30 crore (indigenous), lowering capital and operating expenses",
+          "Accuracy & compliance: the system complied with EN 13848 Part 1 & 2 and RDSO TM/IM/448 (Rev 1: 2023) accuracy standards during testing",
+          "National impact: advances “Atmanirbhar Bharat” (self-reliance) by ensuring data sovereignty and removing foreign vendor lock-in for critical railway safety data",
+        ],
+      },
+      {
+        id: "challenges",
+        heading: "Challenges",
+        body: "A major challenge was the low accuracy of standard GPS for precise defect localisation along the tracks.",
+      },
+      {
+        id: "next-steps",
+        heading: "Learnings / next steps",
+        body: "To solve the GPS accuracy limitation, the team proposed integrating RFID tags directly on the railway tracks to significantly improve the accuracy of chainage mapping for defect localisation in future iterations.",
       },
     ],
   },
@@ -312,6 +432,7 @@ export const projects: Project[] = [
       alt: "Venn diagram of three overlapping circles labelled UX, Tech and Business, with a point marked at the centre where they meet.",
       fit: "contain",
     },
+    itemsHeading: "Teardowns",
     sections: [],
     // Add each breakdown here. With `slug` + `sections` it gets its own page
     // (same Problem / Approach / Solution / Result format); otherwise it's a
@@ -374,6 +495,112 @@ export const projects: Project[] = [
             id: "result",
             heading: "Result",
             body: "What held up: the agent closed the feedback loop quickly, separated hard constraints from ranking boosts, and didn't invent a reason for a blank rejection. The differentiated parts are the Filters vs Criteria split, pinned skills (AND vs OR), company-group timing and Likely to Switch; Boolean still earns its place for exact conditions. Open question: when does feedback become a hard filter rather than a ranking signal?",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "frappe-builder-blog",
+    title: "Frappe Builder Blog",
+    category: "Content & positioning",
+    summary:
+      "A marketing blog positioning Frappe Builder as an operational lever for product and marketing teams tired of waiting on engineering.",
+    year: "2026",
+    role: "Writing & positioning",
+    placeholder: false,
+    cover: {
+      src: frappeCanvas,
+      alt: "Frappe Builder’s visual editor showing a page layout tree, the page canvas and a properties panel.",
+    },
+    itemsHeading: "Deliverable",
+    sections: [
+      {
+        id: "context",
+        heading: "Context & goal",
+        body: "The objective was to position Frappe Builder not just as another drag-and-drop website tool, but as a strategic operational lever for small-to-mid-sized companies. The goal was a compelling blog post speaking directly to the pain points of Product Managers (PMs) and Marketing teams tired of being bottlenecked by engineering cycles.",
+      },
+      {
+        id: "approach",
+        heading: "Strategy & approach",
+        body: "Instead of a laundry list of technical features, the narrative is structured around organisational friction and cost-efficiency:",
+        points: [
+          "The “sprint ticket” hook: addressed the universal friction between Marketing and Engineering in the opening line (“Your website shouldn’t need a sprint ticket”), establishing empathy with the target persona",
+          "Reframing the cost of AI: positioned Frappe’s Bring-Your-Own-Key (BYOK) AI generation as a structural pricing advantage (“You pay for AI at cost, not at markup”) rather than just a feature, appealing to budget-conscious founders and RevOps leaders",
+          "Mitigating fear (version control): highlighted that the real reason non-technical teams don’t edit websites is fear of breaking them, positioning version control as a psychological safety net",
+          "Addressing the speed elephant: tackled the common objection to visual builders (bloated code) by tying Frappe’s open-source ethos to its Lighthouse performance scores",
+        ],
+      },
+      {
+        id: "skills",
+        heading: "Key highlights & skills demonstrated",
+        body: "What this piece shows:",
+        points: [
+          "Value-based messaging: translating technical features (design tokens, AGPL-3.0, version control) into tangible business outcomes — brand intactness, recovered engineering hours, removing the “don’t touch it” tax",
+          "Persona targeting: writing for a dual audience — the speed Marketing and PMs need, while respecting the performance standards Engineering demands",
+          "B2B SaaS storytelling: a clear, readable narrative that guides the reader from the problem (bottlenecks) to the solution (Frappe), ending with clear next steps (Frappe Cloud vs. self-hosted)",
+        ],
+      },
+    ],
+    items: [
+      {
+        slug: "your-website-shouldnt-need-a-sprint-ticket",
+        title: "Your website shouldn’t need a sprint ticket",
+        summary: "The full blog post, as written.",
+        year: "2026",
+        role: "Writing & positioning",
+        sections: [
+          {
+            id: "intro",
+            heading: "Introduction",
+            body: "Most product teams at small and mid-sized companies share the same quiet bottleneck. Marketing needs a landing page. Engineering owns the website. The page ships two weeks late, if it ships at all - and by then the campaign has moved on.\n\nThe usual fix is a visual builder. But that trade has its own cost: you get drag-and-drop ease and you hand back performance, brand consistency, and often a per-seat bill that grows faster than your team.\n\nFrappe Builder was built to avoid that trade. Here’s what actually changes when a PM has it.",
+            image: {
+              src: frappeBanner,
+              alt: "Frappe Builder landing page headline reading “Build your website blazingly fast.” with a “Try Frappe Builder for free” button.",
+            },
+          },
+          {
+            id: "waiting",
+            heading: "You stop waiting",
+            body: "Edit a page section by section on a visual canvas, preview it, publish in one click. No ticket, no deploy window, no negotiating for engineering time.\n\nFor a team running multiple campaigns a quarter, this returns roughly 30 engineering hours to the roadmap and moves page turnaround from days to hours.",
+            image: {
+              src: frappeCanvas,
+              alt: "Frappe Builder’s visual editor showing a page layout tree, the page canvas and a properties panel.",
+            },
+          },
+          {
+            id: "fear",
+            heading: "You stop being afraid to touch it",
+            body: "The reason non-technical teams avoid the website isn’t that editing is hard - it’s that breaking something is expensive. Builder has version control, so every change is recoverable, and preview means nothing goes live unseen.\n\nPractically: mean-time-to-fix on a bad page drops from hours to minutes, and the “let’s just not touch it” tax disappears.",
+          },
+          {
+            id: "brand",
+            heading: "Your brand stays intact when more people can publish",
+            body: "Design tokens let you define your palette, fonts and templates once. Every new page inherits them. Light and dark themes stay aligned without anyone thinking about it.\n\nThen invite your sales, support and regional teams as business users while keeping admin control where it belongs. Publishing capacity goes from 5-10 people to 2-3 - without a proportional increase in design review or brand cleanup.",
+            image: {
+              src: frappeTokens,
+              alt: "Frappe Builder’s Design Tokens panel listing six colour tokens with light and dark values.",
+            },
+          },
+          {
+            id: "ai-cost",
+            heading: "You pay for AI at cost, not at markup",
+            body: "This is the part worth pausing on.\n\nBuilder ships with BOB, an AI page generator - and you bring your own API key. You pay the model provider directly. Nothing sits in between adding margin.\n\nCompare that to the standard model, where AI generation is bundled into a per-seat subscription per user per month whether you use it or not. With your own key, cost tracks usage rather than headcount. At X pages a month across M users, the difference is ₹N a year.\n\nThe deeper point is structural: your AI bill scales with what you actually generate, not with how many people you hire.",
+          },
+          {
+            id: "measure",
+            heading: "You see whether it worked",
+            body: "Connect your own domain, embed video or third-party content, and read analytics in the same place you built the page. The loop between shipping and knowing closes from multiple days to same-day.",
+          },
+          {
+            id: "performance",
+            heading: "The performance question",
+            body: "Every builder claims ease. Almost none claim speed, because most of them produce pages weighed down by scripts nobody asked for.\n\nBuilder’s creator was explicit that this was the problem being solved - existing tools produced bloated pages, and performance was prioritised from the start. The evidence is that frappe.io itself runs on Builder, and pages score consistently well on Lighthouse.",
+          },
+          {
+            id: "worth-knowing",
+            heading: "Worth knowing",
+            body: "It’s open source under AGPL-3.0, so check the license terms if you plan to modify it commercially. Self-host it free, or run it managed on Frappe Cloud.\n\n~ Aishwar Mishra",
           },
         ],
       },

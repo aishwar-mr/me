@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { additionalInfo, education, experience, leadership } from "@/lib/content";
+import {
+  additionalInfo,
+  certifications,
+  community,
+  education,
+  experience,
+  honors,
+} from "@/lib/content";
 import type { TimelineEntry } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
@@ -56,7 +63,20 @@ function Group({ heading, entries }: { heading: string; entries: TimelineEntry[]
                       {entry.title}
                     </h4>
                     <p className="mt-1 text-base text-text-muted">
-                      {entry.organisation} · {entry.location}
+                      {entry.href ? (
+                        <a
+                          href={entry.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline decoration-border underline-offset-4 transition-colors hover:text-text"
+                        >
+                          {entry.organisation}
+                        </a>
+                      ) : (
+                        entry.organisation
+                      )}
+                      {entry.team && ` — ${entry.team}`}
+                      {entry.location && ` · ${entry.location}`}
                     </p>
                   </div>
                 </div>
@@ -82,9 +102,64 @@ export function EducationExperience() {
       </Reveal>
 
       <div className="mx-auto max-w-5xl">
-        <Group heading="Experience" entries={experience} />
-        <Group heading="Leadership" entries={leadership} />
+        <Group heading="Corporate" entries={experience} />
+        <Group heading="Community-led / Collegiate" entries={community} />
         <Group heading="Education" entries={education} />
+
+        <Reveal className="mt-14">
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-widest">
+            Competitions &amp; honors
+          </h3>
+          <ul className="divide-y divide-border border-y border-border">
+            {honors.map((honor) => (
+              <li key={honor.title} className="grid gap-1 py-5 md:grid-cols-[200px_1fr] md:gap-12">
+                <span aria-hidden className="hidden md:block" />
+                <div>
+                  <p className="text-base font-semibold">
+                    {honor.href ? (
+                      <a
+                        href={honor.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-border underline-offset-4 hover:decoration-text"
+                      >
+                        {honor.title}
+                      </a>
+                    ) : (
+                      honor.title
+                    )}
+                  </p>
+                  <p className="mt-1 text-base leading-relaxed text-text-muted">{honor.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal className="mt-14">
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-widest">Certifications</h3>
+          <ul className="divide-y divide-border border-y border-border">
+            {certifications.map((cert) => (
+              <li key={cert.title} className="grid gap-1 py-5 md:grid-cols-[200px_1fr] md:gap-12">
+                <span className="text-xs uppercase tracking-widest text-text-muted">{cert.date}</span>
+                <div>
+                  <p className="text-base font-semibold">{cert.title}</p>
+                  <p className="mt-1 text-base text-text-muted">
+                    {cert.issuer} ·{" "}
+                    <a
+                      href={cert.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-border underline-offset-4 hover:text-text hover:decoration-text"
+                    >
+                      View<span className="sr-only"> {cert.title} certificate</span> ↗
+                    </a>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
         <Reveal className="mt-14">
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-widest">Additional</h3>

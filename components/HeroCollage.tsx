@@ -5,6 +5,19 @@ import type { MotionValue } from "motion/react";
 import { FloatingImage, type FloatingImageSpec } from "./FloatingImage";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import forest from "@/assets/hero/forest.jpg";
+import ocean from "@/assets/hero/ocean.jpg";
+import fogMountains from "@/assets/hero/fog-mountains.jpg";
+import sunriseRidge from "@/assets/hero/sunrise-ridge.jpg";
+import aerialSurf from "@/assets/hero/aerial-surf.jpg";
+import cliff from "@/assets/hero/cliff.jpg";
+
+// All six tiles cut through this same set, offset per tile so every frame
+// shows each photo exactly once, never a duplicate.
+const HERO_IMAGES = [forest, ocean, fogMountains, sunriseRidge, aerialSurf, cliff];
+// Very fast: tiles swap photos every SWAP_MS and run a short zoom cycle.
+const SWAP_MS = 140;
+const ZOOM_SEC = 1.3;
 
 // Each tile gets its own travel path so the shrink/fade reads as composed
 // rather than mechanically uniform, per the cinematic-transformation spec.
@@ -109,11 +122,20 @@ export function HeroCollage({ scrollYProgress }: { scrollYProgress: MotionValue<
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const reducedMotion = useReducedMotion();
   const isMobile = useMediaQuery("(max-width: 767px)");
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
   }, []);
+
+  // Advance the shared step so all tiles swap photos together, in lockstep,
+  // keeping the "each photo once" invariant. Off when motion is reduced.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const id = window.setInterval(() => setStep((s) => s + 1), SWAP_MS);
+    return () => window.clearInterval(id);
+  }, [reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -148,6 +170,8 @@ export function HeroCollage({ scrollYProgress }: { scrollYProgress: MotionValue<
           key={spec.id}
           spec={spec}
           index={index}
+          image={HERO_IMAGES[(index + step) % HERO_IMAGES.length]}
+          zoomDurationSec={ZOOM_SEC}
           visible={visible}
           reducedMotion={reducedMotion}
           isMobile={isMobile}

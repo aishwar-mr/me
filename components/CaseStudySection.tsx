@@ -8,9 +8,11 @@ export function CaseStudySection({ section, index }: { section: ProjectSection; 
       <Reveal delayMs={index * 60} className="mx-auto grid max-w-5xl gap-4 md:grid-cols-[200px_1fr] md:gap-12">
         <h2 className="text-sm font-semibold uppercase tracking-widest">{section.heading}</h2>
         <div>
-          <p className="max-w-2xl text-base leading-relaxed text-text-muted md:text-lg">
-            {section.body}
-          </p>
+          <div className="max-w-2xl space-y-5 text-base leading-relaxed text-text-muted md:text-lg">
+            {section.body.split("\n\n").map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
           {section.points && (
             <ul className="mt-5 max-w-2xl list-disc space-y-2 pl-5 text-base leading-relaxed text-text-muted md:text-lg">
               {section.points.map((point) => (
