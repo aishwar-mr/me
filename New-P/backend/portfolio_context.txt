@@ -1,0 +1,105 @@
+PORTFOLIO CONTENT — AISHWAR MISHRA (single source of truth; live site aishwar-mr.github.io/me)
+
+IDENTITY
+Aishwar Mishra — Generalist. Based in Mumbai. Currently: Tinkering (his TCI internship ended in Oct 2026 — it ran Jul–Oct 2026, part-time, so speak about TCI in the past tense). Open to work. Email: aishwar.r.mishra@gmail.com
+One-liner: A generalist who can sit on a complex technical call with a customer, move straight into a normal stakeholder meeting, then do the ops work — or sit with marketing to unblock what's stuck.
+Proof highlights: ₹4L+ sponsorship raised as Technovanza Sponsorship Head (₹1L+ closed personally); 1st / 80 — Smart India Hackathon '25, building a track monitoring system for Indian Railways; Gold — WorldQuant BRAIN, 10K+ points and a Research Consultant offer; 44:18 10K run, top 20 of 300+.
+Range: technical calls, stakeholder management, operations, marketing, product life cycle management (PLM).
+
+EXPERIENCE
+
+Corporate
+
+1) Supply Chain Intern — Transport Corporation of India (TCI) | Jul — Oct 2026 (internship ENDED — it ran Jul–Oct 2026, part-time; past-tense questions get past-tense answers) | Detail page: /experience/tci (scope and highlights pending)
+
+2) Founder's Office Intern — Lawxy AI — Strategy & Investments | May — Jul 2026 · Summer | Mumbai, India | /experience/lawxy-ai
+- Built investor materials and led diligence follow-ups for a $1M Peak XV (Sequoia India) pre-seed round, taking it through to term-sheet stage
+- Led a team of 8 SDRs, generated 8 enterprise meetings in one week through structured outbound, and onboarded 15 pilot clients
+- Secured startup grants and programs including Nvidia Inception and $10K in AWS credits
+
+3) Business Operations Intern — Ninjacart — Central Analytics | Jan — Mar 2026 | Bengaluru, India | /experience/ninjacart
+- Built a 12-week price intelligence model tracking GRN, purchase price and variance across 300 SKUs, and reduced purchase price by Rs.4/unit through competitor benchmarking — resulting in dark store expansion from 5 to 30 locations
+- Automated daily competitor price tracking and WhatsApp reporting using Google Apps Script and the Twilio API, giving the team same-day pricing visibility
+
+Community-led / Collegiate
+
+4) Venture Scout — LvlUp Venture | Dec 2026 — Present | /experience/lvlup-venture
+- Conducted 8 interviews with folks from Retail, Edtech, SaaS domains; submitted 2 for review & further processing
+
+5) Sponsorship Head — Technovanza VJTI | Dec 2025 — May 2026 | Mumbai, India | /experience/technovanza
+- Led a 30-member team to secure INR 4L+ in corporate sponsorship; personally closed INR 1L+ (20% of total) through structured outreach & negotiation
+
+6) Gold Researcher — WorldQuant BRAIN | May — Nov 2025 | /experience/worldquant-brain
+- Gold Level Researcher (10k+ points); submitted 14 alphas & got an offer to work as Research Consultant
+
+Education
+
+7) B.Tech. Textile Engineering, Data Science minor — Veermata Jijabai Technological Institute (VJTI) | 2023 — 2027 | Mumbai, MH | /experience/vjti
+- Coursework: Product Design and Development, Research Methodology, Linear Programming, Entrepreneurship for Engineers
+
+COMPETITIONS & HONORS
+- National Semi-finalist — Finvent (Portfolio Management Competition). Shaastra 2025, IIT Madras · rank 54 of 627 participants · Team "Finzard"
+- Enthusia '25 — 10 km: 44 min 18 s; placed among the top 20 of 300+ participants
+
+CERTIFICATIONS
+- Agile Project Management — Google — Sep 2024
+- Financial Analysis — London Business School — Dec 2025
+- Intro to Programming with Python (CS106A) — Stanford Code In Place — Nov 2026 (ongoing)
+- Gold Level — WorldQuant BRAIN — Jun 2025
+
+ADDITIONAL
+- Languages: Fluent in English and Marathi; native speaker of Hindi; basic Spanish
+- Core skills: Business Operations & Analytics, Competitive Intelligence, Pricing & Procurement Analysis, Sales & Business Development, Fundraising Support, Process Improvement, Project & Program Management, Stakeholder Management, and Cross-Functional Execution
+- Tools & technologies: Excel, Google Sheets, SQL, Python, Tableau, Google Apps Script, API Integration, and AI tools for research and workflow automation
+- Interests: Athletics, Basketball, Trekking & Trail
+
+WORK
+
+1) Digital Product Passport — Sustainability & traceability | 2026 | Research & design | Work in progress | /work/digital-product-passport
+A take-back passport for soft furnishings under the EU Digital Product Passport rules — work in progress.
+Scope: A voluntary take-back passport for soft furnishings (sofas, curtains, rugs), written as a VJTI project report. Sits alongside, not inside, the first EU apparel act (expected to cover finished apparel with at least 80% textile fibre). EU registry live since 20 July 2026; product data stays with each company, reached through a QR code. Nothing binding until the delegated act, expected Q4 2027, mandatory use around 2029. Hardest data sits with Tier 2–3 suppliers (spinning, weaving, dyeing).
+Problem: The EU has fixed how DPPs work but not yet what a textile passport must contain (~3 years to prepare). Tracking only tells you where products go — it doesn't make anyone return them; without a recycler's write-back a passport proves an item was scanned, not recycled.
+Approach: Checked DPP research (systematic review of 87 papers + a 2026 review) against the live regulatory picture. Unique IDs, standardised data, traceability, batch-level passports held up; centralised data and item-level-by-default did not; blockchain as key enabler was weakened (law requires only open standards + QR code).
+Solution: Built around handover scans rather than continuous tracking: dual-frequency tag (UHF RFID + NFC) sewn into the deck; timestamped scan at each handover (factory, delivery, repair, resale, pickup, recycler intake); a reason to return (buy-back credit, trade-in discount or free pickup); recycler write-back against the same tag ID (condition, weight by stream, route); one data card per model listing components, materials, joins, recovery blockers.
+Result: Pending — nothing tested yet. Three steps: sign off sofa/curtain/rug data card with a recycler; 50-unit tag trial targeting >95% read rate; pilot a few hundred units measuring return rate and recovered weight per unit.
+
+2) Track Monitoring — Rail infrastructure | 2025 | Team member — architecture & hybrid localisation | /work/track-monitoring
+A low-cost, contactless track-monitoring prototype for Indian Railways. Smart India Hackathon '25 — 1st out of 80 teams (inter-college).
+Problem: Current ITMS tech deployed by Indian Railways relies on closed-source Russian systems costing upwards of ₹180 crore — high procurement/maintenance costs, limited customisation, vendor lock-in, inefficient defect localisation (poor GPS accuracy).
+My contribution: helped develop a scalable, compact, plug-and-play architecture analysing track geometry parameters; assisted in implementing a hybrid localisation system fusing GPS and IMU sensors for uninterrupted chainage mapping.
+Approach: compact contactless rig on ITMS principles — laser, ultrasonic and IMU sensors plus ESP32 camera; Python, OpenCV and a neural network on a Raspberry Pi; edge computing flags faults in real time, cloud handles long-term trends. Evaluated EN 13848 standards and RDSO accuracy requirements. Prototyped and tested live on Central Railways tracks in Mumbai.
+Solution: modular open software stack (geometry, rail-profile, acceleration subsystems deployable in full or part). Computer vision flags broken fasteners from camera frames; IMU and ultrasonic readings flag misalignment — either triggers a dashboard alert and an SMS.
+Results: SIH '25 1st of 80 teams (inter-college); field-tested on live Central Railway track in Mumbai end to end. Projected cost ₹180 crore (imported) → ₹30 crore (indigenous). Complied with EN 13848 Part 1 & 2 and RDSO TM/IM/448 (Rev 1: 2023) during testing. Advances Atmanirbhar Bharat (data sovereignty, no foreign vendor lock-in).
+Challenges: low accuracy of standard GPS for precise defect localisation. Next: team proposed integrating RFID tags directly on tracks to improve chainage-mapping accuracy.
+
+3) Product Teardowns — Product breakdowns | Year TBD, Role TBD | /work/product-teardowns
+Breakdowns of products — what they do, where they work, and where they fall short.
+- Arrowhead — Collections Voice Bot: turn-by-turn teardown of a Hindi collections call; the leak was comprehension, not interest.
+- Juicebox — AI Recruiting Agent: teardown of an AI recruiting agent's feedback loop; where calibration helps, and where it quietly rewrites the search.
+
+4) Frappe Builder Blog — Content & positioning | 2026 | Writing & positioning | /work/frappe-builder-blog
+A marketing blog positioning Frappe Builder as an operational lever for product and marketing teams tired of waiting on engineering.
+Goal: position Frappe Builder as a strategic operational lever for small-to-mid-sized companies; speak to PMs and Marketing teams bottlenecked by engineering cycles.
+Strategy: narrative built around organisational friction and cost-efficiency — the "sprint ticket" hook ("Your website shouldn't need a sprint ticket"); BYOK AI generation reframed as structural pricing advantage ("You pay for AI at cost, not at markup"); version control positioned as psychological safety net; open-source ethos tied to Lighthouse performance scores.
+Shows: value-based messaging (design tokens, AGPL-3.0, version control → brand intactness, recovered engineering hours); persona targeting (dual audience); B2B SaaS storytelling (problem → solution → next steps: Frappe Cloud vs. self-hosted).
+Deliverable: "Your website shouldn't need a sprint ticket" — the full blog post, as written.
+
+A TYPICAL DAY (home page strip)
+09:30 Ops — Turn 10+ new job openings into accurate candidate emails, each in the same format with zero errors.
+11:00 Technical — Scope the automation that replaces that manual work: Slack → Claude → Google Form → Gmail, with guardrails.
+13:00 Analytics — Pressure-test a pricing model or recruiter data until the numbers hold up.
+15:00 Product — Test an AI tool and write up where it breaks trust, for example 296 candidates silently widened to 736.
+17:00 Sales — Negotiate with sponsors or interview founders for deal flow.
+19:00 Marketing — Turn a technical feature into a message a buyer cares about.
+Six functions, one notebook. Nothing is lost in the switch, because every handoff is written down.
+
+SITE PAGES: / (home), /experience, /experience/[tci|lawxy-ai|ninjacart|lvlup-venture|technovanza|worldquant-brain|vjti], /work, /work/[digital-product-passport|track-monitoring|product-teardowns|frappe-builder-blog]
+
+TCI SCOPE (from Aishwar's résumé, beyond the public site): warehouse work across 6 routes, handling 30 consignments a week, 160 SKUs and 7 vendors. Note: the TCI internship ended in October 2026 (it ran Jul–Oct 2026, part-time) — speak about it in the past tense.
+
+RÉSUMÉ EXTRAS (verbatim, beyond the site):
+- TCI bullets: Coordinated daily warehouse dispatches across 6 routes (30 consignments a week); tracked inventory for 160 SKUs; resolved returns and damage claims on weekly basis; coordinated pickups and delivery timelines with 7 vendors and transporters.
+- Track Monitoring: fused GPS, IMU and encoder data to maintain reliable positioning when individual signals failed; built a cost model estimating Rs. 30 Cr for an indigenous system vs. Rs. 180 Cr for the imported one.
+- Product Teardowns appear on Medium: a product breakdown of Frappe and a performance and gap analysis of Arrowhead, proposing improvements.
+- VJTI dates on the résumé: 05/23 - 05/27.
+- Aishwar is on LinkedIn (profile linked from his résumé). Dates conflict rule: the published site pages win.

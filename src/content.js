@@ -9,7 +9,7 @@ export const HERO = {
   sub: "A generalist who can sit on a complex technical call with a customer, move straight into a normal stakeholder meeting, then do the ops work — or sit with marketing to unblock what's stuck.",
   meta: [
     { k: "Based in", v: "Mumbai" },
-    { k: "Currently", v: "Supply Chain Intern, TCI" },
+    { k: "Currently", v: "Tinkering" },
     { k: "Status", v: "Open to work" },
   ],
 };
@@ -108,4 +108,24 @@ export const CONTACT = {
   headingLines: ["Let's", "talk."],
   note: "Hiring for a strategy or founder's office role? Write to me — I work where customer, technology and operations meet.",
   footerNote: "Based in Mumbai, India",
+};
+
+// What Poonie says. `audio` is for optional recordings: with null, the browser
+// speaks the line itself, which is what happens today. To use a real recording
+// instead, drop the file in public/voice/ and put its path here.
+export const BEAR = {
+  lines: {
+    doorman: "Hey! This is Poonie (Aishwar's friend), may I help you?",
+  },
+  audio: {
+    doorman: null,
+  },
+  settles: [
+    { text: "Hmm! This looks cozy", audio: null },
+    { text: "Sweet!", audio: null },
+    { text: "Aaaah!", audio: null },
+    { text: "So tired Man!", audio: null },
+    { text: "I've eaten enough", audio: null },
+    { text: "Do you have anything to eat? :)", audio: null },
+  ],
 };

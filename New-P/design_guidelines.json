@@ -1,0 +1,74 @@
+{
+  "theme": "light",
+  "typography": {
+    "headings": {
+      "family": "Cabinet Grotesk, sans-serif",
+      "weights": ["400", "800", "900"],
+      "description": "Used for massive, edge-to-edge text. High tension, extreme scale. Brings the architectural, brutalist-editorial feel."
+    },
+    "body": {
+      "family": "Satoshi, sans-serif",
+      "weights": ["400", "500"],
+      "description": "Clean, highly legible for 'dig deeper' paragraphs and meta details. Generous line height (leading-relaxed)."
+    },
+    "rules": "H1 should be scaled massively (text-6xl to text-[8vw]). Use tracking-tighter for headings. Line breaking is intentional and part of the design—split phrases for graphic impact."
+  },
+  "colors": {
+    "background": "#F4F0EA",
+    "text": "#0A0A0A",
+    "accent": "#D94A38",
+    "description": "Warm paper white background with ink black typography. The accent color (a muted burnt orange/vermilion) is used extremely sparingly—only for interactive states or a subtle highlight in the marquee."
+  },
+  "visual_enhancers": {
+    "texture": "Apply a very subtle CSS/SVG grain overlay (opacity-30) fixed to the background to give it a physical 'paper' texture.",
+    "borders": "Use hairline borders (border-black/10) to divide list items in the Proof section.",
+    "favicon": "Create and serve an original SVG monogram logo mark as the site favicon."
+  },
+  "layouts": {
+    "general": "Continuous vertical scroll, single column but heavily asymmetrical within its bounds. Content placed on a 12-column CSS grid where text blocks are offset. Generous whitespace (py-32, py-40).",
+    "hero": "Minimum 90vh. Contains massive typography with line breaks. Signature on-load masked line-by-line reveal.",
+    "proof_section": "List of work samples/proof points. Uses a simple, repeatable layout (e.g., 1px top border per item). Incorporates expandable (accordion-style) 'dig deeper' areas.",
+    "contact": "Minimal footer area with a massive 'Contact' heading and one primary button that copies the email to the clipboard.",
+    "mobile": "Strict 390px-first responsive logic. Stack elements cleanly, retain the typographic hierarchy but use clamp() or Tailwind responsive utilities to prevent horizontal overflow."
+  },
+  "motion": {
+    "lenis": "MANDATORY. Implement @studio-freight/react-lenis for premium momentum scrolling. This is crucial for the 'bleibtgleich' feel.",
+    "framer_motion": "Used for the hero masked line-by-line text reveal (overflow-hidden wrapper with y-axis transform on the text), scroll reveals (fade up + slight y translate), and one subtle parallax moment (e.g., moving an abstract shape or text block slightly slower than the scroll).",
+    "marquee": "Use react-fast-marquee. Very slow, smooth drift. Editorial style (e.g., uppercase, wide tracking) showing: 'TECHNICAL CALLS — STAKEHOLDER MEETINGS — OPS — MARKETING'.",
+    "interactions": "Smooth button hovers. Accordion expand/collapse for 'dig deeper'."
+  },
+  "components_to_build": [
+    {
+      "name": "NoiseOverlay",
+      "instructions": "A fixed, pointer-events-none div covering the viewport with a subtle SVG noise background."
+    },
+    {
+      "name": "Hero",
+      "instructions": "Full height. Large text '[Your Name]' and role split across lines. Use Framer Motion for a masked reveal on load."
+    },
+    {
+      "name": "EditorialMarquee",
+      "instructions": "Slow, editorial ticker traversing across the screen displaying the journalist's versatile range."
+    },
+    {
+      "name": "ProofSection",
+      "instructions": "A mapped list of placeholder work samples. Use framer-motion expanding sections for the 'dig deeper' content. Do not use complex cards; use flat, clean layout separated by lines."
+    },
+    {
+      "name": "ContactFooter",
+      "instructions": "Massive type and a copy-to-clipboard button (use navigator.clipboard.writeText) with a 'Copied!' toast feedback (use Sonner)."
+    }
+  ],
+  "accessibility": {
+    "contrast": "Ensure the ink black text on paper white passes APCA/WCAG. Accent color must maintain 4.5:1 on the background.",
+    "motion": "Respect prefers-reduced-motion for the marquee and scroll reveals."
+  },
+  "libraries": {
+    "lenis": "@studio-freight/react-lenis",
+    "framer_motion": "framer-motion",
+    "marquee": "react-fast-marquee",
+    "icons": "@phosphor-icons/react",
+    "toast": "sonner"
+  },
+  "instructions_to_main_agent": "1. Initialize Lenis for smooth scrolling at the root. 2. Build the Hero with a masked text reveal. 3. Build the editorial Marquee showing the requested phases. 4. Build the Proof section with collapsible 'dig deeper' details. 5. Build the Contact section with a functional copy-email button (use Sonner for the toast). 6. Implement a subtle parallax element (using Framer Motion useScroll/useTransform). 7. Create an SVG monogram and set it as the favicon. 8. Provide a detailed README.md keeping the brief, plan, decision log, and plain-words explanations of what was done. Use Tailwind for all styling. Ensure data-testid on interactables. Do NOT add dummy photos; use the requested minimal text placeholders."
+}

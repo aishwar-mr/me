@@ -3012,3 +3012,500 @@ body {
 .\[\&_tr\]\:border-b tr {
   border-bottom-width: 1px;
 }
+
+/* ---------------------------------------------------------------
+   Poonie: the roaming 3D bear and her chat panel. Ported from the
+   Emergent build; colours already match the paper/ink/vermilion
+   palette, with link text using the darker accessible vermilion.
+   --------------------------------------------------------------- */
+.bear-anchor {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.bear-widget {
+  position: relative;
+  width: 250px;
+  height: 280px;
+  pointer-events: none;
+}
+
+.bear-stage {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.bear-stage.on {
+  opacity: 1;
+}
+
+.bear-stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.bear-hit {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 18%;
+  bottom: 2%;
+  pointer-events: auto;
+  cursor: pointer;
+  border-radius: 48% 52% 44% 56% / 58% 60% 40% 42%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bear-cloud {
+  position: absolute;
+  right: 215px;
+  bottom: 130px;
+  width: 235px;
+  background: #fffdf8;
+  border-radius: 16px;
+  padding: 13px 16px 14px;
+  box-shadow: 0 14px 34px rgba(10, 10, 10, 0.14);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.bear-cloud::before,
+.bear-cloud::after {
+  content: "";
+  position: absolute;
+  background: #fffdf8;
+  border-radius: 50%;
+}
+
+.bear-cloud::before {
+  width: 30px;
+  height: 30px;
+  top: -12px;
+  left: 24px;
+}
+
+.bear-cloud::after {
+  width: 20px;
+  height: 20px;
+  top: -8px;
+  left: 52px;
+}
+
+.bear-tail,
+.bear-tail2 {
+  position: absolute;
+  background: #fffdf8;
+  border-radius: 50%;
+}
+
+.bear-tail {
+  width: 18px;
+  height: 18px;
+  right: -6px;
+  bottom: 12px;
+}
+
+.bear-tail2 {
+  width: 12px;
+  height: 12px;
+  right: -15px;
+  bottom: 4px;
+}
+
+.bear-deep {
+  position: absolute;
+  right: 130px;
+  bottom: 205px;
+  z-index: 3;
+  background: #efe9df;
+  color: rgba(10, 10, 10, 0.65);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.1);
+  pointer-events: auto;
+  white-space: nowrap;
+}
+
+.bear-zzz {
+  position: absolute;
+  right: 150px;
+  bottom: 215px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bear-zzz span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-family: "Cabinet Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  color: rgba(10, 10, 10, 0.45);
+  opacity: 0;
+  animation: bear-z 3.2s ease-in-out infinite;
+}
+
+.bear-zzz span:nth-child(1) {
+  font-size: 14px;
+  animation-delay: 0s;
+}
+
+.bear-zzz span:nth-child(2) {
+  font-size: 18px;
+  right: 14px;
+  animation-delay: 1.05s;
+}
+
+.bear-zzz span:nth-child(3) {
+  font-size: 22px;
+  right: 30px;
+  animation-delay: 2.1s;
+}
+
+@keyframes bear-z {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) rotate(8deg);
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px) rotate(-6deg);
+  }
+}
+
+.bear-chat {
+  position: absolute;
+  right: 0;
+  bottom: 295px;
+  width: 252px;
+  background: #fffdf8;
+  border-radius: 16px;
+  box-shadow: 0 18px 44px rgba(10, 10, 10, 0.16);
+  pointer-events: auto;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.bear-chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.bear-chat-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.55);
+}
+
+.bear-chat-close {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgba(10, 10, 10, 0.5);
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+.bear-chat-close:hover {
+  color: #0a0a0a;
+}
+
+.bear-chat-msgs {
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 10, 10, 0.25) transparent;
+}
+
+/* macOS hides overlay scrollbars until you scroll, which left no hint that
+   the history scrolls at all — this keeps the track visible. */
+.bear-chat-msgs::-webkit-scrollbar {
+  width: 10px;
+}
+
+.bear-chat-msgs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bear-chat-msgs::-webkit-scrollbar-thumb {
+  background: rgba(10, 10, 10, 0.22);
+  border-radius: 99px;
+  border: 3px solid #fffdf8;
+}
+
+.bear-chat-msgs::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 10, 10, 0.4);
+}
+
+.bear-chat-msg {
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 8px 11px;
+  border-radius: 12px;
+  max-width: 88%;
+  overflow-wrap: break-word;
+}
+
+.bear-chat-msg.bear {
+  background: rgba(10, 10, 10, 0.06);
+  color: #0a0a0a;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.bear-chat-msg.visitor {
+  background: #0a0a0a;
+  color: #f4f0ea;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bear-chat-msg a {
+  color: #b83323;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.bear-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.bear-chat-form input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0a0a0a;
+  outline: none;
+}
+
+.bear-chat-form input:focus {
+  border-color: rgba(217, 74, 56, 0.6);
+}
+
+.bear-chat-send {
+  border: 0;
+  cursor: pointer;
+  background: #0a0a0a;
+  color: #f4f0ea;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+}
+
+.bear-chat-send:hover {
+  background: #d94a38;
+}
+
+.bear-chat-send.stop {
+  background: #d94a38;
+  color: #fff8f2;
+}
+
+.bear-chat-send.stop:hover {
+  background: #b93a2b;
+}
+
+.bear-chat-send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.bear-chat-below {
+  bottom: auto;
+  top: 245px;
+}
+
+.talk-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 10, 10, 0.78);
+  color: #f4f0ea;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.bear-chat-mic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 10, 10, 0.2);
+  background: transparent;
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.bear-chat-mic:hover {
+  border-color: #d94a38;
+  color: #d94a38;
+}
+
+.bear-chat-mic.rec {
+  background: #d94a38;
+  border-color: #d94a38;
+  color: #f4f0ea;
+  animation: mic-pulse 1.2s ease-in-out infinite;
+}
+
+.bear-chat-mic:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.bear-checkin {
+  padding: 8px 14px 2px;
+}
+
+.bear-checkin p {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(10, 10, 10, 0.75);
+}
+
+.bear-checkin-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.bear-checkin-btns button {
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: inherit;
+  padding: 5px 12px;
+  transition: all 0.3s ease;
+}
+
+.bear-checkin-btns button:first-child {
+  background: transparent;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  color: #0a0a0a;
+}
+
+.bear-checkin-btns button:first-child:hover {
+  border-color: #d94a38;
+  color: #b83323;
+}
+
+.bear-checkin-btns button:last-child {
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+  color: #f4f0ea;
+}
+
+.bear-checkin-btns button:last-child:hover {
+  background: #d94a38;
+  border-color: #d94a38;
+}
+
+@keyframes mic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 74, 56, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(217, 74, 56, 0);
+  }
+}
+
+.bear-chat-mute {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgba(10, 10, 10, 0.5);
+  padding: 2px;
+  display: flex;
+}
+
+.bear-chat-mute:hover {
+  color: #0a0a0a;
+}
+
+.mic-note {
+  font-size: 11px;
+  color: rgba(10, 10, 10, 0.55);
+  padding: 0 14px 6px;
+}
+
+@media (max-width: 640px) {
+  .bear-cloud {
+    right: 150px;
+    width: 190px;
+    bottom: 130px;
+  }
+  .bear-widget {
+    width: 176px;
+    height: 197px;
+  }
+  .bear-deep {
+    right: 110px;
+    bottom: 160px;
+  }
+  .bear-zzz {
+    right: 110px;
+    bottom: 160px;
+  }
+  .bear-chat {
+    bottom: 235px;
+    width: 240px;
+  }
+  .bear-chat-below {
+    bottom: auto;
+    top: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bear-zzz span {
+    animation: none;
+    opacity: 0.5;
+  }
+  .bear-stage {
+    transition: none;
+  }
+}

@@ -32,7 +32,7 @@ export const EXPERIENCE = [
   {
     slug: "tci",
     group: "Corporate",
-    period: "Oct 2026 — Present",
+    period: "Jul — Oct 2026",
     note: "Part-time",
     title: "Supply Chain Intern",
     organisation: "Transport Corporation of India (TCI)",
