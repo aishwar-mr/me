@@ -34,6 +34,11 @@ dist
 .env
 .env.*
 !.env.example
+
+# Poonie's personality script — candid, backstage material about Aishwar
+# (misconceptions to handle, his own weaknesses) that reads very differently
+# as a public document than as a voice a bear delivers in conversation.
+backend/poonie_personality.txt
 *token.json*
 *credentials.json*
 
