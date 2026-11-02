@@ -80,7 +80,7 @@ export const EXPERIENCE = [
   {
     slug: "lvlup-venture",
     group: "Community-led / Collegiate",
-    period: "Dec 2026 — Present",
+    period: "Aug — Oct 2026",
     title: "Venture Scout",
     organisation: "LvlUp Venture",
     href: "https://www.lvlup.vc",
