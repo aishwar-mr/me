@@ -1,7 +1,7 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { EASE } from "@/motion";
 import { HERO } from "@/content";
+import portrait from "@/assets/info/portrait.jpg";
 
 function RevealLine({ children, index }) {
   return (
@@ -18,38 +18,41 @@ function RevealLine({ children, index }) {
   );
 }
 
+// The split stage: Aishwar's own portrait stays fixed in view (the "one
+// person") while the reading column plays out every room he works in. The
+// striped band is the hero blueprint's one ornament, standing in for a
+// printed letterhead rule rather than any literal awning or label.
 export function Hero() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const metaY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-
   return (
     <section
-      ref={ref}
       id="top"
       data-testid="hero"
-      className="relative flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10 lg:px-16"
+      className="grid min-h-svh grid-cols-1 lg:grid-cols-2"
     >
-      <motion.div style={{ y: titleY }}>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
-          className="mb-6 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.35em] text-ink/70 sm:text-sm"
+      <div className="relative h-[48svh] overflow-hidden lg:sticky lg:top-0 lg:h-svh lg:order-2">
+        <img
+          src={portrait}
+          alt="Aishwar Mishra"
+          className="h-full w-full rounded-b-2xl object-cover lg:rounded-b-none lg:rounded-l-2xl"
+        />
+      </div>
+
+      <div className="-mt-6 flex flex-col justify-center rounded-t-2xl bg-paper px-6 py-14 sm:px-10 lg:order-1 lg:mt-0 lg:rounded-none lg:px-16 lg:py-24">
+        <div
+          aria-hidden="true"
+          className="mb-8 flex h-7 w-full max-w-[280px] overflow-hidden rounded-sm"
         >
-          <span
-            data-testid="hero-status-dot"
-            className="inline-block h-2 w-2 rounded-full bg-vermilion"
-          />
-          {HERO.eyebrowName} — {HERO.eyebrowRole}
-        </motion.p>
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span
+              key={i}
+              className={`h-full flex-1 ${i % 2 === 0 ? "bg-ink" : "bg-vermilion"}`}
+            />
+          ))}
+        </div>
+
         <h1
           data-testid="hero-title"
-          className="font-display text-[clamp(3.2rem,11vw,10.5rem)] font-extrabold leading-[0.94] tracking-[-0.03em] text-ink"
+          className="font-display text-[clamp(2.5rem,3.6vw+1.8rem,3.5rem)] font-normal leading-[0.98] tracking-[-0.02em] text-ink"
         >
           <RevealLine index={0}>{HERO.lines[0]}</RevealLine>
           <RevealLine index={1}>
@@ -57,39 +60,39 @@ export function Hero() {
             <span className="text-vermilion">.</span>
           </RevealLine>
         </h1>
-      </motion.div>
 
-      <div className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-end md:justify-between">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
+          data-testid="hero-sub"
+          className="mt-6 max-w-[36ch] font-text text-[17px] leading-relaxed text-ink/80"
+        >
+          {HERO.sub}
+        </motion.p>
+
+        <motion.a
+          href="#proof"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.75 }}
-          className="max-w-xl"
+          data-testid="hero-cta"
+          className="mt-8 inline-flex w-fit items-center rounded-2xl bg-ink px-6 py-3 font-text text-sm font-semibold text-paper transition-colors duration-300 hover:bg-vermilion"
         >
-          <p
-            data-testid="hero-sub"
-            className="text-base leading-relaxed text-ink/70 sm:text-lg"
-          >
-            {HERO.sub}
-          </p>
-          <p className="mt-8 text-xs uppercase tracking-[0.3em] text-ink/70">
-            Scroll for the proof &darr;
-          </p>
-        </motion.div>
+          See the proof
+        </motion.a>
+
         <motion.dl
-          style={{ y: metaY }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
           data-testid="hero-meta"
-          className="grid grid-cols-3 gap-6 border-t border-ink/15 pt-5 sm:gap-10 md:text-right"
+          className="mt-12 flex flex-wrap gap-x-8 gap-y-3 font-text text-sm text-ink/70"
         >
           {HERO.meta.map((m) => (
-            <div key={m.k}>
-              <dt className="text-[10px] uppercase tracking-[0.25em] text-ink/70">
-                {m.k}
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-ink">{m.v}</dd>
+            <div key={m.k} className="flex items-baseline gap-1.5">
+              <dt>{m.k}:</dt>
+              <dd className="font-semibold text-ink">{m.v}</dd>
             </div>
           ))}
         </motion.dl>

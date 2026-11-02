@@ -13,7 +13,7 @@ export function LogoMark({ size = 26 }) {
         y="46"
         fontSize="40"
         fontFamily="Georgia, 'Times New Roman', serif"
-        fill="#F4F0EA"
+        fill="#FFFFFF"
         textAnchor="middle"
       >
         &para;
@@ -51,9 +51,9 @@ export function SiteNav() {
       initial={{ y: -28, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
-      className="fixed inset-x-0 top-0 z-40 border-b border-ink/10 bg-paper/80 backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-40 bg-paper"
     >
-      <nav className="flex items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
+      <nav className="flex items-center justify-between px-6 py-4 font-text sm:px-10 lg:px-16">
         <Link to="/" data-testid="nav-logo" aria-label={`${NAME} · ${ROLE}`} className="flex items-center gap-3">
           <LogoMark />
           <span className="text-sm font-semibold tracking-tight text-ink">
@@ -84,7 +84,7 @@ export function SiteNav() {
             href="#contact"
             onClick={goToSection("#contact")}
             data-testid="nav-contact-link"
-            className="rounded-full bg-ink px-4 py-1.5 text-paper transition-colors duration-300 hover:bg-vermilion"
+            className="rounded-2xl bg-ink px-4 py-1.5 text-paper transition-colors duration-300 hover:bg-vermilion"
           >
             Contact
           </a>

@@ -9,7 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: "#f4f0ea",
+        // White rest-field, replacing the cream ground: the taste-skill
+        // inspector flags cream+terracotta as reading like an AI-assistant
+        // brand rather than this site's own.
+        paper: "#ffffff",
         ink: "#0a0a0a",
         vermilion: "#d94a38",
         // Darker variant for small text on paper: the original vermilion

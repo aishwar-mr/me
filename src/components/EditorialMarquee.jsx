@@ -1,44 +1,42 @@
-import { useState } from "react";
-import Marquee from "react-fast-marquee";
-import { MARQUEE_ITEMS } from "@/content";
+import { Reveal } from "@/components/Reveal";
+import tci from "@/assets/logos/tci.png";
+import ninjacart from "@/assets/logos/ninjacart.png";
+import lawxy from "@/assets/logos/lawxy.png";
+import technovanza from "@/assets/logos/technovanza.png";
+import worldquant from "@/assets/logos/worldquant-brain.png";
+import lvlup from "@/assets/logos/lvlup-venture.png";
+import vjti from "@/assets/logos/vjti.jpg";
 
-function Row() {
-  return (
-    <div className="flex items-center">
-      {MARQUEE_ITEMS.map((item) => (
-        <span key={item} className="flex items-center">
-          <span className="px-8 font-display text-lg uppercase tracking-[0.3em] text-ink sm:text-xl">
-            {item}
-          </span>
-          <span className="h-2 w-2 rounded-full bg-vermilion" />
-        </span>
-      ))}
-    </div>
-  );
-}
+// Proof — one quiet logo row: real organisations, normalised to one height,
+// no claim beyond the names themselves.
+const LOGOS = [
+  { src: tci, alt: "TCI" },
+  { src: ninjacart, alt: "Ninjacart" },
+  { src: lawxy, alt: "Lawxy AI" },
+  { src: technovanza, alt: "Technovanza VJTI" },
+  { src: worldquant, alt: "WorldQuant BRAIN" },
+  { src: lvlup, alt: "LvlUp Venture" },
+  { src: vjti, alt: "VJTI Mumbai" },
+];
 
 export function EditorialMarquee() {
-  const [reduced] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
-  );
-
   return (
-    <div
-      data-testid="marquee"
-      aria-label="Rooms I work in"
-      className="overflow-hidden border-y border-ink/10 py-5"
-    >
-      {reduced ? (
-        <div className="flex flex-wrap items-center justify-center gap-y-3 px-6 text-center">
-          <Row />
-        </div>
-      ) : (
-        <Marquee speed={35} gradient={false}>
-          <Row />
-        </Marquee>
-      )}
+    <div data-testid="marquee" className="px-6 py-14 sm:px-10 lg:px-16">
+      <Reveal className="flex flex-wrap items-center gap-x-10 gap-y-6 sm:gap-x-14">
+        <p className="font-text text-lg text-ink/70">Every room so far</p>
+        {LOGOS.map((logo) => (
+          <img
+            key={logo.alt}
+            src={logo.src}
+            alt={logo.alt}
+            loading="lazy"
+            // Raster logos in their own brand colours read as a jumble in a
+            // row. Greyscale normalises them to the page ink; multiply drops
+            // the white card the JPEG mark carries behind it.
+            className="h-6 w-auto object-contain opacity-75 mix-blend-multiply grayscale contrast-[1.4] sm:h-7"
+          />
+        ))}
+      </Reveal>
     </div>
   );
 }

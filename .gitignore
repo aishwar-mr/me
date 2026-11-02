@@ -20,3 +20,10 @@ yarn-error.log*
 # editor
 .vscode/*
 !.vscode/extensions.json
+
+# agent skill tooling: the taste-skill's working files (direction sheet,
+# inspector screenshots) and its project-scoped install. The skill itself
+# lives in ~/.claude/skills, so none of this belongs to the site.
+.taste-skill/
+.agents/
+skills-lock.json

@@ -29,7 +29,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-paper px-6 text-ink">
+        <div className="flex min-h-svh items-center justify-center bg-paper px-6 text-ink">
           <p>Something broke on the page. {String(this.state.error)}</p>
         </div>
       );
