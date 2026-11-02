@@ -25,6 +25,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          # Not a secret in practice — it ends up embedded in the public JS
+          # bundle regardless of where it's stored, since this is a static
+          # site with no server to hide it behind. A repo secret was
+          # attempted first but blocked by the sandbox's write restrictions,
+          # so it's set directly here instead.
+          VITE_SCRATCHPAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbwQqAJw00Q-1ZsIxTSam8ZrN39uceVmsAV2sa-GSCIF-pL1ypqDvBhutP4IBPXRmUiE/exec"
       # GitHub Pages serves static files only, with no server-side rewrites,
       # so a hard refresh or direct link to a client-side route (e.g. /work)
       # 404s. The standard workaround: Pages always falls back to 404.html

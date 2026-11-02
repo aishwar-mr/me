@@ -5,6 +5,7 @@ import "lenis/dist/lenis.css";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { SiteNav } from "@/components/SiteNav";
 import { ContactFooter } from "@/components/ContactFooter";
+import { ScratchPad } from "@/components/ScratchPad";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Home } from "@/pages/Home";
 import { Story } from "@/pages/Story";
@@ -58,6 +59,7 @@ function App() {
           </Routes>
         </main>
         <ContactFooter />
+        <ScratchPad />
       </ReactLenis>
     </ErrorBoundary>
   );

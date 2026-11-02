@@ -3509,3 +3509,216 @@ body {
     transition: none;
   }
 }
+
+/* Scratch pad — floating drawing widget (src/components/ScratchPad.jsx) */
+.scratch-pad-root {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.scratch-pad-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #f4f0ea;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(10, 10, 10, 0.25);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.scratch-pad-toggle:hover {
+  background: #d94a38;
+  transform: translateY(-2px);
+}
+
+.scratch-pad-panel {
+  width: min(332px, calc(100vw - 2.5rem));
+  padding: 1rem;
+  border-radius: 1.1rem;
+  background: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  box-shadow: 0 18px 44px rgba(10, 10, 10, 0.18);
+}
+
+.scratch-pad-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.scratch-pad-title {
+  font-family: var(--font-display, inherit);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0a0a0a;
+  line-height: 1.15;
+}
+
+.scratch-pad-sub {
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: rgba(10, 10, 10, 0.65);
+  max-width: 230px;
+}
+
+.scratch-pad-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: rgba(10, 10, 10, 0.55);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.scratch-pad-close:hover {
+  color: #0a0a0a;
+}
+
+.scratch-pad-canvas {
+  display: block;
+  margin-top: 0.7rem;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  cursor: crosshair;
+  /* Without this, dragging a finger on touch devices scrolls the page
+     instead of drawing. */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.scratch-pad-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.scratch-pad-strokes,
+.scratch-pad-colors {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.scratch-pad-stroke-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  background: #fff;
+  cursor: pointer;
+}
+
+.scratch-pad-stroke-btn.is-active {
+  border-color: #d94a38;
+  background: rgba(217, 74, 56, 0.08);
+}
+
+.scratch-pad-stroke-dot {
+  border-radius: 999px;
+  background: #0a0a0a;
+}
+
+.scratch-pad-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  cursor: pointer;
+  padding: 0;
+}
+
+.scratch-pad-swatch.is-active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #d94a38;
+}
+
+.scratch-pad-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+
+.scratch-pad-clear,
+.scratch-pad-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.2s ease;
+}
+
+.scratch-pad-clear {
+  background: transparent;
+  border: 1px solid rgba(10, 10, 10, 0.2);
+  color: rgba(10, 10, 10, 0.65);
+}
+
+.scratch-pad-clear:hover:not(:disabled) {
+  color: #0a0a0a;
+}
+
+.scratch-pad-send {
+  background: #0a0a0a;
+  border: none;
+  color: #f4f0ea;
+}
+
+.scratch-pad-send:hover:not(:disabled) {
+  background: #d94a38;
+}
+
+.scratch-pad-clear:disabled,
+.scratch-pad-send:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.scratch-pad-note {
+  margin-top: 0.6rem;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: rgba(10, 10, 10, 0.6);
+}
+
+.scratch-pad-note-error {
+  color: #b83323;
+}
+
+@media (max-width: 420px) {
+  .scratch-pad-root {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
