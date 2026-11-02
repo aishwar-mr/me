@@ -38,8 +38,12 @@ export const EXPERIENCE = [
     organisation: "Transport Corporation of India (TCI)",
     href: "https://tcil.com",
     logo: tciLogo,
-    // Scope not supplied yet — left blank rather than invented.
-    points: ["Scope and highlights — pending."],
+    location: "Mumbai, India",
+    points: [
+      "Coordinated daily warehouse dispatches across 6 routes, covering 30 consignments a week",
+      "Tracked inventory for 160 SKUs; resolved returns and damage claims on a weekly basis",
+      "Coordinated pickups and delivery timelines with 7 vendors and transporters",
+    ],
   },
   {
     slug: "lawxy-ai",
