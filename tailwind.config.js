@@ -8,16 +8,17 @@ export default {
   corePlugins: { preflight: false }, // base styles already live in index.css
   theme: {
     extend: {
+      // Channel triplets rather than hex, so `bg-paper`, `text-ink/70` and the
+      // rest follow the theme: index.css redefines the same variables under
+      // [data-theme="dark"], and every utility re-resolves without a dark:
+      // variant on each class.
       colors: {
-        // White rest-field, replacing the cream ground: the taste-skill
-        // inspector flags cream+terracotta as reading like an AI-assistant
-        // brand rather than this site's own.
-        paper: "#ffffff",
-        ink: "#0a0a0a",
-        vermilion: "#d94a38",
-        // Darker variant for small text on paper: the original vermilion
-        // is 3.7:1 against #f4f0ea, under the 4.5:1 normal-text minimum.
-        "vermilion-text": "#b83323",
+        paper: "rgb(var(--paper-rgb) / <alpha-value>)",
+        ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+        vermilion: "rgb(var(--vermilion-rgb) / <alpha-value>)",
+        // Darker variant for small text on the light ground: plain vermilion
+        // is under the 4.5:1 normal-text minimum there.
+        "vermilion-text": "rgb(var(--vermilion-text-rgb) / <alpha-value>)",
       },
     },
   },

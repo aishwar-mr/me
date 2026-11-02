@@ -3,22 +3,25 @@ import { useLenis } from "lenis/react";
 import { motion } from "framer-motion";
 import { EASE } from "@/motion";
 import { NAME, ROLE } from "@/content";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function LogoMark({ size = 26 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
-      <rect width="64" height="64" rx="14" fill="#0A0A0A" />
+    // Square and glyph invert with the theme (currentColor is the ink, the
+    // glyph is punched out in the page ground); only the accent dot is fixed.
+    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" className="text-ink">
+      <rect width="64" height="64" rx="14" fill="currentColor" />
       <text
         x="30"
         y="46"
         fontSize="40"
         fontFamily="Georgia, 'Times New Roman', serif"
-        fill="#FFFFFF"
+        fill="var(--paper)"
         textAnchor="middle"
       >
         &para;
       </text>
-      <circle cx="49" cy="15" r="7" fill="#D94A38" />
+      <circle cx="49" cy="15" r="7" fill="var(--vermilion)" />
     </svg>
   );
 }
@@ -80,6 +83,7 @@ export function SiteNav() {
           >
             Proof
           </a>
+          <ThemeToggle />
           <a
             href="#contact"
             onClick={goToSection("#contact")}

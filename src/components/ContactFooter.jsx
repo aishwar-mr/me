@@ -1,6 +1,21 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { CONTACT, EMAIL, NAME } from "@/content";
 import { Reveal } from "@/components/Reveal";
+
+const SOCIALS = [
+  {
+    href: "https://github.com/aishwar-mr",
+    label: "GitHub",
+    Icon: Github,
+    testId: "contact-github-link",
+  },
+  {
+    href: "https://www.linkedin.com/in/aishwar-mishra",
+    label: "LinkedIn",
+    Icon: Linkedin,
+    testId: "contact-linkedin-link",
+  },
+];
 
 // Contact — one field, nothing else: a prompt, one field-shaped action (a
 // mailto link dressed as the field this site has no backend to receive),
@@ -36,6 +51,22 @@ export function ContactFooter() {
           <p className="mt-4 font-text text-sm text-ink/60">
             Opens your mailbox
           </p>
+          <div className="mt-7 flex items-center justify-center gap-3">
+            {SOCIALS.map(({ href, label, Icon, testId }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={label}
+                data-testid={testId}
+                className="flex items-center gap-2 rounded-2xl bg-ink/[0.04] px-4 py-2.5 font-text text-sm text-ink/70 transition-colors duration-300 hover:bg-ink hover:text-paper"
+              >
+                <Icon size={17} />
+                {label}
+              </a>
+            ))}
+          </div>
         </Reveal>
       </div>
 

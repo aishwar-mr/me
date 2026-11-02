@@ -1716,11 +1716,29 @@ video {
 }
 
 :root {
-  --paper: #ffffff;
-  --ink: #0a0a0a;
-  --vermilion: #d94a38;
+  /* Space-separated channels so Tailwind's <alpha-value> utilities
+     (text-ink/70 and friends) can resolve against them. */
+  --paper-rgb: 255 255 255;
+  --ink-rgb: 10 10 10;
+  --vermilion-rgb: 217 74 56;
+  --vermilion-text-rgb: 184 51 35;
+
+  --paper: rgb(var(--paper-rgb));
+  --ink: rgb(var(--ink-rgb));
+  --vermilion: rgb(var(--vermilion-rgb));
   --font-display: "Young Serif", Georgia, "Times New Roman", serif;
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* Warm near-black rather than pure black, to sit with the serif setting.
+   The accent lifts a step so it clears 4.5:1 against that ground, where
+   the light theme's darker small-text variant would go muddy. */
+:root[data-theme="dark"] {
+  --paper-rgb: 20 19 18;
+  --ink-rgb: 242 239 233;
+  --vermilion-rgb: 232 103 79;
+  --vermilion-text-rgb: 232 103 79;
+  color-scheme: dark;
 }
 
 html {
@@ -1740,6 +1758,13 @@ body {
 ::selection {
   background: var(--vermilion);
   color: var(--paper);
+}
+
+/* multiply darkens against a light ground; on the dark theme it would
+   simply disappear, so the grain switches to screen there. */
+:root[data-theme="dark"] .grain-overlay {
+  mix-blend-mode: screen;
+  opacity: 0.14;
 }
 
 .grain-overlay {
@@ -3725,4 +3750,69 @@ body {
     right: 1rem;
     bottom: 1rem;
   }
+}
+
+/* Dark theme for the two widgets whose CSS predates the token system.
+   Their panels are chrome and follow the theme; the scratch pad's canvas
+   deliberately stays light, because what is drawn on it is exported as a
+   PNG and the stroke colours were picked for a light ground. */
+:root[data-theme="dark"] .scratch-pad-toggle {
+  background: rgb(var(--ink-rgb));
+  color: rgb(var(--paper-rgb));
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.5);
+}
+:root[data-theme="dark"] .scratch-pad-panel {
+  background: #1e1c1a;
+  border-color: rgb(var(--ink-rgb) / 0.14);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0.55);
+}
+:root[data-theme="dark"] .scratch-pad-title,
+:root[data-theme="dark"] .scratch-pad-close:hover {
+  color: rgb(var(--ink-rgb));
+}
+:root[data-theme="dark"] .scratch-pad-sub {
+  color: rgb(var(--ink-rgb) / 0.65);
+}
+:root[data-theme="dark"] .scratch-pad-close {
+  color: rgb(var(--ink-rgb) / 0.55);
+}
+:root[data-theme="dark"] .scratch-pad-canvas {
+  border-color: rgb(var(--ink-rgb) / 0.2);
+}
+:root[data-theme="dark"] .scratch-pad-stroke-btn {
+  background: rgb(var(--ink-rgb) / 0.06);
+  border-color: rgb(var(--ink-rgb) / 0.2);
+}
+:root[data-theme="dark"] .scratch-pad-stroke-btn.is-active {
+  background: rgb(var(--vermilion-rgb) / 0.16);
+  border-color: rgb(var(--vermilion-rgb));
+}
+:root[data-theme="dark"] .scratch-pad-stroke-dot {
+  background: rgb(var(--ink-rgb));
+}
+:root[data-theme="dark"] .scratch-pad-swatch {
+  border-color: rgb(var(--ink-rgb) / 0.25);
+}
+:root[data-theme="dark"] .scratch-pad-swatch.is-active {
+  box-shadow: 0 0 0 2px #1e1c1a, 0 0 0 4px rgb(var(--vermilion-rgb));
+}
+:root[data-theme="dark"] .scratch-pad-clear {
+  border-color: rgb(var(--ink-rgb) / 0.25);
+  color: rgb(var(--ink-rgb) / 0.7);
+}
+:root[data-theme="dark"] .scratch-pad-clear:hover:not(:disabled) {
+  color: rgb(var(--ink-rgb));
+}
+:root[data-theme="dark"] .scratch-pad-send {
+  background: rgb(var(--ink-rgb));
+  color: #141312;
+}
+:root[data-theme="dark"] .scratch-pad-note {
+  color: rgb(var(--ink-rgb) / 0.6);
+}
+:root[data-theme="dark"] .bear-speech,
+:root[data-theme="dark"] .bear-chat,
+:root[data-theme="dark"] .bear-checkin {
+  background: #1e1c1a;
+  color: rgb(var(--ink-rgb));
 }
