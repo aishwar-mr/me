@@ -14,7 +14,6 @@ import { ExperienceDetail } from "@/pages/ExperienceDetail";
 import { Work } from "@/pages/Work";
 import { WorkDetail } from "@/pages/WorkDetail";
 import { WorkItemDetail } from "@/pages/WorkItemDetail";
-import PoonieLogsPage from "@/pages/PoonieLogsPage";
 import { NotFound } from "@/pages/NotFound";
 import "@/App.css";
 
@@ -54,7 +53,6 @@ function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/work/:slug" element={<WorkDetail />} />
             <Route path="/work/:slug/:item" element={<WorkItemDetail />} />
-            <Route path="/poonie-logs" element={<PoonieLogsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
