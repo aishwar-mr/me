@@ -32,6 +32,10 @@ jobs:
           # attempted first but blocked by the sandbox's write restrictions,
           # so it's set directly here instead.
           VITE_SCRATCHPAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbwQqAJw00Q-1ZsIxTSam8ZrN39uceVmsAV2sa-GSCIF-pL1ypqDvBhutP4IBPXRmUiE/exec"
+          # Same reasoning as above: this URL is meaningless without the
+          # OPENROUTER_API_KEY/POONIE_PERSONALITY that live in Vercel's own
+          # env vars, not here, so there's nothing sensitive in the URL itself.
+          VITE_BACKEND_URL: "https://me-phi-ruddy.vercel.app"
       # GitHub Pages serves static files only, with no server-side rewrites,
       # so a hard refresh or direct link to a client-side route (e.g. /work)
       # 404s. The standard workaround: Pages always falls back to 404.html
