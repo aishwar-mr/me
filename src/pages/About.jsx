@@ -3,6 +3,11 @@ import { EMAIL, FooterBar } from "@/components/FooterBar";
 import { Logo } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
 import aboutPortrait from "@/assets/about-portrait.jpg";
+import ninjacartLogo from "@/assets/logos/ninjacart.png";
+import vjtiLogo from "@/assets/logos/vjti.png";
+import lbsLogo from "@/assets/logos/london-business-school.jpg";
+import stanfordLogo from "@/assets/logos/stanford.png";
+import iitMadrasLogo from "@/assets/logos/iit-madras.png";
 
 const FACTS = [
   { label: "Focus", value: "Business ops · Strategy · Data" },
@@ -17,6 +22,9 @@ const BIO = [
   "Outside work I build: an indigenous track-monitoring system for Indian Railways at Smart India Hackathon ’25, and a tool that checks a startup idea against about 6,300 YC companies.",
 ];
 
+// `logo` is optional per entry — left out where no usable mark could be found
+// (Lawxy AI has no logo on its site; Adarsh Education Society has no findable
+// official one).
 const EXPERIENCE = [
   {
     num: "01",
@@ -30,6 +38,7 @@ const EXPERIENCE = [
     num: "02",
     role: "Business Operations Intern",
     company: "Ninjacart · Bengaluru",
+    logo: ninjacartLogo,
     line:
       "Built a 12-week price-intelligence model across 300 SKUs, cutting purchase price by ~₹4/unit (₹20–30 lakh a month) and supporting dark-store expansion from 5 to 30 locations. Automated competitor price tracking and WhatsApp reports with Apps Script and Twilio.",
     period: "Jan — Feb 2026",
@@ -40,6 +49,7 @@ const EDUCATION = [
   {
     title: "B.Tech. Textile Engineering, Data Science minor",
     sub: "Veermata Jijabai Technological Institute (VJTI)",
+    logo: vjtiLogo,
     period: "2023 — 2027",
   },
   {
@@ -50,14 +60,15 @@ const EDUCATION = [
 ];
 
 const CERTIFICATIONS = [
-  { title: "Financial Analysis", sub: "London Business School (LBS)" },
-  { title: "Code in Place (CS106A)", sub: "Stanford University" },
+  { title: "Financial Analysis", sub: "London Business School (LBS)", logo: lbsLogo },
+  { title: "Code in Place (CS106A)", sub: "Stanford University", logo: stanfordLogo },
 ];
 
 const EXTRACURRICULARS = [
   {
     title: "Sponsorship Head",
     sub: "Technovanza, VJTI — led a 30-member team to ₹4L+ in sponsorships; closed ₹1L+ personally",
+    logo: vjtiLogo,
     period: "2025 — 26",
   },
   { title: "Sport & outdoors", sub: "Basketball, athletics, trekking" },
@@ -67,6 +78,7 @@ const HONORS = [
   {
     title: "National Semi-finalist, Finvent ’24",
     sub: "IIT Madras · Portfolio Management · 54 of 627",
+    logo: iitMadrasLogo,
     period: "2024",
   },
   { title: "Gold Level, WorldQuant BRAIN", sub: "10K+ points" },
@@ -86,12 +98,17 @@ const TOOLKIT = [
   "English · Hindi · Marathi (basic)",
 ];
 
-function BackgroundRow({ title, sub, period }) {
+function BackgroundRow({ title, sub, period, logo }) {
   return (
     <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 border-t border-line py-4">
       <div>
         <p className="m-0 text-[15px]">{title}</p>
-        {sub ? <p className="m-0 mt-1 text-[12px] text-[#57544d]">{sub}</p> : null}
+        {sub ? (
+          <p className="m-0 mt-1 flex items-center gap-2 text-[12px] text-[#57544d]">
+            {logo ? <img src={logo} alt="" className="h-5 w-5 flex-none object-contain" /> : null}
+            <span>{sub}</span>
+          </p>
+        ) : null}
       </div>
       <span className="font-mono text-[11px] uppercase text-[#57544d]">{period}</span>
     </div>
@@ -218,7 +235,10 @@ export function About() {
             <h3 className="col-start-2 col-end-6 m-0 text-[20px] font-medium">
               {e.role}
               <br />
-              <span className="text-[13px] text-[#57544d]">{e.company}</span>
+              <span className="mt-1 flex items-center gap-2 text-[13px] text-[#57544d]">
+                {e.logo ? <img src={e.logo} alt="" className="h-6 w-6 flex-none object-contain" /> : null}
+                <span>{e.company}</span>
+              </span>
             </h3>
             <p className="col-start-6 col-end-10 m-0 text-[13px] leading-[1.5] text-[#57544d]">{e.line}</p>
             <span className="font-mono col-start-11 col-end-13 text-right text-[11px] uppercase text-[#57544d]">
