@@ -1,65 +1,43 @@
-import { Component } from "react";
-import { Routes, Route } from "react-router-dom";
-import { ReactLenis } from "lenis/react";
-import "lenis/dist/lenis.css";
-import { NoiseOverlay } from "@/components/NoiseOverlay";
-import { SiteNav } from "@/components/SiteNav";
-import { ContactFooter } from "@/components/ContactFooter";
-import { ScratchPad } from "@/components/ScratchPad";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Home } from "@/pages/Home";
+import { Projects } from "@/pages/Projects";
+import { ProjectDetail } from "@/pages/ProjectDetail";
+import { About } from "@/pages/About";
 import { Story } from "@/pages/Story";
-import { Experience } from "@/pages/Experience";
-import { ExperienceDetail } from "@/pages/ExperienceDetail";
-import { Work } from "@/pages/Work";
-import { WorkDetail } from "@/pages/WorkDetail";
-import { WorkItemDetail } from "@/pages/WorkItemDetail";
 import { NotFound } from "@/pages/NotFound";
-import "@/App.css";
 
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
-  static getDerivedStateFromError(error) {
-    return { error };
-  }
-  render() {
-    if (this.state.error) {
-      return (
-        <div className="flex min-h-svh items-center justify-center bg-paper px-6 text-ink">
-          <p>Something broke on the page. {String(this.state.error)}</p>
-        </div>
-      );
+// Cross-page links like "/#contact" land on a freshly mounted route, so the
+// browser's own hash-scroll fires before the target exists. Scroll by hand
+// after render; plain route changes go to the top.
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) {
+        el.scrollIntoView();
+        return;
+      }
     }
-    return this.props.children;
-  }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
+  return null;
 }
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ReactLenis root options={{ lerp: 0.09, smoothWheel: true }}>
-        <ScrollToTop />
-        <NoiseOverlay />
-        <SiteNav />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/story" element={<Story />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/experience/:slug" element={<ExperienceDetail />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/work/:slug" element={<WorkDetail />} />
-            <Route path="/work/:slug/:item" element={<WorkItemDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <ContactFooter />
-        <ScratchPad />
-      </ReactLenis>
-    </ErrorBoundary>
+    <>
+      <ScrollManager />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/story" element={<Story />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 

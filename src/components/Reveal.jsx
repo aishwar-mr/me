@@ -1,20 +1,18 @@
-import { motion } from "framer-motion";
-import { EASE } from "@/motion";
+import { useReveal } from "@/hooks/useReveal";
 
-// Shared fade/slide-up entrance, matching the pattern already used inline in
-// ProofSection and HowIWork, for the newer pages.
-export function Reveal({ children, delay = 0, as = "div", className = "", ...rest }) {
-  const Comp = motion[as] ?? motion.div;
+// Wraps a section's heading/text/picture so each arrives with a quiet
+// rise-and-fade the first time it scrolls into view. Pass `delay` (ms) to
+// stagger a few of these a beat apart within the same section.
+export function Reveal({ as: Tag = "div", className = "", delay = 0, children, ...props }) {
+  const [ref, inView] = useReveal();
   return (
-    <Comp
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, ease: EASE, delay }}
-      className={className}
-      {...rest}
+    <Tag
+      ref={ref}
+      className={`reveal ${inView ? "reveal-in" : ""} ${className}`}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      {...props}
     >
       {children}
-    </Comp>
+    </Tag>
   );
 }
