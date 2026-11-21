@@ -30,7 +30,7 @@ export const PROJECTS = [
         { label: "Brief", value: "Indian Railways · SIH PS 25020" },
         { label: "My role", value: "[Your role]" },
         { label: "Timeline", value: "[Duration]" },
-        { label: "Team", value: "TraCkrCiT786" },
+        { label: "Team", value: "TraCkrCiT786 · ID 114406" },
       ],
       factsAction: { type: "text", value: "( Field-tested ·\nCentral Railway, Mumbai )" },
       media: {
@@ -43,22 +43,57 @@ export const PROJECTS = [
       },
       overviewHeading: ["Track monitoring,", "made in", "India"],
       overviewText:
-        "Indian Railways inspects track with Integrated Track Monitoring Systems (ITMS) mounted on Track Recording Cars — but the current system is imported and costs about ₹180 crore. We built a compact, contactless, indigenous alternative that analyses track geometry and the condition of track components, and is designed to comply with EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023).",
+        "Indian Railways inspects track with Integrated Track Monitoring Systems (ITMS) mounted on Track Recording Cars — but the current system is imported Russian technology and costs about ₹180 crore. For Smart India Hackathon 2025 (problem statement 25020, Smart Automation, Hardware) we built a compact, contactless, indigenous alternative that analyses track geometry and the condition of track components, and complies with EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023).",
       process: [
         {
           num: "01",
           title: "Challenge",
-          text: "The imported system brings high procurement and maintenance costs, closed-source software, little room to customise and vendor lock-in — and its GPS-only chainage makes defects hard to pinpoint on the track.",
+          text: "The imported system brings high procurement and maintenance costs, closed-source software, little room to customise, scalability limits and vendor lock-in. Chainage mapping relies on GPS signals alone, so its accuracy is low and defects are hard to pinpoint on the track.",
         },
         {
           num: "02",
           title: "Approach",
-          text: "Plug-and-play hardware (IMU, laser sensor, ESP32-CAM, ESP32, Raspberry Pi 400) running Python, OpenCV, an ANN and SQL. GPS + IMU fusion keeps chainage mapping unbroken, RFID tags on the track sharpen defect location, edge computing handles real-time analytics, and the cloud tracks long-term trends.",
+          text: "A compact, cost-effective rig that mounts on a track recording car: IMU, laser sensor and ESP32-CAM feeding an ESP32 and a Raspberry Pi 400, running Python, OpenCV, an ANN and SQL. Edge computing does the first-level fault detection in real time; the cloud holds long-term trends. The software stack is open and standards-compliant, to avoid vendor lock-in.",
         },
         {
           num: "03",
+          title: "Innovation",
+          text: "Hybrid localisation fuses GPS and IMU for uninterrupted chainage mapping, with RFID tags on the track to sharpen defect location. AI/ML analytics find defect patterns and the full rail profile, moving maintenance from reactive to predictive. A plug-and-play architecture lets a railway zone deploy the full system or just a sub-system — geometry, rail profile or acceleration.",
+        },
+        {
+          num: "04",
+          title: "Feasibility",
+          text: "Extracting track-geometry parameters and track-component conditions, and real-time data acquisition and processing, were both tested. The system is built to meet EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023) accuracy standards, and was field-tested on Central Railway in Mumbai.",
+        },
+        {
+          num: "05",
+          title: "Impact",
+          text: "Less foreign dependence and a system developed, owned and maintained in India; lower capital and operating cost; fewer accidents, derailments and downtime through early detection of critical defects; sensitive railway data processed and stored entirely within India; and more public trust in rail safety.",
+        },
+        {
+          num: "06",
           title: "Outcome",
-          text: "A working prototype field-tested on Central Railway in Mumbai: real-time data capture and geometry/component analysis tested, ML that spots defect patterns for predictive maintenance, and exports to CSV, XML and JPEG with synchronised video.",
+          text: "A working prototype. On test runs the dashboard flagged a misalignment from acceleration, gyroscope and ultrasonic readings, the camera detected broken fasteners at about 95% confidence, the accelerometer trace marked the defect point, and an SMS alert reached a phone. Data exports to CSV, XML and JPEG, with synchronised video.",
+        },
+      ],
+      breakdowns: [
+        {
+          heading: "Technology stack",
+          rows: [
+            { label: "Hardware", text: "IMU · laser sensor · ESP32-CAM · ESP32 · Raspberry Pi 400" },
+            { label: "Software", text: "Python · OpenCV & ANN · SQL" },
+            { label: "Standards", text: "EN 13848 Parts 1 & 2 · RDSO TM/IM/448 (Rev. 1, 2023)" },
+            { label: "Data out", text: "CSV, XML and JPEG exports with synchronised video" },
+          ],
+        },
+        {
+          heading: "Research & references",
+          rows: [
+            { label: "RDSO", text: "Technical Specification for Integrated Track Monitoring System, TM/IM/382 — Ministry of Railways, December 2017" },
+            { label: "Standard", text: "SIST EN 13848-1 (Slovenski standard) — CEN/TC, June 2019" },
+            { label: "Paper", text: "Introduction of Modern Track Inspection Technology in Indian Railways – ITMS – New TRC — Rahul Singh, Saroj Kumar Barnwal" },
+            { label: "Paper", text: "Reliability of Track Geometry Reported by Track Recording Cars (TRCs): Provisions in EN 13848-2 — Saroj Kumar Barnwal, Saurabh Srivastava, Anupam Kumar Tiwary" },
+          ],
         },
       ],
       results: [
@@ -81,14 +116,14 @@ export const PROJECTS = [
     link: "/projects/2",
     detail: {
       index: "02",
-      category: "Web mining · NLP",
-      year: "2026",
+      category: "Business analysis · Automation · AI",
+      year: "Nov 2026",
       tagline: "Has my idea already been done —\nand is the space worth entering?",
       facts: [
-        { label: "Context", value: "Web-mining project" },
-        { label: "My role", value: "Research & build" },
-        { label: "Timeline", value: "[Duration]" },
-        { label: "Stack", value: "Python · Streamlit · scikit-learn" },
+        { label: "Context", value: "Business analysis, automation & AI project" },
+        { label: "My role", value: "Requirements to release" },
+        { label: "Delivered", value: "Nov 2026" },
+        { label: "Stack", value: "Python · Streamlit · NLP" },
       ],
       factsAction: {
         type: "link",
@@ -123,28 +158,62 @@ export const PROJECTS = [
       },
       overviewHeading: ["Idea in,", "verdict", "out"],
       overviewText:
-        "Type a startup idea in plain English and get four things back: a ranked list of the most similar existing startups, a Market Saturation Score for how crowded the space is, a community-and-news sentiment read, and one Opportunity Score with a plain-English verdict — built for first-time founders, students and accelerator applicants.",
+        "Founders and analysts keep asking the same thing before committing resources: has this been built already, and is the space worth entering? Describe an idea in plain English and the platform retrieves the most similar companies from 6,342 validated Y Combinator records, scores how saturated the space is, measures public sentiment from Hacker News and global news, and combines the signals into a transparent opportunity verdict. I treated it as a delivery exercise as much as a technical one: requirements first, then build, validation, testing, documentation and controlled release.",
       process: [
         {
           num: "01",
           title: "Challenge",
-          text: "Founders had no fast, data-driven way to tell if an idea is already crowded, or how the world feels about that space — only gut feel and hours of manual Googling.",
+          text: "Answering the question by hand means days of searching directories, reading news and forming an unstructured opinion — gut feel and hours of manual Googling, with nothing to trace back to.",
         },
         {
           num: "02",
-          title: "Approach",
-          text: "Fused four web-mining techniques into one pipeline — information retrieval and TF-IDF plus semantic search over ~6,345 YC companies for competitor discovery, a custom saturation metric, and VADER sentiment over live Hacker News and GDELT news.",
+          title: "Requirements",
+          text: "I wrote a requirements document, user stories and acceptance criteria first, then built to them. Example: “As a founder, I want to see how crowded my idea’s market is, so that I can decide whether to proceed” — a 0–100 score with a label from Wide open to Crowded, its three components visible and the formula explained on screen. A process-flow diagram maps idea to verdict, and the needs of a founder, an analyst and a reviewer shaped the four screens: Market Overview, Competitor Intelligence, AI Insights and Data Quality.",
         },
         {
           num: "03",
-          title: "Outcome",
-          text: "A live Streamlit app: enter an idea and see ranked competitors, a Market Saturation Score, a sentiment read, and a single Opportunity Score with a 2×2 verdict — each technique evaluated with its own metric.",
+          title: "Data validation",
+          text: "Data quality was a design requirement, not a cleanup step. Named rules cover missing identifiers, duplicates, empty descriptions and probable duplicates, with separate flag and normalisation rules; every exclusion is logged with its reason and a fingerprint of the input makes each run reproducible. It reconciles exactly: 6,399 records received, 6,342 passed, 57 excluded.",
+        },
+        {
+          num: "04",
+          title: "Testing & QA",
+          text: "29 automated tests cover validation rules, determinism, search, analytics and the insight layer, and all pass in about two seconds. Streamlit smoke tests confirm each screen loads, and written test cases were checked against live outputs in the spirit of UAT — the saturation score for a known idea (86.2, Crowded, 53 matched competitors) is reproducible across runs. Retrieval was evaluated with a known-item test (Hit@1, Hit@k, MRR) and VADER was compared against a trained logistic-regression classifier, reported as indicative results with limitations stated.",
+        },
+        {
+          num: "05",
+          title: "Responsible AI",
+          text: "AI Insights sends the retrieved companies and computed scores to a language model through OpenRouter, with three controls: the prompt holds only evidence from the data and tells the model not to add outside facts; a grounding check compares the response against that evidence; and if the check fails or the service is down, a rule-based summary takes over. The API key lives in the hosting platform’s secrets, never in the repository.",
+        },
+        {
+          num: "06",
+          title: "Release",
+          text: "Built in Google Colab, moved to GitHub and deployed on Streamlit Community Cloud, which rebuilds on every push. The v2 upgrade followed the same path — tested locally, committed with a clear message, pushed and verified on the live URL — with a changelog and a user guide. Along the way I diagnosed environment and deployment issues from logs: a mismatched Python interpreter, a missing import and a failed model call.",
+        },
+        {
+          num: "07",
+          title: "Limits & next",
+          text: "Scores are decision aids, not market facts: they rest on Y Combinator data only, and sentiment covers English text only — both limits are stated in the app. Next: precision-at-K evaluation against hand-labelled results, data sources beyond Y Combinator, and multilingual sentiment.",
+        },
+      ],
+      breakdowns: [
+        {
+          heading: "How it works",
+          rows: [
+            { label: "Data intake", text: "Pulls the public Y Combinator directory (6,399 records) through an open API." },
+            { label: "Validation", text: "Applies documented rules; excludes, flags or normalises records and keeps the raw data untouched." },
+            { label: "Retrieval", text: "Ranks companies against the idea by TF-IDF and cosine similarity, or by sentence embeddings for meaning-based matching." },
+            { label: "Analytics", text: "Computes the Market Saturation Score, category density and momentum indicators, and a white-space view of underserved angles." },
+            { label: "Sentiment", text: "Scores recent mentions with VADER and fuses the result with saturation into an Opportunity Score." },
+            { label: "AI insights", text: "Generates a short written summary grounded only in the retrieved evidence." },
+            { label: "Interface", text: "Streamlit application with filters by industry, status, region, stage and batch year." },
+          ],
         },
       ],
       results: [
-        { value: "6,345", label: "YC companies indexed" },
-        { value: "4", label: "Web-mining techniques fused" },
-        { value: "5", label: "Dashboard tabs" },
+        { value: "6,342", label: "Validated YC companies · 6,399 received, 57 excluded" },
+        { value: "29", label: "Automated tests, all passing" },
+        { value: "4", label: "Screens · Overview, Competitors, AI Insights, Data Quality" },
       ],
       resultsSize: "text-u72 max-md:text-[52px]",
     },

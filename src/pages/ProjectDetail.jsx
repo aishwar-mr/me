@@ -233,6 +233,28 @@ export function ProjectDetail() {
         ))}
       </section>
 
+      {(d.breakdowns ?? []).map((bd) => (
+        <section key={bd.heading} aria-label={bd.heading} className="g12 mt-14 border-t border-line pt-10 max-md:mt-8 max-md:pt-8">
+          <Reveal as="h2" className="col-start-1 col-end-5 m-0 text-u36 font-medium leading-[1.1] tracking-[-0.03em] max-md:text-[28px]">
+            {bd.heading}
+          </Reveal>
+          <div className="col-start-7 col-end-13">
+            {bd.rows.map((r, i) => (
+              <Reveal
+                as="div"
+                key={`${r.label}-${i}`}
+                className={`grid grid-cols-[minmax(0,1fr)_minmax(0,3fr)] gap-6 py-4 max-md:grid-cols-1 max-md:gap-1 ${
+                  i === 0 ? "" : "border-t border-line"
+                }`}
+              >
+                <p className="font-mono m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase text-[#57544d]">{r.label}</p>
+                <p className="m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.55] text-[#45423c]">{r.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ))}
+
       <section id="results" aria-label="Results" className="g12 mt-14 border-y border-line max-md:mt-8 max-md:!gap-y-0">
         {d.results.map((r, i) => (
           <Reveal
