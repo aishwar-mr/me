@@ -102,15 +102,15 @@ function BackgroundRow({ title, sub, period, logo }) {
   return (
     <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 border-t border-line py-4">
       <div>
-        <p className="m-0 text-[15px]">{title}</p>
+        <p className="m-0 text-[length:max(15px,calc(var(--u)*15))]">{title}</p>
         {sub ? (
-          <p className="m-0 mt-1 flex items-center gap-2 text-[12px] text-[#57544d]">
+          <p className="m-0 mt-1 flex items-center gap-2 text-[length:max(12px,calc(var(--u)*12))] text-[#57544d]">
             {logo ? <img src={logo} alt="" className="h-5 w-5 flex-none object-contain" /> : null}
             <span>{sub}</span>
           </p>
         ) : null}
       </div>
-      <span className="font-mono text-[11px] uppercase text-[#57544d]">{period}</span>
+      <span className="font-mono text-[length:max(11px,calc(var(--u)*11))] uppercase text-[#57544d]">{period}</span>
     </div>
   );
 }
@@ -119,9 +119,9 @@ function BackgroundColumn({ heading, items, align = "left" }) {
   return (
     <Reveal
       as="div"
-      className={align === "left" ? "col-start-1 col-end-7 pr-10" : "col-start-7 col-end-13 pl-10"}
+      className={align === "left" ? "col-start-1 col-end-7 pr-10 max-md:pr-0" : "col-start-7 col-end-13 pl-10 max-md:pl-0"}
     >
-      <h3 className="m-0 mb-4 text-[22px] font-medium tracking-[-0.02em]">{heading}</h3>
+      <h3 className="m-0 mb-4 text-[length:max(22px,calc(var(--u)*22))] font-medium tracking-[-0.02em]">{heading}</h3>
       {items.map((it) => (
         <BackgroundRow key={it.title} {...it} />
       ))}
@@ -132,8 +132,8 @@ function BackgroundColumn({ heading, items, align = "left" }) {
 export function About() {
   return (
     <div className="min-h-screen w-full bg-paper font-sans text-ink">
-      <header className="g12 h-[72px] items-center border-b border-line text-[13px]">
-        <nav aria-label="Primary left" className="col-start-1 col-end-5 flex gap-10">
+      <header className="g12 h-[max(56px,calc(var(--u)*72))] items-center border-b border-line text-[length:max(13px,calc(var(--u)*13))] max-md:flex max-md:h-14 max-md:justify-between max-md:gap-3">
+        <nav aria-label="Primary left" className="col-start-1 col-end-5 flex gap-10 max-md:gap-4">
           <Link to="/" className="nav-link">
             home
           </Link>
@@ -147,7 +147,7 @@ export function About() {
         <Logo />
         <nav
           aria-label="Primary right"
-          className="font-mono col-start-9 col-end-13 flex justify-end gap-10 text-[12px] font-semibold uppercase"
+          className="font-mono col-start-9 col-end-13 flex justify-end gap-10 text-[length:max(12px,calc(var(--u)*12))] font-semibold uppercase max-md:gap-4"
         >
           <a href="#contact" className="nav-link">
             (Contact)
@@ -156,19 +156,19 @@ export function About() {
       </header>
 
       <section aria-label="About title" className="g12 gap-y-6 border-b border-line pb-10 pt-16">
-        <p className="font-mono col-start-1 col-end-3 m-0 text-[11px] uppercase leading-[1.5] text-[#57544d]">
+        <p className="font-mono col-start-1 col-end-3 m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase leading-[1.5] text-[#57544d]">
           About
           <br />
           2026
         </p>
-        <p className="font-mono col-start-10 col-end-13 m-0 text-right text-[11px] uppercase leading-[1.5] text-[#57544d]">
+        <p className="font-mono col-start-10 col-end-13 m-0 text-right text-[length:max(11px,calc(var(--u)*11))] max-md:text-left uppercase leading-[1.5] text-[#57544d]">
           Based in
           <br />
           Mumbai, India
         </p>
         <Reveal
           as="h1"
-          className="col-start-1 col-end-13 m-0 mt-3 text-[150px] font-medium leading-[0.95] tracking-[-0.045em]"
+          className="col-start-1 col-end-13 m-0 mt-3 text-u150 font-medium leading-[0.95] tracking-[-0.045em] max-md:text-[19vw]"
         >
           Aishw<span className="font-display font-normal italic">a</span>r
           <br />
@@ -177,7 +177,7 @@ export function About() {
         <Reveal
           as="p"
           delay={120}
-          className="col-start-1 col-end-6 m-0 mt-6 text-[18px] leading-[1.4] text-[#45423c]"
+          className="col-start-1 col-end-6 m-0 mt-6 text-[length:max(18px,calc(var(--u)*18))] leading-[1.4] text-[#45423c] max-md:mt-2 max-md:text-[16px]"
         >
           A business generalist working where technology, design and operations meet — turning rough ideas into
           things that ship.
@@ -189,19 +189,19 @@ export function About() {
           as="img"
           src={aboutPortrait}
           alt="Portrait of Aishwar Mishra in a burgundy velvet blazer"
-          className="col-start-1 col-end-6 h-[560px] w-full rounded-[10px] object-cover object-top"
+          className="col-start-1 col-end-6 h-[calc(var(--u)*560)] w-full rounded-[10px] object-cover object-top max-md:h-auto max-md:aspect-[4/4.5]"
         />
-        <div className="col-start-7 col-end-12 flex flex-col justify-between">
-          <Reveal as="p" delay={100} className="m-0 text-[15px] leading-[1.65] text-[#45423c]">
+        <div className="col-start-7 col-end-12 flex flex-col justify-between max-md:gap-6">
+          <Reveal as="p" delay={100} className="m-0 text-[length:max(15px,calc(var(--u)*15))] leading-[1.65] text-[#45423c]">
             I’m Aishwar — I like building across the stack of a problem: the product thinking, the scrappy
             prototype, the spreadsheet that proves it, and the story that sells it. I’ve worked on hardware and
             software side by side, and I care most about work that creates real, measurable change.
           </Reveal>
-          <Reveal as="div" delay={180} className="mt-12 grid grid-cols-2 gap-x-6 gap-y-7">
+          <Reveal as="div" delay={180} className="mt-12 max-md:mt-8 grid grid-cols-2 gap-x-6 gap-y-7">
             {FACTS.map((f) => (
               <div key={f.label}>
-                <p className="font-mono m-0 mb-2 text-[10px] uppercase text-[#57544d]">{f.label}</p>
-                <p className="m-0 text-[14px]">{f.value}</p>
+                <p className="font-mono m-0 mb-2 text-[length:max(10px,calc(var(--u)*10))] uppercase text-[#57544d]">{f.label}</p>
+                <p className="m-0 text-[length:max(14px,calc(var(--u)*14))] [overflow-wrap:anywhere]">{f.value}</p>
               </div>
             ))}
           </Reveal>
@@ -209,14 +209,14 @@ export function About() {
       </section>
 
       <section aria-label="Bio" className="g12 border-b border-line pb-10 pt-14">
-        <Reveal as="h2" className="col-start-1 col-end-5 m-0 text-[36px] font-medium leading-[1.1] tracking-[-0.03em]">
+        <Reveal as="h2" className="col-start-1 col-end-5 m-0 text-u36 font-medium leading-[1.1] tracking-[-0.03em]">
           The short
           <br />
           <span className="text-[#85827a]">version</span>
         </Reveal>
         <div className="col-start-6 col-end-12 flex flex-col gap-5">
           {BIO.map((p, i) => (
-            <Reveal as="p" key={p} delay={i * 80} className="m-0 text-[14px] leading-[1.6] text-[#45423c]">
+            <Reveal as="p" key={p} delay={i * 80} className="m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.6] text-[#45423c]">
               {p}
             </Reveal>
           ))}
@@ -224,24 +224,24 @@ export function About() {
       </section>
 
       <section aria-label="Experience" className="g12 pb-8 pt-14">
-        <h2 className="col-start-1 col-end-13 m-0 mb-4 text-[36px] font-medium tracking-[-0.03em]">Experience</h2>
+        <h2 className="col-start-1 col-end-13 m-0 mb-4 text-u36 font-medium tracking-[-0.03em]">Experience</h2>
         {EXPERIENCE.map((e) => (
           <Reveal
             as="div"
             key={e.num}
-            className="col-start-1 col-end-13 grid grid-cols-12 items-baseline gap-6 border-t border-line py-8"
+            className="col-start-1 col-end-13 grid grid-cols-12 items-baseline gap-6 border-t border-line py-8 max-md:gap-3"
           >
-            <span className="col-start-1 col-end-2 text-[32px] leading-none text-[#85827a]">{e.num}</span>
-            <h3 className="col-start-2 col-end-6 m-0 text-[20px] font-medium">
+            <span className="col-start-1 col-end-2 text-u32 leading-none text-[#85827a]">{e.num}</span>
+            <h3 className="col-start-2 col-end-6 m-0 text-[length:max(20px,calc(var(--u)*20))] font-medium">
               {e.role}
               <br />
-              <span className="mt-1 flex items-center gap-2 text-[13px] text-[#57544d]">
+              <span className="mt-1 flex items-center gap-2 text-[length:max(13px,calc(var(--u)*13))] text-[#57544d]">
                 {e.logo ? <img src={e.logo} alt="" className="h-6 w-6 flex-none object-contain" /> : null}
                 <span>{e.company}</span>
               </span>
             </h3>
-            <p className="col-start-6 col-end-10 m-0 text-[13px] leading-[1.5] text-[#57544d]">{e.line}</p>
-            <span className="font-mono col-start-11 col-end-13 text-right text-[11px] uppercase text-[#57544d]">
+            <p className="col-start-6 col-end-10 m-0 text-[length:max(13px,calc(var(--u)*13))] leading-[1.5] text-[#57544d]">{e.line}</p>
+            <span className="font-mono col-start-11 col-end-13 text-right text-[length:max(11px,calc(var(--u)*11))] uppercase text-[#57544d] max-md:text-left">
               {e.period}
             </span>
           </Reveal>
@@ -250,7 +250,7 @@ export function About() {
       </section>
 
       <section aria-label="Background" className="g12 gap-y-10 border-b border-line pb-10 pt-14">
-        <h2 className="col-start-1 col-end-13 m-0 text-[36px] font-medium tracking-[-0.03em]">Background</h2>
+        <h2 className="col-start-1 col-end-13 m-0 text-u36 font-medium tracking-[-0.03em]">Background</h2>
         <BackgroundColumn heading="Education" items={EDUCATION} align="left" />
         <BackgroundColumn heading="Certifications" items={CERTIFICATIONS} align="right" />
         <BackgroundColumn heading="Extracurriculars" items={EXTRACURRICULARS} align="left" />
@@ -258,10 +258,10 @@ export function About() {
       </section>
 
       <section aria-label="Toolkit" className="g12 pb-14 pt-14">
-        <h2 className="col-start-1 col-end-5 m-0 text-[36px] font-medium tracking-[-0.03em]">Toolkit</h2>
+        <h2 className="col-start-1 col-end-5 m-0 text-u36 font-medium tracking-[-0.03em]">Toolkit</h2>
         <Reveal as="div" className="col-start-6 col-end-13 flex flex-wrap gap-3">
           {TOOLKIT.map((t) => (
-            <span key={t} className="rounded-full border border-[#cbc8c1] px-4 py-2 text-[12px] text-[#45423c]">
+            <span key={t} className="rounded-full border border-[#cbc8c1] px-4 py-2 text-[length:max(12px,calc(var(--u)*12))] text-[#45423c]">
               {t}
             </span>
           ))}

@@ -66,7 +66,7 @@ export const PROJECTS = [
         { value: "~83%", label: "Projected cost cut vs the ₹180 Cr imported ITMS" },
         { value: "1st", label: "Of 80 teams · SIH ’25 inter-college round" },
       ],
-      resultsSize: "text-[88px]",
+      resultsSize: "text-u88 max-md:text-[56px]",
     },
   },
   {
@@ -146,7 +146,7 @@ export const PROJECTS = [
         { value: "4", label: "Web-mining techniques fused" },
         { value: "5", label: "Dashboard tabs" },
       ],
-      resultsSize: "text-[72px]",
+      resultsSize: "text-u72 max-md:text-[52px]",
     },
   },
   {

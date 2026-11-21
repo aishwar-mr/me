@@ -26,15 +26,15 @@ export function FooterBar({ id = "contact", className = "" }) {
     <footer
       id={id}
       aria-label="Contact"
-      className={`g12 border-t border-line pb-8 pt-6 text-[12px] text-[#57544d] ${className}`}
+      className={`g12 border-t border-line pb-8 pt-6 text-[length:max(12px,calc(var(--u)*12))] text-[#57544d] ${className}`}
     >
-      <span className="font-mono col-start-1 col-end-5 text-[11px] uppercase">
+      <span className="font-mono col-start-1 col-end-5 break-all text-[length:max(11px,calc(var(--u)*11))] uppercase">
         <a href={`mailto:${EMAIL}`} className="nav-link">
           {EMAIL}
         </a>
       </span>
-      <SocialLinks className="font-mono col-start-5 col-end-10 flex justify-center gap-6 text-[11px] uppercase" />
-      <span className="font-mono col-start-10 col-end-13 text-right text-[11px] uppercase">© 2026 Aishwar</span>
+      <SocialLinks className="font-mono col-start-5 col-end-10 flex justify-center gap-6 text-[length:max(11px,calc(var(--u)*11))] uppercase max-md:justify-start" />
+      <span className="font-mono col-start-10 col-end-13 text-right text-[length:max(11px,calc(var(--u)*11))] uppercase max-md:text-left">© 2026 Aishwar</span>
     </footer>
   );
 }

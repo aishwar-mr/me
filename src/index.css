@@ -19,6 +19,11 @@
   --t-press: 140ms;
   --t-hover: 180ms;
   --stagger-item: 70ms;
+
+  /* One design pixel of the 1440px-wide layout. Fixed-pixel sizes in the
+     components are written as calc(var(--u) * N) so the whole composition
+     scales with the screen width instead of staying at desktop size. */
+  --u: calc(100vw / 1440);
 }
 
 html {
@@ -134,12 +139,15 @@ a:hover {
 }
 
 /* 12-column grid shell shared by nearly every section across the site. */
-.g12 {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 24px;
-  padding-inline: 80px;
-  box-sizing: border-box;
+/* In the components layer so utilities (flex, max-md:flex, …) can override it. */
+@layer components {
+  .g12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: calc(var(--u) * 24);
+    padding-inline: calc(var(--u) * 80);
+    box-sizing: border-box;
+  }
 }
 
 /* Home-page work belt (infinite auto-scroll of life/work photos) */
@@ -304,5 +312,49 @@ a:hover {
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Phones (< 768px). The desktop design is a fixed 12-column grid with
+   80px gutters and display type up to 220px; below 768px every 12-col
+   grid collapses to one column with 20px gutters, and the per-element
+   `max-md:` utilities in the components resize type and re-flow the few
+   rows that should stay side by side.
+   ------------------------------------------------------------------ */
+@media (min-width: 768px) {
+  .px-20 {
+    padding-left: calc(var(--u) * 80);
+    padding-right: calc(var(--u) * 80);
+  }
+  .gap-6 {
+    gap: calc(var(--u) * 24);
+  }
+}
+
+@media (max-width: 767px) {
+  .g12 {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 20px;
+  }
+  /* :where() keeps this at zero specificity so any gap-y-* utility wins. */
+  :where(.g12) {
+    row-gap: 20px;
+  }
+  [class*="grid-cols-12"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .g12 > *,
+  [class*="grid-cols-12"] > * {
+    grid-column: 1 / -1;
+  }
+  .px-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .belt-band::before,
+  .belt-band::after {
+    width: 40px;
   }
 }

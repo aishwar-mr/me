@@ -25,9 +25,19 @@ const ITEMS = [
 
 // One full copy of the belt scrolls past in this many seconds.
 const SPEED_SECONDS = 55;
-const COPY_WIDTH = ITEMS.reduce((a, b) => a + b.w + 20, 0);
+
+// Pictures are authored for a 1440px-wide screen; scale them with the screen
+// (phones get a fixed, slightly smaller size).
+function beltScale() {
+  const w = window.innerWidth;
+  return w < 768 ? 0.78 : Math.min(1.6, Math.max(0.7, w / 1440));
+}
 
 function Belt() {
+  const [k, setK] = useState(beltScale);
+  const copyWidth = ITEMS.reduce((a, b) => a + b.w * k + 20, 0);
+  const copyRef = useRef(copyWidth);
+  copyRef.current = copyWidth;
   const [off, setOff] = useState(0);
   const pausedRef = useRef(false);
   const offRef = useRef(0);
@@ -40,20 +50,26 @@ function Belt() {
       const dt = Math.min(0.05, (now - lastRef.current) / 1000);
       lastRef.current = now;
       if (!pausedRef.current) {
-        let next = offRef.current + (COPY_WIDTH / SPEED_SECONDS) * dt;
-        if (next >= COPY_WIDTH) next -= COPY_WIDTH;
+        let next = offRef.current + (copyRef.current / SPEED_SECONDS) * dt;
+        if (next >= copyRef.current) next -= copyRef.current;
         offRef.current = next;
         setOff(next);
       }
       rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafRef.current);
+    const onResize = () => setK(beltScale());
+    window.addEventListener("resize", onResize);
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   return (
     <div
       className="belt-band"
+      style={{ height: 420 * k }}
       aria-label="Work belt"
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
@@ -63,7 +79,7 @@ function Belt() {
           <figure
             key={i}
             className="belt-item m-0"
-            style={{ width: it.w, height: it.h }}
+            style={{ width: it.w * k, height: it.h * k }}
             aria-hidden={i >= ITEMS.length ? "true" : undefined}
           >
             <figcaption className="belt-cap">{it.cap}</figcaption>
@@ -75,12 +91,12 @@ function Belt() {
   );
 }
 
-const LABEL = "text-[12px] font-medium uppercase tracking-[0.06em]";
+const LABEL = "text-[length:max(12px,calc(var(--u)*12))] font-medium uppercase tracking-[0.06em]";
 
 export function WorkBelt() {
   return (
     <section id="work" aria-label="Work" className="border-b border-line py-14">
-      <nav aria-label="Work — top" className={`mb-7 grid grid-cols-12 gap-6 px-20 ${LABEL}`}>
+      <nav aria-label="Work — top" className={`mb-7 grid grid-cols-12 gap-6 px-20 max-md:flex max-md:justify-between ${LABEL}`}>
         <a href="#hardware" className="nav-link col-start-1 col-end-5">
           Hardware
         </a>
@@ -89,7 +105,7 @@ export function WorkBelt() {
         </a>
       </nav>
       <Belt />
-      <nav aria-label="Work — bottom" className={`mt-7 grid grid-cols-12 gap-6 px-20 ${LABEL}`}>
+      <nav aria-label="Work — bottom" className={`mt-7 grid grid-cols-12 gap-6 px-20 max-md:flex max-md:justify-between ${LABEL}`}>
         <a href="#photography" className="nav-link col-start-1 col-end-5">
           Photography
         </a>

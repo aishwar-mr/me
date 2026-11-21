@@ -25,6 +25,9 @@ function computeTransform(c, e) {
   return `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) rotate(${r.toFixed(2)}deg)`;
 }
 
+// Below this width the cards stack in a normal column instead of floating.
+const STACK_QUERY = "(max-width: 1023px)";
+
 function useFloatingCards(speed = 1) {
   const [paused, setPaused] = useState(false);
   const [transforms, setTransforms] = useState(() => CARD_MOTION.map((c) => computeTransform(c, 0)));
@@ -42,7 +45,7 @@ function useFloatingCards(speed = 1) {
     const loop = (now) => {
       const dt = Math.min(0.05, (now - lastRef.current) / 1000);
       lastRef.current = now;
-      if (!pausedRef.current) {
+      if (!pausedRef.current && !window.matchMedia(STACK_QUERY).matches) {
         elapsedRef.current += dt * speed;
         setTransforms(CARD_MOTION.map((c) => computeTransform(c, elapsedRef.current)));
       }
@@ -93,7 +96,7 @@ function ProjectCard({ project, transform, zIndex, onPause }) {
   return (
     <article
       onClick={onPause}
-      className="absolute left-0 top-0 flex w-[302px] cursor-pointer flex-col overflow-hidden rounded-[14px] bg-[#0e0e0e] text-[#f5f4f0] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[filter] duration-200 will-change-transform hover:[filter:brightness(1.08)]"
+      className="absolute left-0 top-0 flex w-[302px] cursor-pointer max-lg:!static max-lg:!h-auto max-lg:w-full max-lg:max-w-[460px] max-lg:self-center max-lg:!transform-none flex-col overflow-hidden rounded-[14px] bg-[#0e0e0e] text-[#f5f4f0] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[filter] duration-200 will-change-transform hover:[filter:brightness(1.08)]"
       style={{ height: 420, transform, zIndex }}
     >
       {project.cardImage ? (
@@ -117,7 +120,7 @@ function ProjectCard({ project, transform, zIndex, onPause }) {
           <span className="bg-[#3a3a3a] px-1.5 py-[3px] font-mono text-[10px] text-[#cfcfcf]">PROJECT MOCKUP</span>
         </div>
       )}
-      <div className="flex flex-1 flex-col justify-between px-[22px] pb-5 pt-[18px]">
+      <div className="flex flex-1 flex-col justify-between px-[22px] pb-5 pt-[18px] max-lg:gap-6">
         <h2 className="m-0 whitespace-pre-line text-[30px] font-medium uppercase leading-none tracking-[-0.02em]">
           {project.cardTitle}
         </h2>
@@ -132,62 +135,89 @@ function ProjectCard({ project, transform, zIndex, onPause }) {
 
 export function Projects() {
   const { transforms, paused, pause, resume } = useFloatingCards(1);
+  const outerRef = useRef(null);
+  // The composition is drawn on a 1440 x 1000 stage; scale the whole stage to
+  // the width of the screen so its proportions hold on any desktop or tablet.
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = outerRef.current;
+    if (!el) return;
+    const measure = () => setScale(el.clientWidth / 1440);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <div onClick={resume} className="relative h-[1000px] w-full overflow-hidden bg-paper font-sans text-[#0e0e0e]">
-      <header className="absolute left-0 top-0 z-[3] grid w-full grid-cols-12 items-start gap-6 px-20 pt-5">
-        <Logo className="pt-[7px]" />
-        <nav aria-label="Primary" className="col-start-8 col-end-13 flex justify-end gap-16 pt-[10px] font-mono text-[13px] font-semibold">
-          <a href="#work" />
-          <a href="/#contact" className="nav-link">
-            CONTACT
-          </a>
-          <Link to="/about" className="nav-link">
-            ABOUT
-          </Link>
-        </nav>
-      </header>
-
-      <p className="absolute left-[514.67px] top-[84px] z-0 w-[410.67px] text-center font-mono text-[11px] uppercase leading-[1.5]">
-        [Short intro line one]
-        <br />
-        [What you do — line two]
-        <br />
-        /[here’s some of my works]
-      </p>
-
-      <h1
-        aria-label="Projects"
-        className="absolute left-0 top-[590px] z-0 w-full text-center text-[220px] font-normal leading-none tracking-[-0.02em]"
+    <div
+      ref={outerRef}
+      onClick={resume}
+      style={{ height: 1000 * scale }}
+      className="relative w-full overflow-hidden bg-paper font-sans text-[#0e0e0e] max-lg:!h-auto"
+    >
+      <div
+        style={{ transform: `scale(${scale})` }}
+        className="relative h-[1000px] w-[1440px] origin-top-left max-lg:flex max-lg:!h-auto max-lg:w-full max-lg:flex-col max-lg:gap-5 max-lg:px-5 max-lg:pb-10 max-lg:!transform-none"
       >
-        PR<span className="font-display text-[250px] italic">O</span>JECTS
-      </h1>
+        <header className="absolute left-0 top-0 z-[3] grid w-full grid-cols-12 items-start gap-[24px] px-[80px] pt-5 max-lg:static max-lg:flex max-lg:justify-between max-lg:px-0">
+          <Logo className="pt-[7px]" />
+          <nav
+            aria-label="Primary"
+            className="col-start-8 col-end-13 flex justify-end gap-16 pt-[10px] font-mono text-[13px] font-semibold max-lg:gap-6"
+          >
+            <a href="#work" />
+            <a href="/#contact" className="nav-link">
+              CONTACT
+            </a>
+            <Link to="/about" className="nav-link">
+              ABOUT
+            </Link>
+          </nav>
+        </header>
 
-      {PROJECTS.map((project, i) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-          transform={transforms[i]}
-          zIndex={4 - i}
-          onPause={(e) => {
-            e.stopPropagation();
-            pause();
-          }}
-        />
-      ))}
+        <h1
+          aria-label="Projects"
+          className="absolute left-0 top-[590px] z-0 w-full text-center text-[220px] font-normal leading-none tracking-[-0.02em] max-lg:static max-lg:mt-4 max-lg:text-left max-lg:text-[min(15vw,150px)]"
+        >
+          PR<span className="font-display text-[250px] italic max-lg:text-[1.14em]">O</span>JECTS
+        </h1>
 
-      <p
-        aria-live="polite"
-        className="font-mono absolute bottom-7 right-20 z-[30] m-0 text-[10px] uppercase tracking-[0.06em] text-[#6b6860]"
-      >
-        {paused ? "Paused · click anywhere to resume" : "Click a card to pause"}
-      </p>
+        <p className="absolute left-[514.67px] top-[84px] z-0 w-[410.67px] text-center font-mono text-[11px] uppercase leading-[1.5] max-lg:static max-lg:w-auto max-lg:text-left">
+          [Short intro line one]
+          <br />
+          [What you do — line two]
+          <br />
+          /[here’s some of my works]
+        </p>
 
-      <p className="absolute left-[406px] top-[920px] z-[3] w-[628px] text-center font-mono text-[12px] font-semibold uppercase leading-[1.5]">
-        I’m based in MUMBAI, INDIA
-        <br />
-        focused on BRIDGING GAP BETWEEN CUSTOMER &amp; BUSINESS
-      </p>
+        {PROJECTS.map((project, i) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            transform={transforms[i]}
+            zIndex={4 - i}
+            onPause={(e) => {
+              e.stopPropagation();
+              pause();
+            }}
+          />
+        ))}
+
+        <p
+          aria-live="polite"
+          className="font-mono absolute bottom-7 right-20 z-[30] m-0 text-[10px] uppercase tracking-[0.06em] text-[#6b6860] max-lg:hidden"
+        >
+          {paused ? "Paused · click anywhere to resume" : "Click a card to pause"}
+        </p>
+
+        <p className="absolute left-[406px] top-[920px] z-[3] w-[628px] text-center font-mono text-[12px] font-semibold uppercase leading-[1.5] max-lg:static max-lg:mt-4 max-lg:w-auto max-lg:text-left">
+          I’m based in MUMBAI, INDIA
+          <br />
+          focused on BRIDGING GAP BETWEEN CUSTOMER &amp; BUSINESS
+        </p>
+      </div>
     </div>
   );
 }

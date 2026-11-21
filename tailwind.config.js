@@ -14,6 +14,14 @@ export default {
         // is under the 4.5:1 normal-text minimum there.
         "vermilion-text": "rgb(var(--vermilion-text-rgb) / <alpha-value>)",
       },
+      // Display sizes scale with the viewport: --u is one design pixel of the
+      // 1440px-wide layout (see src/index.css). The floor keeps small ones legible.
+      fontSize: Object.fromEntries(
+        [30, 32, 36, 40, 44, 72, 80, 88, 112, 128, 150, 170, 220, 250].map((n) => [
+          `u${n}`,
+          `max(${Math.round(n * 0.6)}px, calc(var(--u) * ${n}))`,
+        ])
+      ),
       fontFamily: {
         display: ['"Instrument Serif"', "serif"],
         mono: ['"JetBrains Mono"', "monospace"],
