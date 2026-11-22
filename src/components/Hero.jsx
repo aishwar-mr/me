@@ -273,7 +273,7 @@ export function Hero() {
 
         <div className="grid h-[calc(var(--u)*150)] grid-cols-12 items-center gap-6 border-b border-line px-20 max-md:flex max-md:h-auto max-md:flex-wrap max-md:items-baseline max-md:gap-y-2 max-md:py-4 max-md:text-[14.5vw]">
           <p className="col-start-1 col-end-3 m-0 text-[length:max(11px,calc(var(--u)*11))] leading-[1.35] text-muted max-md:w-full max-md:text-[11px]">
-            have had the
+            haven’t had the
             <br />
             privilege
           </p>
