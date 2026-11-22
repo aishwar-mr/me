@@ -13,7 +13,7 @@ import iitMadrasLogo from "@/assets/logos/iit-madras.png";
 const FACTS = [
   { label: "Focus", value: "Business ops · Strategy · Data" },
   { label: "Experience", value: "1+ years" },
-  { label: "Open to", value: "[Roles / collabs]" },
+  { label: "Open to", value: "Roles adjacent to Customer & Tech" },
   {
     label: "Email",
     value: (

@@ -185,11 +185,9 @@ export function Projects() {
         </h1>
 
         <p className="absolute left-[514.67px] top-[84px] z-0 w-[410.67px] text-center font-mono text-[11px] uppercase leading-[1.5] max-lg:static max-lg:w-auto max-lg:text-left">
-          [Short intro line one]
+          I work with Technology
           <br />
-          [What you do — line two]
-          <br />
-          /[here’s some of my works]
+          to solve real customer problems
         </p>
 
         {PROJECTS.map((project, i) => (

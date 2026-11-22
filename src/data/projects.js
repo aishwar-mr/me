@@ -31,13 +31,13 @@ export const PROJECTS = [
     id: "1",
     cardTitle: "Track\nMonitor",
     cardDesc:
-      "Integrated track-inspection prototype for Smart India Hackathon 2025 — a rail-mounted device that scans track health on the move.",
+      "Smart India Hackathon 2025 prototype — a rail-mounted device that scans track health on the move.",
     cardImage: trackPrototype,
     cardImageAlt: "Track-inspection prototype on railway tracks",
     cardImgHeight: 210,
     link: "/projects/1",
     listLine:
-      "Contactless, indigenous track monitoring for Indian Railways — at about a sixth of the imported system’s cost.",
+      "Contactless, indigenous track monitoring for Indian Railways at about a sixth of the imported system’s cost.",
     listMeta: "Hardware · SIH 2025",
     detail: {
       index: "01",
@@ -46,8 +46,8 @@ export const PROJECTS = [
       tagline: "Indigenous, contactless track monitoring —\nan affordable ITMS for Indian Railways",
       facts: [
         { label: "Brief", value: "Indian Railways · SIH PS 25020" },
-        { label: "My role", value: "[Your role]" },
-        { label: "Timeline", value: "[Duration]" },
+        { label: "My role", value: "ML integration" },
+        { label: "Timeline", value: "5 weeks to build" },
         { label: "Team", value: "TraCkrCiT786 · ID 114406" },
       ],
       factsAction: { type: "text", value: "( Field-tested ·\nCentral Railway, Mumbai )" },
@@ -61,32 +61,32 @@ export const PROJECTS = [
       },
       overviewHeading: ["Track monitoring,", "made in", "India"],
       overviewText:
-        "Indian Railways inspects track with Integrated Track Monitoring Systems (ITMS) mounted on Track Recording Cars — but the current system is imported Russian technology and costs about ₹180 crore. For Smart India Hackathon 2025 (problem statement 25020, Smart Automation, Hardware) we built a compact, contactless, indigenous alternative that analyses track geometry and the condition of track components, and complies with EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023).",
+        "Indian Railways inspects track with Integrated Track Monitoring Systems (ITMS) mounted on Track Recording Cars, but the current system is imported Russian technology costing about ₹180 crore. For Smart India Hackathon 2025 (problem statement 25020, Smart Automation, Hardware) we built a compact, contactless, indigenous alternative that analyses track geometry and component condition, and complies with EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023).",
       process: [
         {
           num: "01",
           title: "Challenge",
-          text: "The imported system brings high procurement and maintenance costs, closed-source software, little room to customise, scalability limits and vendor lock-in. Chainage mapping relies on GPS signals alone, so its accuracy is low and defects are hard to pinpoint on the track.",
+          text: "The imported system means high procurement and maintenance costs, closed-source software, little room to customise, limited scalability and vendor lock-in. Chainage mapping relies on GPS alone, so accuracy is low and defects are hard to pinpoint.",
         },
         {
           num: "02",
           title: "Approach",
-          text: "A compact, cost-effective rig that mounts on a track recording car: IMU, laser sensor and ESP32-CAM feeding an ESP32 and a Raspberry Pi 400, running Python, OpenCV, an ANN and SQL. Edge computing does the first-level fault detection in real time; the cloud holds long-term trends. The software stack is open and standards-compliant, to avoid vendor lock-in.",
+          text: "A compact, low-cost rig that mounts on a track recording car: an IMU, laser sensor and ESP32-CAM feed an ESP32 and a Raspberry Pi 400 running Python, OpenCV, an ANN and SQL. Edge computing detects first-level faults in real time; the cloud holds long-term trends. The open, standards-compliant stack avoids vendor lock-in.",
         },
         {
           num: "03",
           title: "Innovation",
-          text: "Hybrid localisation fuses GPS and IMU for uninterrupted chainage mapping, with RFID tags on the track to sharpen defect location. AI/ML analytics find defect patterns and the full rail profile, moving maintenance from reactive to predictive. A plug-and-play architecture lets a railway zone deploy the full system or just a sub-system — geometry, rail profile or acceleration.",
+          text: "Hybrid localisation fuses GPS and IMU for uninterrupted chainage mapping, and RFID tags on the track sharpen defect location. AI/ML analytics find defect patterns and the full rail profile, moving maintenance from reactive to predictive. A plug-and-play architecture lets a railway zone deploy the full system or a single sub-system: geometry, rail profile or acceleration.",
         },
         {
           num: "04",
           title: "Feasibility",
-          text: "Extracting track-geometry parameters and track-component conditions, and real-time data acquisition and processing, were both tested. The system is built to meet EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023) accuracy standards, and was field-tested on Central Railway in Mumbai.",
+          text: "We tested extraction of track-geometry parameters and component conditions, and real-time data acquisition and processing. The system is built to EN 13848 Parts 1 & 2 and RDSO TM/IM/448 (Rev. 1, 2023) accuracy standards and was field-tested on Central Railway in Mumbai.",
         },
         {
           num: "05",
           title: "Impact",
-          text: "Less foreign dependence and a system developed, owned and maintained in India; lower capital and operating cost; fewer accidents, derailments and downtime through early detection of critical defects; sensitive railway data processed and stored entirely within India; and more public trust in rail safety.",
+          text: "Less foreign dependence, with the system developed, owned and maintained in India; lower capital and operating cost; fewer accidents, derailments and downtime through early detection of critical defects; sensitive railway data processed and stored entirely in India; greater public trust in rail safety.",
         },
         {
           num: "06",
@@ -179,42 +179,42 @@ export const PROJECTS = [
       },
       overviewHeading: ["Idea in,", "verdict", "out"],
       overviewText:
-        "Founders and analysts keep asking the same thing before committing resources: has this been built already, and is the space worth entering? Describe an idea in plain English and the platform retrieves the most similar companies from 6,342 validated Y Combinator records, scores how saturated the space is, measures public sentiment from Hacker News and global news, and combines the signals into a transparent opportunity verdict. I treated it as a delivery exercise as much as a technical one: requirements first, then build, validation, testing, documentation and controlled release.",
+        "Before committing resources, founders and analysts ask the same thing: has this been built, and is the space worth entering? Describe an idea in plain English and the platform retrieves the most similar companies from 6,342 validated Y Combinator records, scores market saturation, measures public sentiment from Hacker News and global news, and combines the signals into a transparent opportunity verdict. I treated it as a delivery exercise as much as a technical one: requirements first, then build, validation, testing, documentation and controlled release.",
       process: [
         {
           num: "01",
           title: "Challenge",
-          text: "Answering the question by hand means days of searching directories, reading news and forming an unstructured opinion — gut feel and hours of manual Googling, with nothing to trace back to.",
+          text: "Answering by hand takes days of searching directories and reading news, ending in an unstructured opinion: gut feel and hours of manual Googling, with nothing to trace back to.",
         },
         {
           num: "02",
           title: "Requirements",
-          text: "I wrote a requirements document, user stories and acceptance criteria first, then built to them. Example: “As a founder, I want to see how crowded my idea’s market is, so that I can decide whether to proceed” — a 0–100 score with a label from Wide open to Crowded, its three components visible and the formula explained on screen. A process-flow diagram maps idea to verdict, and the needs of a founder, an analyst and a reviewer shaped the four screens: Market Overview, Competitor Intelligence, AI Insights and Data Quality.",
+          text: "I wrote requirements, user stories and acceptance criteria first, then built to them. Example: “As a founder, I want to see how crowded my idea’s market is, so that I can decide whether to proceed” — a 0–100 score labelled from Wide open to Crowded, with its three components visible and the formula explained on screen. A process-flow diagram maps idea to verdict, and the needs of a founder, an analyst and a reviewer shaped the four screens: Market Overview, Competitor Intelligence, AI Insights and Data Quality.",
         },
         {
           num: "03",
           title: "Data validation",
-          text: "Data quality was a design requirement, not a cleanup step. Named rules cover missing identifiers, duplicates, empty descriptions and probable duplicates, with separate flag and normalisation rules; every exclusion is logged with its reason and a fingerprint of the input makes each run reproducible. It reconciles exactly: 6,399 records received, 6,342 passed, 57 excluded.",
+          text: "Data quality was a design requirement, not a cleanup step. Named rules cover missing identifiers, duplicates, empty descriptions and probable duplicates, with separate flag and normalisation rules. Every exclusion is logged with its reason, and a fingerprint of the input makes each run reproducible. The counts reconcile exactly: 6,399 records received, 6,342 passed, 57 excluded.",
         },
         {
           num: "04",
           title: "Testing & QA",
-          text: "29 automated tests cover validation rules, determinism, search, analytics and the insight layer, and all pass in about two seconds. Streamlit smoke tests confirm each screen loads, and written test cases were checked against live outputs in the spirit of UAT — the saturation score for a known idea (86.2, Crowded, 53 matched competitors) is reproducible across runs. Retrieval was evaluated with a known-item test (Hit@1, Hit@k, MRR) and VADER was compared against a trained logistic-regression classifier, reported as indicative results with limitations stated.",
+          text: "29 automated tests cover validation rules, determinism, search, analytics and the insight layer, and pass in about two seconds. Streamlit smoke tests confirm each screen loads, and written test cases were checked against live outputs in the spirit of UAT: the saturation score for a known idea (86.2, Crowded, 53 matched competitors) is reproducible across runs. Retrieval was evaluated with a known-item test (Hit@1, Hit@k, MRR), and VADER was compared with a trained logistic-regression classifier; results are indicative, with limitations stated.",
         },
         {
           num: "05",
           title: "Responsible AI",
-          text: "AI Insights sends the retrieved companies and computed scores to a language model through OpenRouter, with three controls: the prompt holds only evidence from the data and tells the model not to add outside facts; a grounding check compares the response against that evidence; and if the check fails or the service is down, a rule-based summary takes over. The API key lives in the hosting platform’s secrets, never in the repository.",
+          text: "AI Insights sends the retrieved companies and computed scores to a language model through OpenRouter, with three controls: the prompt holds only evidence from the data and forbids outside facts; a grounding check compares the response against that evidence; and a rule-based summary takes over if the check fails or the service is down. The API key lives in the hosting platform’s secrets, never the repository.",
         },
         {
           num: "06",
           title: "Release",
-          text: "Built in Google Colab, moved to GitHub and deployed on Streamlit Community Cloud, which rebuilds on every push. The v2 upgrade followed the same path — tested locally, committed with a clear message, pushed and verified on the live URL — with a changelog and a user guide. Along the way I diagnosed environment and deployment issues from logs: a mismatched Python interpreter, a missing import and a failed model call.",
+          text: "Built in Google Colab, moved to GitHub and deployed on Streamlit Community Cloud, which rebuilds on every push. The v2 upgrade followed the same path — tested locally, committed with a clear message, pushed and verified on the live URL — with a changelog and user guide. I diagnosed environment and deployment issues from logs: a mismatched Python interpreter, a missing import and a failed model call.",
         },
         {
           num: "07",
           title: "Limits & next",
-          text: "Scores are decision aids, not market facts: they rest on Y Combinator data only, and sentiment covers English text only — both limits are stated in the app. Next: precision-at-K evaluation against hand-labelled results, data sources beyond Y Combinator, and multilingual sentiment.",
+          text: "Scores are decision aids, not market facts: they rest on Y Combinator data only, and sentiment covers English text only. Both limits are stated in the app. Next: precision-at-K evaluation against hand-labelled results, sources beyond Y Combinator, and multilingual sentiment.",
         },
       ],
       breakdowns: [
@@ -249,7 +249,7 @@ export const PROJECTS = [
     cardImgHeight: 210,
     link: "/projects/3",
     listLine:
-      "A self-initiated technical blog on Frappe Builder: the case for a visual page builder that gives marketing speed without handing back performance or brand.",
+      "A self-initiated technical blog on Frappe Builder: the case for a visual page builder that gives marketing speed without sacrificing performance or brand.",
     listMeta: "Technical blog · PMM",
     detail: {
       index: "03",
@@ -275,37 +275,37 @@ export const PROJECTS = [
       },
       overviewHeading: ["Ship pages", "without", "a ticket"],
       overviewText:
-        "At small and mid-sized companies the same quiet bottleneck keeps repeating: marketing needs a landing page, engineering owns the website, and the page ships two weeks late — if it ships at all — by which time the campaign has moved on. The usual fix is a visual builder, but that trade has its own cost: drag-and-drop ease in exchange for performance, brand consistency and often a per-seat bill that grows faster than the team. On my own initiative, as a piece for the product marketing manager track, I wrote the technical blog for Frappe Builder — which was built to avoid that trade — aimed at the person who feels the pain most, the product manager, and anchored each claim to a screen from the product itself.",
+        "At small and mid-sized companies the same bottleneck recurs: marketing needs a landing page, engineering owns the website, and the page ships two weeks late, if at all, after the campaign has moved on. The usual fix, a visual builder, has its own cost: drag-and-drop ease in exchange for performance, brand consistency and often a per-seat bill that outgrows the team. Frappe Builder was built to avoid that trade. On my own initiative, for the product marketing manager track, I wrote its technical blog for the person who feels the pain most, the product manager, and anchored each claim to a screen from the product.",
       process: [
         {
           num: "01",
           title: "Problem",
-          text: "Pages wait in a sprint queue. Engineering time is negotiated for, deploy windows decide the launch date, and a campaign that runs on a quarterly rhythm keeps losing the first two weeks to the website.",
+          text: "Pages wait in a sprint queue. Engineering time must be negotiated, deploy windows set the launch date, and a team running campaigns quarterly loses the first two weeks to the website.",
         },
         {
           num: "02",
           title: "Angle",
-          text: "Frame the blog around what actually changes when a PM has Builder, not around a feature list. Each section is a plain-spoken claim — “You stop waiting”, “You stop being afraid to touch it” — followed by the practical effect on the team.",
+          text: "Frame the blog around what changes when a PM has Builder, not around a feature list. Each section makes a plain claim — “You stop waiting”, “You stop being afraid to touch it” — then states the practical effect on the team.",
         },
         {
           num: "03",
           title: "Message",
-          text: "Edit section by section on a visual canvas, preview, and publish in one click. Version control makes every change recoverable and preview means nothing goes live unseen. Design tokens define palette, fonts and templates once, so every new page inherits them and light and dark themes stay aligned as more people publish.",
+          text: "Edit section by section on a visual canvas, preview, and publish in one click. Version control makes every change recoverable, and preview means nothing goes live unseen. Design tokens define palette, fonts and templates once, so every new page inherits them and light and dark themes stay aligned as more people publish.",
         },
         {
           num: "04",
           title: "Differentiator",
-          text: "AI at cost, not at markup. Builder ships with BOB, an AI page generator, and you bring your own API key — you pay the model provider directly, nothing sits in between. Cost tracks what you generate rather than headcount, so the AI bill scales with usage and not with how many people you hire.",
+          text: "AI at cost, not at markup. Builder ships with BOB, an AI page generator, and you bring your own API key: you pay the model provider directly, with nothing in between. Cost tracks what you generate, not headcount, so the AI bill scales with usage rather than hiring.",
         },
         {
           num: "05",
           title: "Proof",
-          text: "Speed is the claim almost no builder makes, because most produce pages weighed down by scripts nobody asked for. Builder’s creator set out to fix exactly that, frappe.io itself runs on Builder, and its pages score consistently well on Lighthouse. Domain, embeds and analytics sit in the same place the page was built, closing the loop between shipping and knowing from days to same-day.",
+          text: "Almost no builder claims speed, because most produce pages weighed down by scripts nobody asked for. Builder’s creator set out to fix exactly that, frappe.io itself runs on Builder, and its pages score consistently well on Lighthouse. Domain, embeds and analytics sit where the page was built, shortening the loop from shipping to knowing from days to same-day.",
         },
         {
           num: "06",
           title: "Honest caveats",
-          text: "A “Worth knowing” note closes the blog: Builder is open source under AGPL-3.0, so the licence terms matter if you plan to modify it commercially, and it can be self-hosted free or run managed on Frappe Cloud. The AI cost comparison is written as a formula — pages a month, users, rupees a year — ready for real usage numbers.",
+          text: "A “Worth knowing” note closes the blog: Builder is open source under AGPL-3.0, so the licence terms matter if you plan to modify it commercially, and it can be self-hosted free or run managed on Frappe Cloud. The AI cost comparison is written as a formula (pages a month, users, rupees a year), ready for real usage numbers.",
         },
       ],
       highlights: [
@@ -314,7 +314,7 @@ export const PROJECTS = [
           alt: "A brand-studio landing page — hero, selected work cards and services — open on the Builder canvas at 44% zoom",
           caption: "01 · Visual canvas",
           title: "Edit the page where you see it",
-          text: "The page is built section by section on a live canvas — hero, selected work, services — and previewed at desktop, tablet and mobile widths before one click publishes it. No ticket, no deploy window.",
+          text: "Build the page section by section on a live canvas — hero, selected work, services — and preview it at desktop, tablet and mobile widths before one click publishes it. No ticket, no deploy window.",
           aspect: "882 / 915",
         },
         {
@@ -397,7 +397,7 @@ export const PROJECTS = [
       tagline: "Facts eliminate, priorities rank —\nand the ranking attacks itself",
       facts: [
         { label: "Brief", value: "Screening sites for a textile dye house" },
-        { label: "My role", value: "Design, build & write-up" },
+        { label: "My role", value: "Complete build" },
         { label: "Size", value: "582 lines · 12 candidates screened" },
         { label: "Stack", value: "Python · async HTTP · geospatial API" },
       ],
@@ -411,42 +411,42 @@ export const PROJECTS = [
       },
       overviewHeading: ["Facts gate,", "priorities", "rank"],
       overviewText:
-        "Choosing where to put a plant is a decision worth tens of millions of dollars that is still made largely by hand: an analyst pulls a dozen unrelated federal and state datasets for every candidate address, and the baseline is a task measured in weeks. For a textile dye house the stakes are sharper — wet processing is water- and effluent-bound, so a site where a discharge permit is unobtainable doesn’t get delayed, it dies after the land is bought. I built a four-layer pipeline that enriches each address from one API call, eliminates on physics and law, ranks the survivors, and then stress-tests its own answer. No LLM sits anywhere in the decision path, and every number carries its source, confidence and dataset vintage.",
+        "Choosing a plant site is a decision worth tens of millions of dollars that is still made largely by hand: an analyst pulls a dozen unrelated federal and state datasets for every candidate address, a task measured in weeks. For a textile dye house the stakes are sharper. Wet processing is water- and effluent-bound, so a site where a discharge permit is unobtainable doesn’t get delayed; it dies after the land is bought. I built a four-layer pipeline that enriches each address with one API call, eliminates on physics and law, ranks the survivors and stress-tests its own answer. No LLM sits in the decision path, and every number carries its source, confidence and dataset vintage.",
       process: [
         {
           num: "01",
           title: "Problem",
-          text: "Data is scattered across EPA, EIA, FEMA, HUD, Census, REGRID and state layers, so every site is a manual research project and comparisons are inconsistent. Outputs carry no provenance — a cell reading 345 can’t be defended six months later — and judgement and fact are mixed in the same step.",
+          text: "Data is scattered across EPA, EIA, FEMA, HUD, Census, REGRID and state layers, so every site is a manual research project and comparisons are inconsistent. Outputs carry no provenance — a cell reading 345 can’t be defended six months later — and judgement and fact are mixed in one step.",
         },
         {
           num: "02",
           title: "Why it stays hard",
-          text: "Data goes missing unpredictably, and failures are location-specific rather than field-specific: a rural site and an urban site fail on completely different fields, so no reliable-subset assumption survives. And a single score hides its own fragility — a ranking that flips under a 10% weight change looks identical to one that doesn’t.",
+          text: "Data goes missing unpredictably, and failures are location-specific, not field-specific: a rural and an urban site fail on completely different fields, so no reliable-subset assumption survives. A single score also hides its own fragility: a ranking that flips under a 10% weight change looks identical to one that doesn’t.",
         },
         {
           num: "03",
           title: "Design principle",
-          text: "Separate what is a fact from what is a preference. The gate encodes physics and law and is absolute. The score encodes priorities and is explicitly declared, weighted and stress-tested. The layers don’t know about each other: gate and score accept anything exposing .value(field) and .citation(field), which let them be developed against cached responses at zero cost.",
+          text: "Separate fact from preference. The gate encodes physics and law and is absolute. The score encodes priorities and is declared, weighted and stress-tested. The layers don’t know about each other: gate and score accept anything exposing .value(field) and .citation(field), so they could be developed against cached responses at zero cost.",
         },
         {
           num: "04",
           title: "The money layer",
-          text: "The client exists to make calls expensive to fire by accident: cache first, then dry-run, then a hard budget ceiling that raises before it increments, then a semaphore of ten. One preset call returns 72 fields, collapsing the design from three calls per site to one. Because the cache is checked before the budget and the semaphore, the full 12-site screen replays in 0.7 seconds for zero credits.",
+          text: "The client makes calls expensive to fire by accident: cache first, then dry run, then a hard budget ceiling that raises before it increments, then a semaphore of ten. One preset call returns 72 fields, cutting the design from three calls per site to one. Because the cache is checked before the budget and semaphore, the full 12-site screen replays in 0.7 seconds for zero credits.",
         },
         {
           num: "05",
           title: "Gate, score, stress-test",
-          text: "Eight rules, each with two independent axes — what to do when a value fails, and what to do when it is missing — give a three-state result: passed, eliminated (with the field, value, requirement and citation) or unavailable. Survivors are scored on 15 criteria in four dimensions — water 35%, power 30%, cost 20%, logistics 15% — with weights declared, not fitted. Then 12 reweightings try to break the winner, and every flip is reported.",
+          text: "Eight rules, each with two independent axes — what to do when a value fails, and what to do when it is missing — give a three-state result: passed, eliminated (with the field, value, requirement and citation) or unavailable. Survivors are scored on 15 criteria in four dimensions — water 35%, power 30%, cost 20%, logistics 15% — with declared, not fitted, weights. Twelve reweightings then try to break the winner, and every flip is reported.",
         },
         {
           num: "06",
           title: "Honest limits",
-          text: "Real textile plants were eliminated on parcel size (2 of 2 closest analogues), an office park ranked second because the gate never tests permitted use, and Brea CA died on a 3 kV miss against a 69 kV threshold. Correlated power criteria are multiply counted and imputation is invisible in the total. All stated up front, with fixes.",
+          text: "Real textile plants were eliminated on parcel size (2 of 2 closest analogues), an office park ranked second because the gate never tests permitted use, and Brea CA was eliminated by a 3 kV miss against a 69 kV threshold. Correlated power criteria are multiply counted, and imputation is invisible in the total. All are stated up front, with fixes.",
         },
         {
           num: "07",
           title: "Next",
-          text: "Benchmark the thresholds: run 50–100 operating US textile and dye facilities through the same enrichment so each threshold becomes a percentile with a stated coverage level, then measure false-negative rate on a held-out 30%. After that: absolute scoring, confidence-aware weights, candidate discovery from bulk parcel data, and region-aware profiles for places where water allocation, not proximity, is the constraint.",
+          text: "Benchmark the thresholds: run 50–100 operating US textile and dye facilities through the same enrichment so each threshold becomes a percentile with a stated coverage level, then measure the false-negative rate on a held-out 30%. After that: absolute scoring, confidence-aware weights, candidate discovery from bulk parcel data, and region-aware profiles where water allocation, not proximity, is the constraint.",
         },
       ],
       highlights: [
