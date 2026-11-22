@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light dark;
   /* Space-separated channels so Tailwind's <alpha-value> utilities
-     (text-ink/70 and friends) resolve against them. */
+     (text-ink/70 and friends) resolve against them. Light theme: */
   --paper-rgb: 245 244 240; /* #F5F4F0 — the wireframe's warm off-white ground */
   --ink-rgb: 26 26 26; /* #1a1a1a */
   --line-rgb: 217 214 207; /* #d9d6cf — the hairline divider colour used everywhere */
+  --muted-rgb: 87 84 77; /* #57544d — secondary text */
+  --soft-rgb: 69 66 60; /* #45423c — body copy */
+  --faint-rgb: 133 130 122; /* #85827a — numerals, de-emphasised words */
+  --chip-rgb: 203 200 193; /* #cbc8c1 — outlines on chips */
   --vermilion-rgb: 217 74 56;
   --vermilion-text-rgb: 184 51 35;
 
@@ -26,6 +31,21 @@
   --u: calc(100vw / 1440);
 }
 
+/* Dark theme: follows the system setting, no toggle. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper-rgb: 22 22 26;
+    --ink-rgb: 240 238 232;
+    --line-rgb: 56 56 62;
+    --muted-rgb: 163 160 152;
+    --soft-rgb: 200 197 190;
+    --faint-rgb: 122 120 114;
+    --chip-rgb: 74 74 80;
+    --vermilion-rgb: 236 100 80;
+    --vermilion-text-rgb: 236 100 80;
+  }
+}
+
 html {
   background: rgb(var(--paper-rgb));
 }
@@ -41,12 +61,29 @@ body {
 }
 
 a {
-  color: #1a1a1a;
+  color: rgb(var(--ink-rgb));
   text-decoration: none;
   transition: color var(--t-hover) ease;
 }
-a:hover {
-  color: #555555;
+/* Hover colour only where there is a real hover; touch screens would keep it stuck. */
+@media (hover: hover) {
+  a:hover {
+    color: rgb(var(--muted-rgb));
+  }
+}
+
+/* Selected text takes the accent. */
+::selection {
+  background: rgb(var(--vermilion-text-rgb));
+  color: rgb(var(--paper-rgb));
+}
+
+/* A visible keyboard focus ring everywhere that has no ring of its own. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgb(var(--vermilion-text-rgb));
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
 /* Plain-text nav/footer links: an underline that grows in on hover/focus
@@ -68,10 +105,25 @@ a:hover {
 /* Parenthetical CTA links — a small press-scale instead of nothing. */
 .press {
   display: inline-block;
-  transition: transform var(--t-press) var(--ease-out);
+  /* The padding is cancelled by the negative margin, so the text does not
+     move; it only gives the hover flood a pill to fill. */
+  padding-inline: 0.75em;
+  margin-inline: -0.75em;
+  border-radius: 999px;
+  transition:
+    transform var(--t-press) var(--ease-out),
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
 }
 .press:active {
   transform: scale(0.97);
+}
+@media (hover: hover) {
+  .press:hover,
+  .press:focus-visible {
+    background: rgb(var(--vermilion-text-rgb));
+    color: rgb(var(--paper-rgb));
+  }
 }
 
 .font-display {
@@ -80,35 +132,6 @@ a:hover {
 
 .font-mono {
   font-family: "JetBrains Mono", monospace;
-}
-
-/* The wireframe's shared "wireframe placeholder" convention: a tinted box
-   with a faint diagonal cross, used for every un-shot project image. */
-.wf-ph {
-  position: relative;
-  background: #e6e4de;
-  border: 1px dashed #8f8c84;
-  overflow: hidden;
-}
-.wf-ph::before,
-.wf-ph::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180%;
-  height: 1px;
-  background: #c9c6be;
-}
-.wf-ph::before {
-  transform: translate(-50%, -50%) rotate(28deg);
-}
-.wf-ph::after {
-  transform: translate(-50%, -50%) rotate(-28deg);
-}
-.wf-ph > span {
-  position: relative;
-  z-index: 1;
 }
 
 /* Dark variant used on the Projects scatter cards (dark card background). */
@@ -150,81 +173,118 @@ a:hover {
   }
 }
 
-/* Home-page work belt (infinite auto-scroll of life/work photos) */
-.belt-band {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
+/* Home-page photo pile (src/components/WorkBelt.jsx): prints you can drag
+   around and click for a lightbox. Position/tilt are inline transforms. */
+.print {
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Position and tilt are inline transforms on this element; the frame, the
+     hover pop and the drop-in live on the spans inside it. */
 }
-.belt-band::before,
-.belt-band::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 3;
-  pointer-events: none;
+.print-lift {
+  background: #fbfaf7;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.16),
+    0 8px 22px rgba(0, 0, 0, 0.14);
+  transition:
+    transform 280ms var(--ease-out),
+    box-shadow 280ms ease;
 }
-.belt-band::before {
-  left: 0;
-  background: linear-gradient(90deg, #f5f4f0, rgba(0, 0, 0, 0));
+.print-drag {
+  cursor: grabbing;
 }
-.belt-band::after {
-  right: 0;
-  background: linear-gradient(270deg, #f5f4f0, rgba(0, 0, 0, 0));
+.print-drag .print-lift {
+  transform: scale(1.03);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.18),
+    0 22px 44px rgba(0, 0, 0, 0.26);
 }
-.belt-track {
+.print:focus-visible {
+  outline: 2px solid rgb(var(--ink-rgb));
+  outline-offset: 3px;
+}
+@media (hover: hover) {
+  /* Pops up and comes to the front, so a half-covered print is fully shown. */
+  .print:not(.print-drag):hover {
+    z-index: 500 !important;
+  }
+  .print:not(.print-drag):hover .print-lift {
+    transform: translateY(-12px) scale(1.06);
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.18),
+      0 24px 40px rgba(0, 0, 0, 0.24);
+  }
+}
+.print-in img {
+  border-radius: 1px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pile:not(.pile-landed) .print-in {
+    opacity: 0;
+    transform: translateY(-48px) scale(1.06);
+  }
+  .pile-landed .print-in {
+    transition:
+      opacity 500ms var(--ease-out),
+      transform 800ms var(--ease-out);
+    transition-delay: calc(var(--i) * 70ms);
+  }
+}
+.hint-touch {
+  display: none;
+}
+@media (hover: none) {
+  .hint-pointer {
+    display: none;
+  }
+  .hint-touch {
+    display: inline;
+  }
+}
+
+.lightbox-btn {
   display: flex;
+  height: 44px;
+  width: 44px;
   align-items: center;
-  width: max-content;
-  height: 100%;
-  will-change: transform;
-}
-.belt-item {
-  position: relative;
-  flex: none;
-  margin-right: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #3a3a3a;
+  justify-content: center;
+  border: 1px solid rgb(var(--line-rgb));
+  border-radius: 999px;
+  background: rgb(var(--paper-rgb));
+  color: rgb(var(--ink-rgb));
+  font-size: 16px;
+  cursor: pointer;
   transition:
-    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 0.35s ease;
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
 }
-.belt-item:hover {
-  transform: scale(1.14);
-  z-index: 5;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+  background: rgb(var(--ink-rgb));
+  color: rgb(var(--paper-rgb));
 }
-.belt-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox {
+    animation: lb-fade 220ms var(--ease-out) both;
+  }
+  .lightbox-img {
+    animation: lb-in 320ms var(--ease-out) both;
+  }
 }
-.belt-cap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  padding: 12px 14px 22px;
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0.82), rgba(14, 14, 14, 0));
-  color: #f5f4f0;
-  font-size: 12px;
-  line-height: 1.35;
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-  white-space: pre-line;
+@keyframes lb-fade {
+  from {
+    opacity: 0;
+  }
 }
-.belt-item:hover .belt-cap {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes lb-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
 }
 
 /* Scroll-reveal entrance (see src/hooks/useReveal.js). The reduced-motion
@@ -353,8 +413,121 @@ a:hover {
     padding-right: 20px;
   }
 
-  .belt-band::before,
-  .belt-band::after {
-    width: 40px;
+}
+
+/* Selected-work rows (src/components/SelectedWork.jsx): the name gains weight
+   and the arrow nudges on hover, instead of a flat colour swap. */
+.work-row .work-name {
+  -webkit-text-stroke: 0 currentColor;
+  transition: -webkit-text-stroke-width var(--t-hover) ease;
+}
+.work-row .work-num,
+.work-row .work-arrow {
+  transition:
+    color var(--t-hover) ease,
+    transform 260ms var(--ease-out);
+}
+@media (hover: hover) {
+  .work-row:hover .work-name,
+  .work-row:focus-visible .work-name {
+    -webkit-text-stroke-width: 0.025em;
   }
+  .work-row:hover .work-num,
+  .work-row:focus-visible .work-num {
+    color: rgb(var(--ink-rgb));
+  }
+  .work-row:hover .work-arrow,
+  .work-row:focus-visible .work-arrow {
+    transform: translate(3px, -3px);
+  }
+}
+
+/* The scroll-drawn line (src/components/PageLine.jsx). */
+.page-line > path {
+  stroke: rgb(var(--vermilion-rgb));
+  stroke-width: 1.5;
+}
+.page-line .page-line-ball {
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.28));
+}
+@media print {
+  .page-line {
+    display: none;
+  }
+}
+
+/* Self portrait (src/components/LinePortrait.jsx): ink on the page. The
+   resting state is the finished drawing; the draw-in only runs for visitors
+   who allow motion. Each path is revealed by a wipe, like sketching it in. */
+.lp {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.lp-ink path {
+  fill: rgb(var(--ink-rgb));
+  fill-rule: evenodd;
+}
+/* An explicit finished state (not `none`) so the wipe can interpolate to it. */
+.lp-wipe {
+  clip-path: inset(-6px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp:not(.lp-in) .lp-wipe-y {
+    clip-path: inset(0 0 100% 0);
+  }
+  .lp:not(.lp-in) .lp-wipe-x {
+    clip-path: inset(0 100% 0 0);
+  }
+  .lp-in .lp-wipe {
+    transition: clip-path var(--lp-dur, 1000ms) cubic-bezier(0.45, 0.05, 0.25, 1) var(--lp-start, 0ms);
+  }
+}
+
+/* Organisation logos are drawn for light grounds (several are dark marks), so
+   in the dark theme they sit on a small light chip instead of vanishing. */
+@media (prefers-color-scheme: dark) {
+  .logo-img {
+    background: #f3f1ec;
+    border-radius: 5px;
+    padding: 2px;
+  }
+}
+
+/* Hero portrait in the two themes. The glitch bands blend with "difference" on
+   a light page; on a dark page that goes garish, so they just overlay there. */
+.glitch-diff {
+  mix-blend-mode: difference;
+}
+@media (prefers-color-scheme: dark) {
+  .glitch-diff {
+    mix-blend-mode: normal;
+  }
+}
+
+/* Hero eyes: the light and dark portraits each have their own eye pieces; show
+   the pair that matches the theme. Positions are in the photo's own
+   percentages (see Eyes in src/components/Hero.jsx). */
+.eyes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.eyes-dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .eyes-light {
+    display: none;
+  }
+  .eyes-dark {
+    display: block;
+  }
+}
+.eye {
+  position: absolute;
+}
+.eye-iris {
+  will-change: transform;
 }

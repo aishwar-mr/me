@@ -4,7 +4,6 @@ import { Home } from "@/pages/Home";
 import { Projects } from "@/pages/Projects";
 import { ProjectDetail } from "@/pages/ProjectDetail";
 import { About } from "@/pages/About";
-import { Story } from "@/pages/Story";
 import { NotFound } from "@/pages/NotFound";
 
 // Cross-page links like "/#contact" land on a freshly mounted route, so the
@@ -34,7 +33,6 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/about" element={<About />} />
-        <Route path="/story" element={<Story />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

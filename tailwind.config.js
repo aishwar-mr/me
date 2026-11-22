@@ -7,6 +7,11 @@ export default {
     extend: {
       colors: {
         paper: "rgb(var(--paper-rgb) / <alpha-value>)",
+        // Greys that flip with the theme (see :root in src/index.css).
+        muted: "rgb(var(--muted-rgb) / <alpha-value>)",
+        soft: "rgb(var(--soft-rgb) / <alpha-value>)",
+        faint: "rgb(var(--faint-rgb) / <alpha-value>)",
+        chip: "rgb(var(--chip-rgb) / <alpha-value>)",
         ink: "rgb(var(--ink-rgb) / <alpha-value>)",
         line: "rgb(var(--line-rgb) / <alpha-value>)",
         vermilion: "rgb(var(--vermilion-rgb) / <alpha-value>)",

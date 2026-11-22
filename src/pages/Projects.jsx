@@ -62,7 +62,7 @@ function OpenProjectLink({ project }) {
   const vtNavigate = useViewTransitionNavigate();
   const isRoute = project.link.startsWith("/");
   const className =
-    "flex h-6 w-6 flex-none items-center justify-center rounded bg-[#2a2a2a] text-[#f5f4f0] transition-colors duration-200 hover:bg-paper hover:text-[#0e0e0e]";
+    "flex h-6 w-6 flex-none items-center justify-center rounded bg-[#2a2a2a] text-[#f5f4f0] transition-colors duration-200 hover:bg-[#f5f4f0] hover:text-[#0e0e0e]";
 
   if (!isRoute) {
     return (
@@ -96,7 +96,7 @@ function ProjectCard({ project, transform, zIndex, onPause }) {
   return (
     <article
       onClick={onPause}
-      className="absolute left-0 top-0 flex w-[302px] cursor-pointer max-lg:!static max-lg:!h-auto max-lg:w-full max-lg:max-w-[460px] max-lg:self-center max-lg:!transform-none flex-col overflow-hidden rounded-[14px] bg-[#0e0e0e] text-[#f5f4f0] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[filter] duration-200 will-change-transform hover:[filter:brightness(1.08)]"
+      className="absolute left-0 top-0 flex w-[302px] cursor-pointer max-lg:!static max-lg:!h-auto max-lg:w-full max-lg:max-w-[460px] max-lg:self-center max-lg:!transform-none flex-col overflow-hidden rounded-[14px] bg-[#0e0e0e] text-[#f5f4f0] dark:ring-1 dark:ring-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[filter] duration-200 will-change-transform hover:[filter:brightness(1.08)]"
       style={{ height: 420, transform, zIndex }}
     >
       {project.cardImage ? (
@@ -155,7 +155,7 @@ export function Projects() {
       ref={outerRef}
       onClick={resume}
       style={{ height: 1000 * scale }}
-      className="relative w-full overflow-hidden bg-paper font-sans text-[#0e0e0e] max-lg:!h-auto"
+      className="relative w-full overflow-hidden bg-paper font-sans text-ink max-lg:!h-auto"
     >
       <div
         style={{ transform: `scale(${scale})` }}
@@ -207,7 +207,7 @@ export function Projects() {
 
         <p
           aria-live="polite"
-          className="font-mono absolute bottom-7 right-20 z-[30] m-0 text-[10px] uppercase tracking-[0.06em] text-[#6b6860] max-lg:hidden"
+          className="font-mono absolute bottom-7 right-20 z-[30] m-0 text-[10px] uppercase tracking-[0.06em] text-muted max-lg:hidden"
         >
           {paused ? "Paused · click anywhere to resume" : "Click a card to pause"}
         </p>

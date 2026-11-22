@@ -21,6 +21,9 @@ export const PROJECTS = [
     cardImageAlt: "Track-inspection prototype on railway tracks",
     cardImgHeight: 210,
     link: "/projects/1",
+    listLine:
+      "Contactless, indigenous track monitoring for Indian Railways — at about a sixth of the imported system’s cost.",
+    listMeta: "Hardware · SIH 2025",
     detail: {
       index: "01",
       category: "Hardware · Smart Automation",
@@ -114,6 +117,9 @@ export const PROJECTS = [
     cardImgHeight: 200,
     cardImageBg: "#ffffff",
     link: "/projects/2",
+    listLine:
+      "Describe a startup idea; get ranked competitors, a market-saturation score and an opportunity verdict.",
+    listMeta: "Analysis · AI · 2026",
     detail: {
       index: "02",
       category: "Business analysis · Automation · AI",

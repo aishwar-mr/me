@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-// The centered wordmark used in every page header, linking home. Replaces
-// the earlier per-page treatments (a left-aligned "AISHWAR'26" serif mark on
-// Projects, an "AISHWAR'26" mark on Story) with one consistent "AM" mark.
+// The centered wordmark used in every page header, linking home. One
+// consistent "AM" mark replaces the earlier per-page treatments.
 export function Logo({ className = "" }) {
   return (
     <Link

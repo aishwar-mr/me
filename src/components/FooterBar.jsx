@@ -1,4 +1,4 @@
-// The mono contact strip that closes About, Story and the project detail
+// The mono contact strip that closes About and the project detail
 // page. The home page's footer (SiteFooter) adds the "let's talk" lockup
 // above the same row.
 export const EMAIL = "aishwar.r.mishra@gmail.com";
@@ -24,9 +24,10 @@ export function SocialLinks({ className = "" }) {
 export function FooterBar({ id = "contact", className = "" }) {
   return (
     <footer
+      data-line-end
       id={id}
       aria-label="Contact"
-      className={`g12 border-t border-line pb-8 pt-6 text-[length:max(12px,calc(var(--u)*12))] text-[#57544d] ${className}`}
+      className={`g12 border-t border-line pb-8 pt-6 text-[length:max(12px,calc(var(--u)*12))] text-muted ${className}`}
     >
       <span className="font-mono col-start-1 col-end-5 break-all text-[length:max(11px,calc(var(--u)*11))] uppercase">
         <a href={`mailto:${EMAIL}`} className="nav-link">

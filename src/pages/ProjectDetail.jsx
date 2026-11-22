@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { PageLine } from "@/components/PageLine";
 import { getProject } from "@/data/projects";
 import { FooterBar } from "@/components/FooterBar";
 import { Logo } from "@/components/Logo";
@@ -123,8 +124,9 @@ export function ProjectDetail() {
   const vtIndex = VT_INDEX[titleKey];
 
   return (
-    <div className="w-full bg-paper font-sans text-ink">
-      <header className="g12 flex h-[max(56px,calc(var(--u)*72))] items-center justify-between border-b border-line">
+    <div className="relative w-full bg-paper font-sans text-ink">
+      <PageLine />
+      <header data-line-start className="g12 flex h-[max(56px,calc(var(--u)*72))] items-center justify-between border-b border-line">
         <Link to="/projects" className="nav-link font-mono col-start-1 col-end-4 text-[length:max(12px,calc(var(--u)*12))] font-semibold uppercase">
           ← All projects
         </Link>
@@ -143,7 +145,7 @@ export function ProjectDetail() {
       </header>
 
       <section aria-label="Project title" className="g12 gap-y-6 pt-14">
-        <p className="font-mono col-start-1 col-end-3 m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase leading-[1.5] text-[#57544d]">
+        <p className="font-mono col-start-1 col-end-3 m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase leading-[1.5] text-muted">
           Project
           <br />
           {`${d.index} / 04`}
@@ -151,7 +153,7 @@ export function ProjectDetail() {
         <p className="font-mono col-start-5 col-end-9 m-0 whitespace-pre-line text-center text-[length:max(11px,calc(var(--u)*11))] max-md:text-left uppercase leading-[1.5]">
           {d.tagline}
         </p>
-        <p className="font-mono col-start-11 col-end-13 m-0 whitespace-pre-line text-right text-[length:max(11px,calc(var(--u)*11))] max-md:text-left uppercase leading-[1.5] text-[#57544d]">
+        <p className="font-mono col-start-11 col-end-13 m-0 whitespace-pre-line text-right text-[length:max(11px,calc(var(--u)*11))] max-md:text-left uppercase leading-[1.5] text-muted">
           {d.category}
           <br />
           {d.year}
@@ -164,7 +166,7 @@ export function ProjectDetail() {
         </Reveal>
       </section>
 
-      <section aria-label="Project facts" className="g12 mt-14 border-y border-line max-md:mt-8 max-md:!grid-cols-2 max-md:gap-x-4 max-md:!gap-y-0">
+      <section data-line aria-label="Project facts" className="g12 mt-14 border-y border-line max-md:mt-8 max-md:!grid-cols-2 max-md:gap-x-4 max-md:!gap-y-0">
         {d.facts.map((f, i) => (
           <div
             key={f.label}
@@ -172,7 +174,7 @@ export function ProjectDetail() {
               i === 0 ? "col-start-1 col-end-4" : i === 1 ? "col-start-4 col-end-7" : i === 2 ? "col-start-7 col-end-9" : "col-start-9 col-end-11"
             }`}
           >
-            <p className="font-mono m-0 mb-2 text-[length:max(10px,calc(var(--u)*10))] uppercase text-[#57544d]">{f.label}</p>
+            <p className="font-mono m-0 mb-2 text-[length:max(10px,calc(var(--u)*10))] uppercase text-muted">{f.label}</p>
             <p className="m-0 text-[length:max(15px,calc(var(--u)*15))]">{f.value}</p>
           </div>
         ))}
@@ -204,13 +206,13 @@ export function ProjectDetail() {
         )}
       </section>
 
-      <section id="overview" aria-label="Overview" className="g12 border-b border-line pb-10 pt-14">
+      <section id="overview" data-line aria-label="Overview" className="g12 border-b border-line pb-10 pt-14">
         <Reveal as="h2" className="col-start-1 col-end-6 m-0 text-u44 font-medium leading-[1.1] tracking-[-0.03em] max-md:text-[30px]">
           {d.overviewHeading[0]}
           <br />
-          <span className="text-[#85827a]">{d.overviewHeading[1]}</span> {d.overviewHeading[2]}
+          <span className="text-faint">{d.overviewHeading[1]}</span> {d.overviewHeading[2]}
         </Reveal>
-        <Reveal as="p" delay={100} className="col-start-7 col-end-11 m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.6] text-[#45423c]">
+        <Reveal as="p" delay={100} className="col-start-7 col-end-11 m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.6] text-soft">
           {d.overviewText}
         </Reveal>
       </section>
@@ -224,11 +226,11 @@ export function ProjectDetail() {
               i < d.process.length - 1 ? "border-b border-line" : ""
             }`}
           >
-            <span className="col-start-1 col-end-2 text-right text-u44 leading-none max-md:text-left max-md:text-[32px] text-[#85827a]">
+            <span className="col-start-1 col-end-2 text-right text-u44 leading-none max-md:text-left max-md:text-[32px] text-faint">
               {step.num}
             </span>
             <h3 className="col-start-2 col-end-5 m-0 text-[length:max(22px,calc(var(--u)*22))] font-medium">{step.title}</h3>
-            <p className="col-start-7 col-end-11 m-0 text-[length:max(13px,calc(var(--u)*13))] leading-[1.5] text-[#57544d]">{step.text}</p>
+            <p className="col-start-7 col-end-11 m-0 text-[length:max(13px,calc(var(--u)*13))] leading-[1.5] text-muted">{step.text}</p>
           </Reveal>
         ))}
       </section>
@@ -247,15 +249,15 @@ export function ProjectDetail() {
                   i === 0 ? "" : "border-t border-line"
                 }`}
               >
-                <p className="font-mono m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase text-[#57544d]">{r.label}</p>
-                <p className="m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.55] text-[#45423c]">{r.text}</p>
+                <p className="font-mono m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase text-muted">{r.label}</p>
+                <p className="m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.55] text-soft">{r.text}</p>
               </Reveal>
             ))}
           </div>
         </section>
       ))}
 
-      <section id="results" aria-label="Results" className="g12 mt-14 border-y border-line max-md:mt-8 max-md:!gap-y-0">
+      <section id="results" data-line aria-label="Results" className="g12 mt-14 border-y border-line max-md:mt-8 max-md:!gap-y-0">
         {d.results.map((r, i) => (
           <Reveal
             as="div"
@@ -268,7 +270,7 @@ export function ProjectDetail() {
             <p className={`m-0 ${d.resultsSize} font-medium leading-none tracking-[-0.04em]`}>
               <RollingValue value={r.value} />
             </p>
-            <p className="font-mono m-0 mt-4 text-[length:max(11px,calc(var(--u)*11))] uppercase text-[#57544d]">{r.label}</p>
+            <p className="font-mono m-0 mt-4 text-[length:max(11px,calc(var(--u)*11))] uppercase text-muted">{r.label}</p>
           </Reveal>
         ))}
       </section>
