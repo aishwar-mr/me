@@ -262,7 +262,7 @@ function Pile() {
 export function WorkBelt() {
   return (
     <section id="work" data-line aria-label="Work" className="border-b border-line py-14 max-md:py-10">
-      <nav aria-label="Work — top" className={`mb-7 grid grid-cols-12 gap-6 px-20 max-md:mb-5 max-md:flex max-md:justify-between ${LABEL}`}>
+      <nav aria-label="Work, top" className={`mb-7 grid grid-cols-12 gap-6 px-20 max-md:mb-5 max-md:flex max-md:justify-between ${LABEL}`}>
         <a href="#hardware" className="nav-link col-start-1 col-end-5">
           Hardware
         </a>
@@ -275,7 +275,7 @@ export function WorkBelt() {
         <span className="hint-pointer">Drag them around, or click one for a closer look.</span>
         <span className="hint-touch">Tap one for a closer look, then swipe.</span>
       </p>
-      <nav aria-label="Work — bottom" className={`mt-7 grid grid-cols-12 gap-6 px-20 max-md:mt-5 max-md:flex max-md:justify-between ${LABEL}`}>
+      <nav aria-label="Work, bottom" className={`mt-7 grid grid-cols-12 gap-6 px-20 max-md:mt-5 max-md:flex max-md:justify-between ${LABEL}`}>
         <a href="#photography" className="nav-link col-start-1 col-end-5">
           Photography
         </a>

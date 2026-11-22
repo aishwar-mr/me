@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "@/data/projects";
 import { Logo } from "@/components/Logo";
+import { FormulaField } from "@/components/FormulaField";
 import { useViewTransitionNavigate } from "@/hooks/useViewTransitionNavigate";
 
 // Matches the names given to one image on each project's detail page (see
@@ -155,8 +156,9 @@ export function Projects() {
       ref={outerRef}
       onClick={resume}
       style={{ height: 1000 * scale }}
-      className="relative w-full overflow-hidden bg-paper font-sans text-ink max-lg:!h-auto"
+      className="relative isolate w-full overflow-hidden bg-paper font-sans text-ink max-lg:!h-auto"
     >
+      <FormulaField />
       <div
         style={{ transform: `scale(${scale})` }}
         className="relative h-[1000px] w-[1440px] origin-top-left max-lg:flex max-lg:!h-auto max-lg:w-full max-lg:flex-col max-lg:gap-5 max-lg:px-5 max-lg:pb-10 max-lg:!transform-none"

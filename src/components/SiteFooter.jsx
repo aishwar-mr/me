@@ -1,9 +1,11 @@
 import { EMAIL, SocialLinks } from "@/components/FooterBar";
 import { Reveal } from "@/components/Reveal";
+import { FormulaField } from "@/components/FormulaField";
 
 export function SiteFooter() {
   return (
-    <footer id="contact" aria-label="Contact" className="grid grid-cols-12 gap-6 px-20 pb-8 pt-14">
+    <footer id="contact" aria-label="Contact" className="relative isolate grid grid-cols-12 gap-6 px-20 pb-8 pt-14">
+      <FormulaField />
       <p className="col-start-1 col-end-7 m-0 mb-2 text-[length:max(12px,calc(var(--u)*12))] text-muted">Have a project in mind?</p>
       <Reveal
         as="a"

@@ -31,7 +31,7 @@ export const PROJECTS = [
     id: "1",
     cardTitle: "Track\nMonitor",
     cardDesc:
-      "Smart India Hackathon 2025 prototype — a rail-mounted device that scans track health on the move.",
+      "Smart India Hackathon 2025 prototype: a rail-mounted device that scans track health on the move.",
     cardImage: trackPrototype,
     cardImageAlt: "Track-inspection prototype on railway tracks",
     cardImgHeight: 210,
@@ -43,7 +43,7 @@ export const PROJECTS = [
       index: "01",
       category: "Hardware · Smart Automation",
       year: "SIH 2025",
-      tagline: "Indigenous, contactless track monitoring —\nan affordable ITMS for Indian Railways",
+      tagline: "Indigenous, contactless track monitoring,\nan affordable ITMS for Indian Railways",
       facts: [
         { label: "Brief", value: "Indian Railways · SIH PS 25020" },
         { label: "My role", value: "ML integration" },
@@ -107,10 +107,10 @@ export const PROJECTS = [
         {
           heading: "Research & references",
           rows: [
-            { label: "RDSO", text: "Technical Specification for Integrated Track Monitoring System, TM/IM/382 — Ministry of Railways, December 2017" },
-            { label: "Standard", text: "SIST EN 13848-1 (Slovenski standard) — CEN/TC, June 2019" },
-            { label: "Paper", text: "Introduction of Modern Track Inspection Technology in Indian Railways – ITMS – New TRC — Rahul Singh, Saroj Kumar Barnwal" },
-            { label: "Paper", text: "Reliability of Track Geometry Reported by Track Recording Cars (TRCs): Provisions in EN 13848-2 — Saroj Kumar Barnwal, Saurabh Srivastava, Anupam Kumar Tiwary" },
+            { label: "RDSO", text: "Technical Specification for Integrated Track Monitoring System, TM/IM/382, Ministry of Railways, December 2017" },
+            { label: "Standard", text: "SIST EN 13848-1 (Slovenski standard), CEN/TC, June 2019" },
+            { label: "Paper", text: "Introduction of Modern Track Inspection Technology in Indian Railways – ITMS – New TRC, Rahul Singh, Saroj Kumar Barnwal" },
+            { label: "Paper", text: "Reliability of Track Geometry Reported by Track Recording Cars (TRCs): Provisions in EN 13848-2, Saroj Kumar Barnwal, Saurabh Srivastava, Anupam Kumar Tiwary" },
           ],
         },
       ],
@@ -126,7 +126,7 @@ export const PROJECTS = [
     id: "2",
     cardTitle: "Startup\nIntel",
     cardDesc:
-      "Type a startup idea, get ranked competitors, a saturation score and an opportunity verdict — a web-mining decision tool.",
+      "Type a startup idea, get ranked competitors, a saturation score and an opportunity verdict: a web-mining decision tool.",
     cardImage: startupIntelCard,
     cardImageAlt: "Startup Intelligence saturation gauge reading 86.2, Crowded",
     cardImgHeight: 200,
@@ -139,7 +139,7 @@ export const PROJECTS = [
       index: "02",
       category: "Business analysis · Automation · AI",
       year: "Nov 2026",
-      tagline: "Has my idea already been done —\nand is the space worth entering?",
+      tagline: "Has my idea already been done,\nand is the space worth entering?",
       facts: [
         { label: "Context", value: "Business analysis, automation & AI project" },
         { label: "My role", value: "Requirements to release" },
@@ -189,7 +189,7 @@ export const PROJECTS = [
         {
           num: "02",
           title: "Requirements",
-          text: "I wrote requirements, user stories and acceptance criteria first, then built to them. Example: “As a founder, I want to see how crowded my idea’s market is, so that I can decide whether to proceed” — a 0–100 score labelled from Wide open to Crowded, with its three components visible and the formula explained on screen. A process-flow diagram maps idea to verdict, and the needs of a founder, an analyst and a reviewer shaped the four screens: Market Overview, Competitor Intelligence, AI Insights and Data Quality.",
+          text: "I wrote requirements, user stories and acceptance criteria first, then built to them. Example: “As a founder, I want to see how crowded my idea’s market is, so that I can decide whether to proceed”, a 0–100 score labelled from Wide open to Crowded, with its three components visible and the formula explained on screen. A process-flow diagram maps idea to verdict, and the needs of a founder, an analyst and a reviewer shaped the four screens: Market Overview, Competitor Intelligence, AI Insights and Data Quality.",
         },
         {
           num: "03",
@@ -209,7 +209,7 @@ export const PROJECTS = [
         {
           num: "06",
           title: "Release",
-          text: "Built in Google Colab, moved to GitHub and deployed on Streamlit Community Cloud, which rebuilds on every push. The v2 upgrade followed the same path — tested locally, committed with a clear message, pushed and verified on the live URL — with a changelog and user guide. I diagnosed environment and deployment issues from logs: a mismatched Python interpreter, a missing import and a failed model call.",
+          text: "Built in Google Colab, moved to GitHub and deployed on Streamlit Community Cloud, which rebuilds on every push. The v2 upgrade followed the same path (tested locally, committed with a clear message, pushed and verified on the live URL) with a changelog and user guide. I diagnosed environment and deployment issues from logs: a mismatched Python interpreter, a missing import and a failed model call.",
         },
         {
           num: "07",
@@ -243,7 +243,7 @@ export const PROJECTS = [
     id: "3",
     cardTitle: "Frappe\nBuilder",
     cardDesc:
-      "A technical blog on Frappe Builder — why a website shouldn’t need a sprint ticket — with annotated product screens.",
+      "A technical blog on Frappe Builder (why a website shouldn’t need a sprint ticket), with annotated product screens.",
     cardImage: frappeCard,
     cardImageAlt: "Frappe Builder editor showing a brand-studio page on the canvas",
     cardImgHeight: 210,
@@ -285,7 +285,7 @@ export const PROJECTS = [
         {
           num: "02",
           title: "Angle",
-          text: "Frame the blog around what changes when a PM has Builder, not around a feature list. Each section makes a plain claim — “You stop waiting”, “You stop being afraid to touch it” — then states the practical effect on the team.",
+          text: "Frame the blog around what changes when a PM has Builder, not around a feature list. Each section makes a plain claim (“You stop waiting”, “You stop being afraid to touch it”) then states the practical effect on the team.",
         },
         {
           num: "03",
@@ -311,10 +311,10 @@ export const PROJECTS = [
       highlights: [
         {
           src: frappeCanvas,
-          alt: "A brand-studio landing page — hero, selected work cards and services — open on the Builder canvas at 44% zoom",
+          alt: "A brand-studio landing page with a hero, selected work cards and services, open on the Builder canvas at 44% zoom",
           caption: "01 · Visual canvas",
           title: "Edit the page where you see it",
-          text: "Build the page section by section on a live canvas — hero, selected work, services — and preview it at desktop, tablet and mobile widths before one click publishes it. No ticket, no deploy window.",
+          text: "Build the page section by section on a live canvas (hero, selected work, services) and preview it at desktop, tablet and mobile widths before one click publishes it. No ticket, no deploy window.",
           aspect: "882 / 915",
         },
         {
@@ -346,7 +346,7 @@ export const PROJECTS = [
           alt: "Builder toolbar with the page name and path, settings, preview and Publish",
           caption: "05 · Preview & publish",
           title: "One click to live",
-          text: "Preview sits next to Publish in the toolbar, so a change is checked before it goes live — and because every change is versioned, a bad edit is recoverable in minutes, not hours.",
+          text: "Preview sits next to Publish in the toolbar, so a change is checked before it goes live, and because every change is versioned, a bad edit is recoverable in minutes, not hours.",
           aspect: "2048 / 72",
         },
       ],
@@ -358,14 +358,14 @@ export const PROJECTS = [
             { label: "Fearless edits", text: "Version control and preview mean every change is recoverable. Mean time to fix a bad page drops from hours to minutes." },
             { label: "Brand intact", text: "Design tokens and templates defined once; business users invited while admin control stays where it belongs." },
             { label: "AI at cost", text: "BOB, the AI page generator, runs on your own API key: you pay the provider directly, and cost follows usage instead of headcount." },
-            { label: "Closed loop", text: "Custom domain, video and third-party embeds, and analytics in the same place the page is built — shipping to knowing in the same day." },
+            { label: "Closed loop", text: "Custom domain, video and third-party embeds, and analytics in the same place the page is built, shipping to knowing in the same day." },
             { label: "Performance", text: "Lean pages by design: frappe.io runs on Builder and scores consistently well on Lighthouse." },
           ],
         },
         {
           heading: "Good to know",
           rows: [
-            { label: "Licence", text: "Open source under AGPL-3.0 — check the terms before modifying it commercially." },
+            { label: "Licence", text: "Open source under AGPL-3.0, so check the terms before modifying it commercially." },
             { label: "Hosting", text: "Self-host for free, or run it managed on Frappe Cloud." },
           ],
         },
@@ -382,19 +382,19 @@ export const PROJECTS = [
     id: "4",
     cardTitle: "Nearshore\nSiting",
     cardDesc:
-      "A site-screening agent for industrial plants: hard gates, a weighted ranking and a sensitivity pass — no LLM in the decision path.",
+      "A site-screening agent for industrial plants: hard gates, a weighted ranking and a sensitivity pass, with no LLM in the decision path.",
     cardImage: nsCard,
     cardImageAlt: "Nearshore Siting Agent result: top site scored 0.738 with water, power, cost and logistics bars",
     cardImgHeight: 210,
     link: "/projects/4",
     listLine:
-      "Screens candidate plant sites on water, power, cost and logistics at about $0.045 a site — deterministic gates, ranked, then stress-tested.",
+      "Screens candidate plant sites on water, power, cost and logistics at about $0.045 a site: deterministic gates, ranking, then a stress test.",
     listMeta: "Python · Geospatial",
     detail: {
       index: "04",
       category: "Geospatial analysis · Decision tooling",
       year: "Python",
-      tagline: "Facts eliminate, priorities rank —\nand the ranking attacks itself",
+      tagline: "Facts eliminate, priorities rank,\nand the ranking attacks itself",
       facts: [
         { label: "Brief", value: "Screening sites for a textile dye house" },
         { label: "My role", value: "Complete build" },
@@ -416,7 +416,7 @@ export const PROJECTS = [
         {
           num: "01",
           title: "Problem",
-          text: "Data is scattered across EPA, EIA, FEMA, HUD, Census, REGRID and state layers, so every site is a manual research project and comparisons are inconsistent. Outputs carry no provenance — a cell reading 345 can’t be defended six months later — and judgement and fact are mixed in one step.",
+          text: "Data is scattered across EPA, EIA, FEMA, HUD, Census, REGRID and state layers, so every site is a manual research project and comparisons are inconsistent. Outputs carry no provenance (a cell reading 345 can’t be defended six months later) and judgement and fact are mixed in one step.",
         },
         {
           num: "02",
@@ -436,7 +436,7 @@ export const PROJECTS = [
         {
           num: "05",
           title: "Gate, score, stress-test",
-          text: "Eight rules, each with two independent axes — what to do when a value fails, and what to do when it is missing — give a three-state result: passed, eliminated (with the field, value, requirement and citation) or unavailable. Survivors are scored on 15 criteria in four dimensions — water 35%, power 30%, cost 20%, logistics 15% — with declared, not fitted, weights. Twelve reweightings then try to break the winner, and every flip is reported.",
+          text: "Eight rules, each with two independent axes (what to do when a value fails, and what to do when it is missing) give a three-state result: passed, eliminated (with the field, value, requirement and citation) or unavailable. Survivors are scored on 15 criteria in four dimensions (water 35%, power 30%, cost 20%, logistics 15%) with declared, not fitted, weights. Twelve reweightings then try to break the winner, and every flip is reported.",
         },
         {
           num: "06",
@@ -455,14 +455,14 @@ export const PROJECTS = [
           alt: "Pipeline diagram: client.py, gate.py, score.py and run.py, with the data passed between each layer",
           caption: "01 · Architecture",
           title: "Four layers that don’t know each other",
-          text: "I/O and money, absolute gate, relative score, orchestrator — joined only by plain result objects. Swapping the data provider means rewriting one file, and the gate and score layers were built entirely against cached responses.",
+          text: "I/O and money, absolute gate, relative score, orchestrator, joined only by plain result objects. Swapping the data provider means rewriting one file, and the gate and score layers were built entirely against cached responses.",
           aspect: "1650 / 905",
           wide: true,
           mobileMin: 640,
         },
         {
           src: nsMoney,
-          alt: "Order of operations in the client: cache, dry run, budget ceiling, semaphore, HTTP — with the cost and speed figures that follow from it",
+          alt: "Order of operations in the client: cache, dry run, budget ceiling, semaphore, HTTP, with the cost and speed figures that follow from it",
           caption: "02 · The money layer",
           title: "Calls that are hard to fire by accident",
           text: "Cache before budget before concurrency. Dry run is the default and --live must be typed. A runaway at ten concurrent calls burns about 450 credits, not about 1,800.",
@@ -495,7 +495,7 @@ export const PROJECTS = [
         {
           heading: "How it runs",
           rows: [
-            { label: "Dry run", text: "python run.py — prints what it would cost and spends nothing. This is the default." },
+            { label: "Dry run", text: "python run.py: prints what it would cost and spends nothing. This is the default." },
             { label: "One address", text: "python run.py \"1000 Nissan Dr, Smyrna, TN\" screens a single site ad hoc." },
             { label: "Offline", text: "python run.py --offline replays the local cache for free, regardless of age, and never calls out." },
             { label: "Live", text: "python run.py --live --max-calls 20 spends credits, with a hard ceiling that raises BudgetExceeded rather than draining the account." },
