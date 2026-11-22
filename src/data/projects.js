@@ -1,7 +1,8 @@
-// Project card + detail-page content. Cards 1 and 2 are real (Track
-// Monitor, Startup Intelligence) and route to full detail pages; cards 3
-// and 4 are still wireframe placeholders and stay inert ("#work"), exactly
-// as the design leaves them.
+// Project card + detail-page content. All four cards are real (Track
+// Monitor, Startup Intelligence, Frappe Builder, Nearshore Siting Agent) and
+// route to full detail pages. The Nearshore panels are rendered from the
+// project's own README output (terminal run, pipeline, money layer, gate,
+// measured limits) — see src/assets/projects/nearshore-*.jpg.
 import trackPrototype from "@/assets/projects/track-monitoring-prototype.jpg";
 import trackRobot from "@/assets/projects/track-monitoring-robot.jpg";
 import trackSihTeam from "@/assets/projects/track-monitoring-sih-team.jpg";
@@ -10,6 +11,20 @@ import screenIdea from "@/assets/projects/startup-intel-screen-01-idea.jpg";
 import screenSaturation from "@/assets/projects/startup-intel-screen-02-saturation.jpg";
 import screenSentiment from "@/assets/projects/startup-intel-screen-03-sentiment.jpg";
 import screenWhitespace from "@/assets/projects/startup-intel-screen-04-whitespace.jpg";
+import frappeEditor from "@/assets/projects/frappe-builder-editor.jpg";
+import frappeCard from "@/assets/projects/frappe-builder-card.jpg";
+import frappeLayers from "@/assets/projects/frappe-builder-layers.jpg";
+import frappeCanvas from "@/assets/projects/frappe-builder-canvas.jpg";
+import frappeProperties from "@/assets/projects/frappe-builder-properties.jpg";
+import frappeToolbar from "@/assets/projects/frappe-builder-toolbar.jpg";
+import frappeTokens from "@/assets/projects/frappe-builder-tokens.jpg";
+import frappeThemes from "@/assets/projects/frappe-builder-tokens-themes.jpg";
+import nsTerminal from "@/assets/projects/nearshore-terminal.jpg";
+import nsCard from "@/assets/projects/nearshore-card.jpg";
+import nsArchitecture from "@/assets/projects/nearshore-architecture.jpg";
+import nsMoney from "@/assets/projects/nearshore-money-layer.jpg";
+import nsGate from "@/assets/projects/nearshore-gate.jpg";
+import nsLimits from "@/assets/projects/nearshore-limits.jpg";
 
 export const PROJECTS = [
   {
@@ -226,19 +241,282 @@ export const PROJECTS = [
   },
   {
     id: "3",
-    cardTitle: "[Project\nthree]",
-    cardDesc: "[One-line project description, two or three lines long.]",
-    cardImage: null,
+    cardTitle: "Frappe\nBuilder",
+    cardDesc:
+      "A technical blog on Frappe Builder — why a website shouldn’t need a sprint ticket — with annotated product screens.",
+    cardImage: frappeCard,
+    cardImageAlt: "Frappe Builder editor showing a brand-studio page on the canvas",
     cardImgHeight: 210,
-    link: "#work",
+    link: "/projects/3",
+    listLine:
+      "A self-initiated technical blog on Frappe Builder: the case for a visual page builder that gives marketing speed without handing back performance or brand.",
+    listMeta: "Technical blog · PMM",
+    detail: {
+      index: "03",
+      category: "Technical blog · Product marketing",
+      year: "Self-initiated",
+      tagline: "Your website shouldn’t\nneed a sprint ticket",
+      facts: [
+        { label: "Track", value: "Product marketing manager · self-initiated" },
+        { label: "My role", value: "Author · positioning, copy & product walkthrough" },
+        { label: "Product", value: "Frappe Builder" },
+        { label: "Format", value: "Technical blog + annotated screens" },
+      ],
+      factsAction: {
+        type: "link",
+        href: "https://frappe.io/builder",
+        label: "( Frappe Builder ↗ )",
+      },
+      media: {
+        type: "figure",
+        src: frappeEditor,
+        alt: "Frappe Builder editor: layer tree on the left, a brand-studio landing page on the canvas, style properties on the right, and a Publish button",
+        caption: "Frappe Builder · layers, canvas and properties in one view",
+      },
+      overviewHeading: ["Ship pages", "without", "a ticket"],
+      overviewText:
+        "At small and mid-sized companies the same quiet bottleneck keeps repeating: marketing needs a landing page, engineering owns the website, and the page ships two weeks late — if it ships at all — by which time the campaign has moved on. The usual fix is a visual builder, but that trade has its own cost: drag-and-drop ease in exchange for performance, brand consistency and often a per-seat bill that grows faster than the team. On my own initiative, as a piece for the product marketing manager track, I wrote the technical blog for Frappe Builder — which was built to avoid that trade — aimed at the person who feels the pain most, the product manager, and anchored each claim to a screen from the product itself.",
+      process: [
+        {
+          num: "01",
+          title: "Problem",
+          text: "Pages wait in a sprint queue. Engineering time is negotiated for, deploy windows decide the launch date, and a campaign that runs on a quarterly rhythm keeps losing the first two weeks to the website.",
+        },
+        {
+          num: "02",
+          title: "Angle",
+          text: "Frame the blog around what actually changes when a PM has Builder, not around a feature list. Each section is a plain-spoken claim — “You stop waiting”, “You stop being afraid to touch it” — followed by the practical effect on the team.",
+        },
+        {
+          num: "03",
+          title: "Message",
+          text: "Edit section by section on a visual canvas, preview, and publish in one click. Version control makes every change recoverable and preview means nothing goes live unseen. Design tokens define palette, fonts and templates once, so every new page inherits them and light and dark themes stay aligned as more people publish.",
+        },
+        {
+          num: "04",
+          title: "Differentiator",
+          text: "AI at cost, not at markup. Builder ships with BOB, an AI page generator, and you bring your own API key — you pay the model provider directly, nothing sits in between. Cost tracks what you generate rather than headcount, so the AI bill scales with usage and not with how many people you hire.",
+        },
+        {
+          num: "05",
+          title: "Proof",
+          text: "Speed is the claim almost no builder makes, because most produce pages weighed down by scripts nobody asked for. Builder’s creator set out to fix exactly that, frappe.io itself runs on Builder, and its pages score consistently well on Lighthouse. Domain, embeds and analytics sit in the same place the page was built, closing the loop between shipping and knowing from days to same-day.",
+        },
+        {
+          num: "06",
+          title: "Honest caveats",
+          text: "A “Worth knowing” note closes the blog: Builder is open source under AGPL-3.0, so the licence terms matter if you plan to modify it commercially, and it can be self-hosted free or run managed on Frappe Cloud. The AI cost comparison is written as a formula — pages a month, users, rupees a year — ready for real usage numbers.",
+        },
+      ],
+      highlights: [
+        {
+          src: frappeCanvas,
+          alt: "A brand-studio landing page — hero, selected work cards and services — open on the Builder canvas at 44% zoom",
+          caption: "01 · Visual canvas",
+          title: "Edit the page where you see it",
+          text: "The page is built section by section on a live canvas — hero, selected work, services — and previewed at desktop, tablet and mobile widths before one click publishes it. No ticket, no deploy window.",
+          aspect: "882 / 915",
+        },
+        {
+          src: frappeLayers,
+          alt: "Layer tree listing Root, Bureau Nav, Section Hero, Work, Services, Manifesto, Clients and Bureau Footer",
+          caption: "02 · Layers",
+          title: "Structure you can read",
+          text: "Every page is a tree of named sections, with shared pieces such as the nav and footer reused across pages. Anyone on the team can find the block they need without reading code.",
+          aspect: "430 / 470",
+        },
+        {
+          src: frappeProperties,
+          alt: "Properties panel with Layout, Typography and Style controls including opacity and background colour",
+          caption: "03 · Properties",
+          title: "Styling without a stylesheet",
+          text: "Layout, typography and style controls sit beside the canvas, with search across properties. Fine control is there when it’s needed, without opening a code editor.",
+          aspect: "384 / 927",
+        },
+        {
+          src: frappeThemes,
+          alt: "Design tokens table listing six colours with matching light and dark values",
+          caption: "04 · Design tokens",
+          title: "Brand defined once",
+          text: "Palette, fonts and dimensions live as named tokens, each with a light and a dark value. New pages inherit them automatically, so the brand holds even as sales, support and regional teams start to publish.",
+          aspect: "1014 / 590",
+        },
+        {
+          src: frappeToolbar,
+          alt: "Builder toolbar with the page name and path, settings, preview and Publish",
+          caption: "05 · Preview & publish",
+          title: "One click to live",
+          text: "Preview sits next to Publish in the toolbar, so a change is checked before it goes live — and because every change is versioned, a bad edit is recoverable in minutes, not hours.",
+          aspect: "2048 / 72",
+        },
+      ],
+      breakdowns: [
+        {
+          heading: "What the blog argues",
+          rows: [
+            { label: "You stop waiting", text: "Visual canvas, preview, one-click publish. Roughly 30 engineering hours back on the roadmap for a team running multiple campaigns a quarter; page turnaround from days to hours." },
+            { label: "Fearless edits", text: "Version control and preview mean every change is recoverable. Mean time to fix a bad page drops from hours to minutes." },
+            { label: "Brand intact", text: "Design tokens and templates defined once; business users invited while admin control stays where it belongs." },
+            { label: "AI at cost", text: "BOB, the AI page generator, runs on your own API key: you pay the provider directly, and cost follows usage instead of headcount." },
+            { label: "Closed loop", text: "Custom domain, video and third-party embeds, and analytics in the same place the page is built — shipping to knowing in the same day." },
+            { label: "Performance", text: "Lean pages by design: frappe.io runs on Builder and scores consistently well on Lighthouse." },
+          ],
+        },
+        {
+          heading: "Good to know",
+          rows: [
+            { label: "Licence", text: "Open source under AGPL-3.0 — check the terms before modifying it commercially." },
+            { label: "Hosting", text: "Self-host for free, or run it managed on Frappe Cloud." },
+          ],
+        },
+      ],
+      results: [
+        { value: "~30 hrs", label: "Engineering hours returned to the roadmap" },
+        { value: "Days → hours", label: "Page turnaround" },
+        { value: "Hrs → mins", label: "Mean time to fix a bad page" },
+      ],
+      resultsSize: "text-u44 max-md:text-[34px]",
+    },
   },
   {
     id: "4",
-    cardTitle: "[Project\nfour]",
-    cardDesc: "[One-line project description, two or three lines long.]",
-    cardImage: null,
+    cardTitle: "Nearshore\nSiting",
+    cardDesc:
+      "A site-screening agent for industrial plants: hard gates, a weighted ranking and a sensitivity pass — no LLM in the decision path.",
+    cardImage: nsCard,
+    cardImageAlt: "Nearshore Siting Agent result: top site scored 0.738 with water, power, cost and logistics bars",
     cardImgHeight: 210,
-    link: "#work",
+    link: "/projects/4",
+    listLine:
+      "Screens candidate plant sites on water, power, cost and logistics at about $0.045 a site — deterministic gates, ranked, then stress-tested.",
+    listMeta: "Python · Geospatial",
+    detail: {
+      index: "04",
+      category: "Geospatial analysis · Decision tooling",
+      year: "Python",
+      tagline: "Facts eliminate, priorities rank —\nand the ranking attacks itself",
+      facts: [
+        { label: "Brief", value: "Screening sites for a textile dye house" },
+        { label: "My role", value: "Design, build & write-up" },
+        { label: "Size", value: "582 lines · 12 candidates screened" },
+        { label: "Stack", value: "Python · async HTTP · geospatial API" },
+      ],
+      factsAction: { type: "text", value: "( Dry run by default ·\nspends nothing )" },
+      media: {
+        type: "figure",
+        src: nsTerminal,
+        alt: "Terminal output of the siting agent: gate result of 3 passed, 5 eliminated, 4 unavailable; a ranked table of three sites with water, power, cost and logistics scores; and a sensitivity pass reporting the winner changes in 1 of 12 scenarios",
+        caption: "python run.py --offline · ranked table and sensitivity pass",
+        mobileMin: 640,
+      },
+      overviewHeading: ["Facts gate,", "priorities", "rank"],
+      overviewText:
+        "Choosing where to put a plant is a decision worth tens of millions of dollars that is still made largely by hand: an analyst pulls a dozen unrelated federal and state datasets for every candidate address, and the baseline is a task measured in weeks. For a textile dye house the stakes are sharper — wet processing is water- and effluent-bound, so a site where a discharge permit is unobtainable doesn’t get delayed, it dies after the land is bought. I built a four-layer pipeline that enriches each address from one API call, eliminates on physics and law, ranks the survivors, and then stress-tests its own answer. No LLM sits anywhere in the decision path, and every number carries its source, confidence and dataset vintage.",
+      process: [
+        {
+          num: "01",
+          title: "Problem",
+          text: "Data is scattered across EPA, EIA, FEMA, HUD, Census, REGRID and state layers, so every site is a manual research project and comparisons are inconsistent. Outputs carry no provenance — a cell reading 345 can’t be defended six months later — and judgement and fact are mixed in the same step.",
+        },
+        {
+          num: "02",
+          title: "Why it stays hard",
+          text: "Data goes missing unpredictably, and failures are location-specific rather than field-specific: a rural site and an urban site fail on completely different fields, so no reliable-subset assumption survives. And a single score hides its own fragility — a ranking that flips under a 10% weight change looks identical to one that doesn’t.",
+        },
+        {
+          num: "03",
+          title: "Design principle",
+          text: "Separate what is a fact from what is a preference. The gate encodes physics and law and is absolute. The score encodes priorities and is explicitly declared, weighted and stress-tested. The layers don’t know about each other: gate and score accept anything exposing .value(field) and .citation(field), which let them be developed against cached responses at zero cost.",
+        },
+        {
+          num: "04",
+          title: "The money layer",
+          text: "The client exists to make calls expensive to fire by accident: cache first, then dry-run, then a hard budget ceiling that raises before it increments, then a semaphore of ten. One preset call returns 72 fields, collapsing the design from three calls per site to one. Because the cache is checked before the budget and the semaphore, the full 12-site screen replays in 0.7 seconds for zero credits.",
+        },
+        {
+          num: "05",
+          title: "Gate, score, stress-test",
+          text: "Eight rules, each with two independent axes — what to do when a value fails, and what to do when it is missing — give a three-state result: passed, eliminated (with the field, value, requirement and citation) or unavailable. Survivors are scored on 15 criteria in four dimensions — water 35%, power 30%, cost 20%, logistics 15% — with weights declared, not fitted. Then 12 reweightings try to break the winner, and every flip is reported.",
+        },
+        {
+          num: "06",
+          title: "Honest limits",
+          text: "Real textile plants were eliminated on parcel size (2 of 2 closest analogues), an office park ranked second because the gate never tests permitted use, and Brea CA died on a 3 kV miss against a 69 kV threshold. Correlated power criteria are multiply counted and imputation is invisible in the total. All stated up front, with fixes.",
+        },
+        {
+          num: "07",
+          title: "Next",
+          text: "Benchmark the thresholds: run 50–100 operating US textile and dye facilities through the same enrichment so each threshold becomes a percentile with a stated coverage level, then measure false-negative rate on a held-out 30%. After that: absolute scoring, confidence-aware weights, candidate discovery from bulk parcel data, and region-aware profiles for places where water allocation, not proximity, is the constraint.",
+        },
+      ],
+      highlights: [
+        {
+          src: nsArchitecture,
+          alt: "Pipeline diagram: client.py, gate.py, score.py and run.py, with the data passed between each layer",
+          caption: "01 · Architecture",
+          title: "Four layers that don’t know each other",
+          text: "I/O and money, absolute gate, relative score, orchestrator — joined only by plain result objects. Swapping the data provider means rewriting one file, and the gate and score layers were built entirely against cached responses.",
+          aspect: "1650 / 905",
+          wide: true,
+          mobileMin: 640,
+        },
+        {
+          src: nsMoney,
+          alt: "Order of operations in the client: cache, dry run, budget ceiling, semaphore, HTTP — with the cost and speed figures that follow from it",
+          caption: "02 · The money layer",
+          title: "Calls that are hard to fire by accident",
+          text: "Cache before budget before concurrency. Dry run is the default and --live must be typed. A runaway at ten concurrent calls burns about 450 credits, not about 1,800.",
+          aspect: "1650 / 843",
+          wide: true,
+          mobileMin: 640,
+        },
+        {
+          src: nsGate,
+          alt: "GateRule definition with severity and on_missing axes, and the three outcomes: passed, eliminated, unavailable",
+          caption: "03 · The gate",
+          title: "“Too far” and “not mapped” are different claims",
+          text: "Each rule separates what happens when a value fails from what happens when it is absent, so a missing field is never silently scored as a bad one.",
+          aspect: "1650 / 602",
+          wide: true,
+          mobileMin: 640,
+        },
+        {
+          src: nsLimits,
+          alt: "Three measured defects: false negatives on real plants, an office park ranked second, and a 66 kV site eliminated against a 69 kV threshold",
+          caption: "04 · Honest limits",
+          title: "Defects, measured and stated",
+          text: "Two real plants eliminated on parcel size, a control site that should have failed but ranked second, and a threshold cliff. Each has a named fix, and the benchmarking plan is how thresholds stop being opinions.",
+          aspect: "1650 / 609",
+          wide: true,
+          mobileMin: 640,
+        },
+      ],
+      breakdowns: [
+        {
+          heading: "How it runs",
+          rows: [
+            { label: "Dry run", text: "python run.py — prints what it would cost and spends nothing. This is the default." },
+            { label: "One address", text: "python run.py \"1000 Nissan Dr, Smyrna, TN\" screens a single site ad hoc." },
+            { label: "Offline", text: "python run.py --offline replays the local cache for free, regardless of age, and never calls out." },
+            { label: "Live", text: "python run.py --live --max-calls 20 spends credits, with a hard ceiling that raises BudgetExceeded rather than draining the account." },
+            { label: "Output", text: "A ranked table plus shortlist.json carrying every raw value, normalised value, imputation flag, confidence and citation, and every elimination reason." },
+          ],
+        },
+        {
+          heading: "What it is not",
+          rows: [
+            { label: "Not a decision", text: "A screening funnel. It can’t say whether zoning permits the use, whether permits are obtainable, what incentives are negotiable, or whether the land is for sale." },
+            { label: "Not discovery", text: "It is a point-query tool: hand it a location and it describes that location. Sourcing parcels worth screening is the missing front half." },
+          ],
+        },
+      ],
+      results: [
+        { value: "$0.045", label: "Raw API cost per site · one call each" },
+        { value: "582", label: "Lines of Python · no LLM in the decision path" },
+        { value: "0.7 s", label: "Full 12-site screen replayed from cache, zero credits" },
+      ],
+      resultsSize: "text-u72 max-md:text-[52px]",
+    },
   },
 ];
 

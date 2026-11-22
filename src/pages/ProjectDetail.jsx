@@ -12,8 +12,8 @@ import { RollingValue } from "@/components/RollingValue";
 // carries the picture into place (see useViewTransitionNavigate). Project 1's
 // card photo is literally slides[0]; project 2's card photo is a crop of the
 // same saturation-gauge screen as screenshot index 1, the closest match.
-const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2" };
-const VT_INDEX = { 1: 0, 2: 1 };
+const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3", 4: "project-photo-4" };
+const VT_INDEX = { 1: 0, 2: 1, 3: 0, 4: 0 };
 
 function Carousel({ slides, vtName, vtIndex }) {
   const [slide, setSlide] = useState(0);
@@ -98,6 +98,85 @@ function ScreenGrid({ items, href, vtName, vtIndex }) {
   );
 }
 
+// One large, uncropped product screenshot (used when a project's hero is a
+// single interface rather than a set of photos).
+function Figure({ src, alt, caption, mobileMin, vtName, vtIndex }) {
+  return (
+    <figure className="col-start-1 col-end-13 m-0">
+      <a
+        href={src}
+        target="_blank"
+        rel="noreferrer"
+        className="block overflow-hidden rounded-xl border border-line bg-white max-md:overflow-x-auto"
+        aria-label="Open the screenshot full size"
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="block h-auto w-full max-md:min-w-[var(--mm,0px)]"
+          style={{ viewTransitionName: vtIndex === 0 ? vtName : undefined, "--mm": mobileMin ? `${mobileMin}px` : undefined }}
+        />
+      </a>
+      {caption && (
+        <figcaption className="font-mono mt-3 text-[length:max(10px,calc(var(--u)*10))] uppercase text-muted">{caption}</figcaption>
+      )}
+    </figure>
+  );
+}
+
+// Annotated product snapshots: each one is a crop of a real screen, shown
+// uncropped beside a short note. Very wide strips (a toolbar) run full width
+// with the note beneath. Every image opens full size in a new tab.
+function Highlights({ items }) {
+  return (
+    <section aria-label="Product highlights" className="g12 mt-14 border-t border-line pt-10 max-md:mt-8 max-md:pt-8">
+      <Reveal as="h2" className="col-start-1 col-end-13 m-0 mb-10 text-u36 font-medium leading-[1.1] tracking-[-0.03em] max-md:mb-6 max-md:text-[28px]">
+        Product <span className="text-faint">highlights</span>
+      </Reveal>
+      <div className="col-start-1 col-end-13 flex flex-col gap-14 max-md:gap-10">
+        {items.map((h, i) => {
+          const [w, ht] = h.aspect.split("/").map(Number);
+          const wide = h.wide || w / ht > 2;
+          const flip = !wide && i % 2 === 1;
+          return (
+            <Reveal key={h.src} as="div" className="grid grid-cols-12 items-center gap-6 max-md:gap-4">
+              <a
+                href={h.src}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open “${h.title}” full size`}
+                className={`flex items-center justify-center overflow-hidden rounded-xl border border-line bg-chip p-[calc(var(--u)*20)] max-md:col-span-12 max-md:justify-start max-md:overflow-x-auto max-md:p-3 ${
+                  wide ? "col-span-12" : flip ? "col-start-6 col-end-13 row-start-1" : "col-span-7"
+                }`}
+              >
+                <img
+                  src={h.src}
+                  alt={h.alt}
+                  loading="lazy"
+                  className="block h-auto w-auto max-w-full rounded-md bg-white object-contain max-md:min-w-[var(--mm,0px)] max-md:max-w-none"
+                  style={{
+                    maxHeight: wide ? undefined : "min(calc(var(--u) * 640), 120vw)",
+                    "--mm": h.mobileMin ? `${h.mobileMin}px` : undefined,
+                  }}
+                />
+              </a>
+              <div
+                className={`max-md:col-span-12 max-md:row-start-auto ${
+                  wide ? "col-span-6 mt-2" : flip ? "col-start-1 col-end-5 row-start-1" : "col-start-8 col-end-13"
+                }`}
+              >
+                <p className="font-mono m-0 mb-3 text-[length:max(11px,calc(var(--u)*11))] uppercase text-muted">{h.caption}</p>
+                <h3 className="m-0 mb-3 text-[length:max(22px,calc(var(--u)*26))] font-medium leading-[1.15] tracking-[-0.02em]">{h.title}</h3>
+                <p className="m-0 text-[length:max(14px,calc(var(--u)*14))] leading-[1.6] text-soft">{h.text}</p>
+              </div>
+            </Reveal>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 const TITLES = {
   1: (
     <>
@@ -113,13 +192,27 @@ const TITLES = {
       Intellig<span className="font-display font-normal italic normal-case">e</span>nce
     </>
   ),
+  3: (
+    <>
+      Frappe
+      <br />
+      Build<span className="font-display font-normal italic normal-case">e</span>r
+    </>
+  ),
+  4: (
+    <>
+      Nearsh<span className="font-display font-normal italic normal-case">o</span>re
+      <br />
+      Siting Agent
+    </>
+  ),
 };
 
 export function ProjectDetail() {
   const { id } = useParams();
   const project = getProject(id) ?? getProject("1");
   const d = project.detail ?? getProject("1").detail;
-  const titleKey = project.id === "2" ? 2 : 1;
+  const titleKey = TITLES[project.id] ? Number(project.id) : 1;
   const vtName = VT_NAME[titleKey];
   const vtIndex = VT_INDEX[titleKey];
 
@@ -196,11 +289,13 @@ export function ProjectDetail() {
         </div>
       </section>
 
-      <section aria-label={d.media.type === "carousel" ? "Hero image" : "App screenshots"} className="g12 mt-10">
+      <section aria-label={d.media.type === "screens" ? "App screenshots" : "Hero image"} className="g12 mt-10">
         {d.media.type === "carousel" ? (
           <div className="col-start-1 col-end-13">
             <Carousel slides={d.media.slides} vtName={vtName} vtIndex={vtIndex} />
           </div>
+        ) : d.media.type === "figure" ? (
+          <Figure {...d.media} vtName={vtName} vtIndex={vtIndex} />
         ) : (
           <ScreenGrid items={d.media.items} href={d.media.href} vtName={vtName} vtIndex={vtIndex} />
         )}
@@ -234,6 +329,8 @@ export function ProjectDetail() {
           </Reveal>
         ))}
       </section>
+
+      {d.highlights && <Highlights items={d.highlights} />}
 
       {(d.breakdowns ?? []).map((bd) => (
         <section key={bd.heading} aria-label={bd.heading} className="g12 mt-14 border-t border-line pt-10 max-md:mt-8 max-md:pt-8">

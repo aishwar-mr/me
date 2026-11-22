@@ -7,7 +7,7 @@ import { useViewTransitionNavigate } from "@/hooks/useViewTransitionNavigate";
 // Matches the names given to one image on each project's detail page (see
 // VT_NAME in ProjectDetail.jsx) so the card photo visibly carries into the
 // hero slot instead of the page just swapping.
-const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2" };
+const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3", 4: "project-photo-4" };
 
 // Each card drifts on its own looping sine path; all four pause together
 // when any card is clicked, and resume when the background is clicked.
