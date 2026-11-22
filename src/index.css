@@ -444,8 +444,12 @@ button:focus-visible {
 
 /* The scroll-drawn line (src/components/PageLine.jsx). */
 .page-line > path {
-  stroke: rgb(var(--vermilion-rgb));
+  stroke: rgb(var(--vermilion-text-rgb));
   stroke-width: 1.5;
+}
+/* The ball takes the same accent as the line, selection and focus ring. */
+.page-line .page-line-ball-fill {
+  fill: rgb(var(--vermilion-text-rgb));
 }
 .page-line .page-line-ball {
   filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.28));

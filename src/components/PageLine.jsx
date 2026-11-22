@@ -140,7 +140,7 @@ export function PageLine() {
     <svg ref={svgRef} aria-hidden="true" focusable="false" className="page-line pointer-events-none absolute left-0 top-0 z-40">
       <path ref={pathRef} fill="none" strokeLinecap="round" strokeLinejoin="round" />
       <g ref={tipRef} className="page-line-ball">
-        <circle r={BALL} fill="#e8772e" />
+        <circle r={BALL} className="page-line-ball-fill" />
         <g fill="none" stroke="#2b1708" strokeWidth="1.1" strokeLinecap="round">
           <path d={`M${-BALL} 0H${BALL}M0 ${-BALL}V${BALL}`} />
           <path d={`M${-BALL * 0.72} ${-BALL * 0.72}Q${-BALL * 0.28} 0 ${-BALL * 0.72} ${BALL * 0.72}`} />
