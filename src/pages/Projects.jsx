@@ -8,15 +8,14 @@ import { useViewTransitionNavigate } from "@/hooks/useViewTransitionNavigate";
 // Matches the names given to one image on each project's detail page (see
 // VT_NAME in ProjectDetail.jsx) so the card photo visibly carries into the
 // hero slot instead of the page just swapping.
-const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3", 4: "project-photo-4" };
+const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3" };
 
-// Each card drifts on its own looping sine path; all four pause together
+// Each card drifts on its own looping sine path; all three pause together
 // when any card is clicked, and resume when the background is clicked.
 const CARD_MOTION = [
   { rot: -13, fx: 0.31, fy: 0.43, gx: 0.71, gy: 0.57, fr: 0.52, px: 0.3, py: 1.9 },
   { rot: -27, fx: 0.27, fy: 0.37, gx: 0.63, gy: 0.81, fr: 0.47, px: 2.4, py: 0.6 },
   { rot: -5, fx: 0.35, fy: 0.29, gx: 0.77, gy: 0.66, fr: 0.58, px: 4.1, py: 3.3 },
-  { rot: 7, fx: 0.23, fy: 0.41, gx: 0.59, gy: 0.73, fr: 0.44, px: 5.6, py: 4.8 },
 ];
 
 function computeTransform(c, e) {
@@ -197,7 +196,7 @@ export function Projects() {
             key={project.id}
             project={project}
             transform={transforms[i]}
-            zIndex={4 - i}
+            zIndex={PROJECTS.length - i}
             onPause={(e) => {
               e.stopPropagation();
               pause();

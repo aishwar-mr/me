@@ -12,8 +12,8 @@ import { RollingValue } from "@/components/RollingValue";
 // carries the picture into place (see useViewTransitionNavigate). Project 1's
 // card photo is literally slides[0]; project 2's card photo is a crop of the
 // same saturation-gauge screen as screenshot index 1, the closest match.
-const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3", 4: "project-photo-4" };
-const VT_INDEX = { 1: 0, 2: 1, 3: 0, 4: 0 };
+const VT_NAME = { 1: "project-photo-1", 2: "project-photo-2", 3: "project-photo-3" };
+const VT_INDEX = { 1: 0, 2: 1, 3: 0 };
 
 function Carousel({ slides, vtName, vtIndex }) {
   const [slide, setSlide] = useState(0);
@@ -100,21 +100,21 @@ function ScreenGrid({ items, href, vtName, vtIndex }) {
 
 // One large, uncropped product screenshot (used when a project's hero is a
 // single interface rather than a set of photos).
-function Figure({ src, alt, caption, mobileMin, vtName, vtIndex }) {
+function Figure({ src, alt, caption, vtName, vtIndex }) {
   return (
     <figure className="col-start-1 col-end-13 m-0">
       <a
         href={src}
         target="_blank"
         rel="noreferrer"
-        className="block overflow-hidden rounded-xl border border-line bg-white max-md:overflow-x-auto"
+        className="block overflow-hidden rounded-xl border border-line bg-white"
         aria-label="Open the screenshot full size"
       >
         <img
           src={src}
           alt={alt}
-          className="block h-auto w-full max-md:min-w-[var(--mm,0px)]"
-          style={{ viewTransitionName: vtIndex === 0 ? vtName : undefined, "--mm": mobileMin ? `${mobileMin}px` : undefined }}
+          className="block h-auto w-full"
+          style={{ viewTransitionName: vtIndex === 0 ? vtName : undefined }}
         />
       </a>
       {caption && (
@@ -136,7 +136,7 @@ function Highlights({ items }) {
       <div className="col-start-1 col-end-13 flex flex-col gap-14 max-md:gap-10">
         {items.map((h, i) => {
           const [w, ht] = h.aspect.split("/").map(Number);
-          const wide = h.wide || w / ht > 2;
+          const wide = w / ht > 2;
           const flip = !wide && i % 2 === 1;
           return (
             <Reveal key={h.src} as="div" className="grid grid-cols-12 items-center gap-6 max-md:gap-4">
@@ -145,7 +145,7 @@ function Highlights({ items }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open “${h.title}” full size`}
-                className={`flex items-center justify-center overflow-hidden rounded-xl border border-line bg-chip p-[calc(var(--u)*20)] max-md:col-span-12 max-md:justify-start max-md:overflow-x-auto max-md:p-3 ${
+                className={`flex items-center justify-center overflow-hidden rounded-xl border border-line bg-chip p-[calc(var(--u)*20)] max-md:col-span-12 max-md:p-3 ${
                   wide ? "col-span-12" : flip ? "col-start-6 col-end-13 row-start-1" : "col-span-7"
                 }`}
               >
@@ -153,11 +153,8 @@ function Highlights({ items }) {
                   src={h.src}
                   alt={h.alt}
                   loading="lazy"
-                  className="block h-auto w-auto max-w-full rounded-md bg-white object-contain max-md:min-w-[var(--mm,0px)] max-md:max-w-none"
-                  style={{
-                    maxHeight: wide ? undefined : "min(calc(var(--u) * 640), 120vw)",
-                    "--mm": h.mobileMin ? `${h.mobileMin}px` : undefined,
-                  }}
+                  className="block h-auto w-auto max-w-full rounded-md bg-white object-contain"
+                  style={{ maxHeight: wide ? undefined : "min(calc(var(--u) * 640), 120vw)" }}
                 />
               </a>
               <div
@@ -199,13 +196,6 @@ const TITLES = {
       Build<span className="font-display font-normal italic normal-case">e</span>r
     </>
   ),
-  4: (
-    <>
-      Nearsh<span className="font-display font-normal italic normal-case">o</span>re
-      <br />
-      Siting Agent
-    </>
-  ),
 };
 
 export function ProjectDetail() {
@@ -241,7 +231,7 @@ export function ProjectDetail() {
         <p className="font-mono col-start-1 col-end-3 m-0 text-[length:max(11px,calc(var(--u)*11))] uppercase leading-[1.5] text-muted">
           Project
           <br />
-          {`${d.index} / 04`}
+          {`${d.index} / 03`}
         </p>
         <p className="font-mono col-start-5 col-end-9 m-0 whitespace-pre-line text-center text-[length:max(11px,calc(var(--u)*11))] max-md:text-left uppercase leading-[1.5]">
           {d.tagline}

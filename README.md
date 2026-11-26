@@ -22,7 +22,6 @@ page.
 | `/projects/1` | Track Monitor: contactless track inspection for Indian Railways (Smart India Hackathon 2025) |
 | `/projects/2` | Startup Intelligence: scores how crowded a startup idea's market is |
 | `/projects/3` | Frappe Builder: a self-initiated technical blog, product marketing track |
-| `/projects/4` | Nearshore Siting Agent: screens candidate industrial sites on water, power, cost and logistics |
 
 ## Features
 
@@ -87,10 +86,10 @@ npm run preview   # serve the production build locally
 | Photo pile images and captions | `src/components/WorkBelt.jsx` |
 | Email and social links | `src/components/FooterBar.jsx` |
 
-The layout assumes four projects. To add a fifth, also update:
+The layout assumes three projects. To add a fourth, also update:
 
 - `CARD_MOTION` and `VT_NAME` in `src/pages/Projects.jsx`
-- `TITLES`, `VT_NAME`, `VT_INDEX` and the `/ 04` counter in `src/pages/ProjectDetail.jsx`
+- `TITLES`, `VT_NAME`, `VT_INDEX` and the `/ 03` counter in `src/pages/ProjectDetail.jsx`
 
 ## Notes
 
